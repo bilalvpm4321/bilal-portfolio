@@ -28,7 +28,7 @@ export const AdminLayout: React.FC = () => {
   const currentTitle = PAGE_TITLES[location.pathname] || 'Admin Dashboard';
 
   return (
-    <div className="min-h-screen bg-[#07080c] text-gray-100 flex">
+    <div className="theme-admin min-h-screen bg-[#07080c] text-gray-100 flex">
       {/* Mobile backdrop */}
       {mobileSidebarOpen && (
         <div

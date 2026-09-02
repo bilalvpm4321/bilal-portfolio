@@ -6,6 +6,7 @@ import { slugify } from '../../lib/utils';
 import { Card } from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
 import { ImageUploader } from '../../components/admin/ImageUploader';
+import { VideoUploader } from '../../components/admin/VideoUploader';
 import {
   ArrowLeft,
   Save,
@@ -33,6 +34,7 @@ export const AdminProjectEditPage: React.FC = () => {
     detailed_description: '',
     category: 'Generative AI / NLP / Full Stack',
     image_url: '',
+    video_url: '',
     gallery_images: [] as string[],
     github_url: '',
     live_url: '',
@@ -65,6 +67,7 @@ export const AdminProjectEditPage: React.FC = () => {
           detailed_description: existing.detailed_description || '',
           category: existing.category,
           image_url: existing.image_url || '',
+          video_url: existing.video_url || '',
           gallery_images: existing.gallery_images || [],
           github_url: existing.github_url || '',
           live_url: existing.live_url || '',
@@ -474,15 +477,26 @@ export const AdminProjectEditPage: React.FC = () => {
           <Card className="p-6 bg-[#0d0f17]/95 border-white/[0.08]">
             <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
               <ImageIcon className="w-4 h-4 text-sky-400" />
-              <span>Project Cover Image</span>
+              <span>Project Cover Photo (Default)</span>
             </h2>
 
             <ImageUploader
               value={formData.image_url}
               onChange={(url) => setFormData((prev) => ({ ...prev, image_url: url }))}
               folder="projects"
-              label="Thumbnail"
+              label="Cover Image"
               aspectRatio="video"
+            />
+          </Card>
+
+          {/* Demo Video / Screen Recording */}
+          <Card className="p-6 bg-[#0d0f17]/95 border-white/[0.08]">
+            <VideoUploader
+              currentVideoUrl={formData.video_url}
+              onVideoChange={(url) => setFormData((prev) => ({ ...prev, video_url: url || '' }))}
+              folder="projects/videos"
+              label="Project Demo Video / Screen Recording"
+              helperText="Upload an MP4/WebM video or screen recording of the project. If uploaded, it will play at the top of the project details page."
             />
           </Card>
 

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
-import { MapPin, Mail, Phone, GraduationCap, Briefcase, Sparkles, Award } from 'lucide-react';
+import { MapPin, GraduationCap, Briefcase, Sparkles } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const { data } = usePortfolio();
@@ -13,126 +13,128 @@ export const AboutSection: React.FC = () => {
     profile?.about ||
     'M.Tech Computer Science and Engineering (AI & Data Science) student at Cochin University of Science and Technology with hands-on experience in full-stack development, Artificial Intelligence, Machine Learning, cloud technologies, and real-time applications. Skilled in Python, React, Firebase, AWS, and Google Cloud Platform, with experience developing AI-powered applications using OpenAI technologies. Proficient in AI coding tools, prompt engineering, database integration, debugging, testing, deployment, and collaborative software development.';
 
-  const avatarUrl =
+  // Separate About Section photo with fallback to hero avatar
+  const aboutImageUrl =
+    profile?.about_image_url ||
+    data.siteSettings?.about?.image_url ||
     profile?.avatar_url ||
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';
+    '';
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <Badge variant="primary" size="md" className="mb-3" icon={<Sparkles className="w-3.5 h-3.5" />}>
-            About Me
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display tracking-tight">
-            Background & Technical Focus
-          </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full mt-3" />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Visual / Profile Image Card */}
+    <section id="about" className="pt-8 sm:pt-12 pb-24 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Interactive Staged Grid: Photo stands tall on left, Heading & Box on right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-start relative">
+          
+          {/* Visual / Profile Image (Standing tall at top with no dead space above) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5"
+            className="lg:col-span-5 flex items-start justify-center lg:justify-end relative z-20 pointer-events-none"
           >
-            <div className="relative mx-auto max-w-md">
-              <div className="absolute -inset-1.5 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-60 transition duration-500" />
-              <div className="relative rounded-3xl overflow-hidden bg-[#0d0f17] border border-white/[0.1] shadow-2xl p-3">
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-900">
-                  <img
-                    src={avatarUrl}
-                    alt={profile?.full_name || 'Bilal Ahamed PT'}
-                    className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090a0f] via-transparent to-transparent opacity-80" />
-                  
-                  {/* Floating status card inside image */}
-                  <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-[#090a10]/90 backdrop-blur-md border border-white/[0.1] shadow-lg">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-xs font-semibold text-white">Bilal Ahamed PT</p>
-                        <p className="text-[11px] text-sky-400 font-medium">M.Tech AI & Data Science @ CUSAT</p>
-                      </div>
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                    </div>
-                  </div>
-                </div>
+            {aboutImageUrl ? (
+              <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-[490px] xl:max-w-[530px] flex items-start justify-center lg:justify-end">
+                <img
+                  src={aboutImageUrl}
+                  alt={profile?.full_name || 'Bilal'}
+                  className="w-auto h-auto max-h-[620px] sm:max-h-[700px] lg:max-h-[780px] xl:max-h-[820px] max-w-full object-contain object-top mx-auto lg:mr-0 drop-shadow-sm select-none pointer-events-auto transition-transform duration-500 hover:scale-[1.01]"
+                />
               </div>
-            </div>
+            ) : (
+              <div className="w-48 h-48 rounded-3xl bg-[#738666]/10 border border-[#738666]/15 flex flex-col items-center justify-center text-[#738666] mx-auto pointer-events-auto mt-6">
+                <div className="w-20 h-20 rounded-full bg-[#738666] text-white flex items-center justify-center text-3xl font-bold font-editorial shadow-xs">
+                  B
+                </div>
+                <span className="mt-3 text-xs font-mono tracking-wider text-[#556950]">Bilal</span>
+              </div>
+            )}
           </motion.div>
 
-          {/* Editorial Content */}
+          {/* Right Column: Heading in the space next to head + Big Box under hand + Small Boxes */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 flex flex-col gap-6"
+            className="lg:col-span-7 flex flex-col gap-6 relative z-10 lg:pt-1"
           >
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Bridging Intelligent AI Models with Scalable Full-Stack Architectures
-              </h3>
-              <p className="text-slate-300 leading-relaxed text-base mb-6 font-normal">
-                {aboutText}
-              </p>
+            {/* The Section Heading Positioned in the Rounded Space Next to Head & Shoulders */}
+            <div className="flex flex-col items-start text-left space-y-2">
+              <Badge variant="primary" size="md" icon={<Sparkles className="w-3.5 h-3.5 text-[#738666]" />}>
+                About Me
+              </Badge>
+              <h2 className="text-3xl sm:text-5xl lg:text-[50px] xl:text-[56px] font-extrabold text-[#1b281c] font-display tracking-wide lg:tracking-[0.04em] leading-[1.08]">
+                <span className="block">Background &</span>
+                <span className="inline-flex flex-col items-center">
+                  <span>Technical Focus</span>
+                  <span className="w-20 h-1 bg-[#738666]/70 rounded-full mt-2 inline-block" />
+                </span>
+              </h2>
             </div>
 
-            {/* Key Information Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Card className="p-4 bg-white/[0.02] border-white/[0.06]">
-                <div className="flex items-start gap-3">
-                  <div className="p-2.5 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/20 shrink-0">
+            {/* The Big Box resting directly under his outstretched hand (exact position preserved) */}
+            <Card className="p-6 sm:p-8 pt-7 sm:pt-9 bg-white border-[#738666]/12 shadow-xs hover:border-[#738666]/25 transition-all rounded-3xl relative lg:-ml-10 xl:-ml-14 lg:mt-[58px] xl:mt-[62px]">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] font-display mb-3.5 leading-snug">
+                Bridging Intelligent AI Models with Scalable Full-Stack Architectures
+              </h3>
+              <p className="text-[#4a5d46] leading-relaxed text-sm sm:text-base font-normal">
+                {aboutText}
+              </p>
+            </Card>
+
+            {/* Small Boxes Resized with Subtle, Refined Borders */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 lg:-ml-10 xl:-ml-14">
+              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/20 shadow-xs hover:shadow-sm transition-all rounded-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0">
                     <GraduationCap className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Current Degree</h4>
-                    <p className="text-sm font-bold text-white mt-0.5">M.Tech AI & Data Science</p>
-                    <p className="text-xs text-sky-400/90">CUSAT (2025–2027)</p>
+                  <div className="min-w-0">
+                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Current Degree</h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate">M.Tech AI & Data Science</p>
+                    <p className="text-[11px] text-[#738666] font-medium truncate">CUSAT (2025–2027)</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-4 bg-white/[0.02] border-white/[0.06]">
-                <div className="flex items-start gap-3">
-                  <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shrink-0">
+              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/20 shadow-xs hover:shadow-sm transition-all rounded-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0">
                     <GraduationCap className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Undergraduate Degree</h4>
-                    <p className="text-sm font-bold text-white mt-0.5">B.Tech Information Tech</p>
-                    <p className="text-xs text-indigo-400/90">GEC Idukki (2021–2025)</p>
+                  <div className="min-w-0">
+                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Undergraduate Degree</h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate">B.Tech Information Tech</p>
+                    <p className="text-[11px] text-[#738666] font-medium truncate">GEC Idukki (2021–2025)</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-4 bg-white/[0.02] border-white/[0.06]">
-                <div className="flex items-start gap-3">
-                  <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/20 shadow-xs hover:shadow-sm transition-all rounded-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Location</h4>
-                    <p className="text-sm font-bold text-white mt-0.5">{profile?.location || 'Kerala, India'}</p>
-                    <p className="text-xs text-slate-400">Open to Remote / Relocation</p>
+                  <div className="min-w-0">
+                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Location</h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate">{profile?.location || 'Kerala, India'}</p>
+                    <p className="text-[11px] text-[#738666] font-medium truncate">Open to Remote / Relocation</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-4 bg-white/[0.02] border-white/[0.06]">
-                <div className="flex items-start gap-3">
-                  <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 shrink-0">
+              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/20 shadow-xs hover:shadow-sm transition-all rounded-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0">
                     <Briefcase className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Primary Stack</h4>
-                    <p className="text-sm font-bold text-white mt-0.5">React • Python • FastAPIs</p>
-                    <p className="text-xs text-purple-400/90">GCP • Firebase • Supabase</p>
+                  <div className="min-w-0">
+                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Primary Stack</h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate">React • Python • FastAPI</p>
+                    <p className="text-[11px] text-[#738666] font-medium truncate">GCP • Firebase • Supabase</p>
                   </div>
                 </div>
               </Card>

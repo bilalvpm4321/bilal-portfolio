@@ -21,19 +21,19 @@ export const Badge: React.FC<BadgeProps> = ({
 
   const variants = {
     primary:
-      'bg-sky-500/10 text-sky-400 border border-sky-500/20 hover:bg-sky-500/15',
+      'bg-[#738666]/12 text-[#3d5337] border border-[#738666]/30 font-semibold hover:bg-[#738666]/20 [.theme-admin_&]:bg-sky-500/10 [.theme-admin_&]:text-sky-400 [.theme-admin_&]:border-sky-500/20',
     secondary:
-      'bg-slate-800/80 text-slate-300 border border-slate-700/60',
+      'bg-[#f8faf6] text-[#4a5d46] border border-[#738666]/20 [.theme-admin_&]:bg-slate-800/80 [.theme-admin_&]:text-slate-300 [.theme-admin_&]:border-slate-700/60',
     accent:
-      'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20',
+      'bg-[#738666] text-white border border-[#738666] [.theme-admin_&]:bg-indigo-500/10 [.theme-admin_&]:text-indigo-400 [.theme-admin_&]:border-indigo-500/20',
     success:
-      'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
+      'bg-emerald-600/10 text-emerald-700 border border-emerald-600/20',
     warning:
-      'bg-amber-500/10 text-amber-400 border border-amber-500/20',
+      'bg-[#c8a869]/15 text-[#8d6d2b] border border-[#c8a869]/30 [.theme-admin_&]:bg-amber-500/10 [.theme-admin_&]:text-amber-400 [.theme-admin_&]:border-amber-500/20',
     purple:
-      'bg-purple-500/10 text-purple-400 border border-purple-500/20',
+      'bg-[#738666]/15 text-[#3d5337] border border-[#738666]/25 [.theme-admin_&]:bg-purple-500/10 [.theme-admin_&]:text-purple-400',
     outline:
-      'bg-transparent text-slate-300 border border-slate-700/80',
+      'bg-transparent text-[#3d5337] border border-[#738666]/30 [.theme-admin_&]:border-slate-700/80',
   };
 
   const sizes = {

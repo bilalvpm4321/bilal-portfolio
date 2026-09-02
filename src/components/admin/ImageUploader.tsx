@@ -9,7 +9,7 @@ interface ImageUploaderProps {
   onChange: (url: string) => void;
   folder?: string;
   label?: string;
-  aspectRatio?: 'square' | 'video' | 'portrait' | 'auto';
+  aspectRatio?: 'square' | 'video' | 'portrait' | 'auto' | 'free';
 }
 
 export const ImageUploader: React.FC<ImageUploaderProps> = ({
@@ -35,8 +35,8 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
       return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
-      error('File too large', 'Image size must be less than 5MB.');
+    if (file.size > 10 * 1024 * 1024) {
+      error('File too large', 'Image size must be less than 10MB.');
       return;
     }
 
@@ -71,6 +71,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
     video: 'aspect-[16/9]',
     portrait: 'aspect-[4/5]',
     auto: 'min-h-[160px]',
+    free: 'min-h-[140px] max-h-[500px]',
   };
 
   return (
@@ -105,8 +106,16 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
       )}
 
       {value ? (
-        <div className={`relative rounded-xl overflow-hidden bg-slate-900 border border-white/[0.1] ${aspectClasses[aspectRatio]}`}>
-          <img src={value} alt="Uploaded preview" className="w-full h-full object-cover" />
+        <div className={`relative rounded-xl overflow-hidden bg-slate-900/80 border border-white/[0.1] flex items-center justify-center p-2 ${aspectClasses[aspectRatio]}`}>
+          <img
+            src={value}
+            alt="Uploaded preview"
+            className={
+              aspectRatio === 'free'
+                ? 'w-auto h-auto max-h-[460px] max-w-full mx-auto object-contain block'
+                : 'w-full h-full object-cover'
+            }
+          />
           <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
             <Button
               type="button"
@@ -143,7 +152,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
               </div>
               <div>
                 <p className="text-xs font-semibold text-white">Click or drag image here</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">PNG, JPG, WebP up to 5MB</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">PNG, JPG, WebP up to 10MB (any dimensions)</p>
               </div>
             </>
           )}

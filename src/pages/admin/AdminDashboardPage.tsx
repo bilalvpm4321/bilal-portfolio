@@ -170,8 +170,8 @@ export const AdminDashboardPage: React.FC = () => {
                 <User className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-xs font-bold text-white">Edit Profile</p>
-                <p className="text-[11px] text-slate-400">Avatar & Bio</p>
+                <p className="text-xs font-bold text-white">Profile & Hero</p>
+                <p className="text-[11px] text-slate-400">Bio & Flowing Highlights</p>
               </div>
             </Card>
           </Link>

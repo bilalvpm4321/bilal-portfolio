@@ -28,7 +28,7 @@ interface AdminSidebarProps {
 
 const NAV_ITEMS = [
   { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
-  { name: 'Profile & Bio', path: '/admin/profile', icon: User },
+  { name: 'Profile & Hero', path: '/admin/profile', icon: User },
   { name: 'Projects', path: '/admin/projects', icon: FolderGit2 },
   { name: 'Skills & Tech', path: '/admin/skills', icon: Brain },
   { name: 'Experience', path: '/admin/experience', icon: Briefcase },

@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar } from '../components/layout/Navbar';
 import { HeroSection } from '../components/portfolio/HeroSection';
 import { AboutSection } from '../components/portfolio/AboutSection';
-import { SkillsSection } from '../components/portfolio/SkillsSection';
 import { ProjectsSection } from '../components/portfolio/ProjectsSection';
 import { ExperienceSection } from '../components/portfolio/ExperienceSection';
 import { EducationSection } from '../components/portfolio/EducationSection';
@@ -13,12 +12,11 @@ import { Footer } from '../components/layout/Footer';
 
 export const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#08090d] text-gray-100 selection:bg-sky-500/30 selection:text-sky-200">
+    <div className="min-h-screen bg-white text-[#1b281c] selection:bg-[#738666]/25 selection:text-[#1b281c]">
       <Navbar />
       <main>
         <HeroSection />
         <AboutSection />
-        <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
         <EducationSection />

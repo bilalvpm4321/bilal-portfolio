@@ -56,9 +56,8 @@ npm install
 
 ### 3. Environment Variables
 Create a `.env` file in the root directory:
-```env
 VITE_SUPABASE_URL=https://your-project-id.supabase.co
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+VITE_SUPABASE_PUBLISHABLE_KEY=your-supabase-publishable-key
 ```
 *(See `.env.example` for reference. The app also operates in sandbox mode if launched prior to adding keys).*
 
@@ -145,4 +144,4 @@ To build the production bundle:
 npm run build
 ```
 The optimized production bundle in `dist/` can be deployed directly to Vercel, Netlify, Cloudflare Pages, or Fly.io.
-Make sure to add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in your hosting provider's Environment Variables settings!
+Make sure to add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in your hosting provider's Environment Variables settings!

@@ -1,23 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl =
-  import.meta.env.VITE_SUPABASE_URL ||
-  import.meta.env.NEXT_PUBLIC_SUPABASE_URL ||
-  '';
-
-const supabaseKey =
-  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
-  import.meta.env.VITE_SUPABASE_ANON_KEY ||
-  import.meta.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
-  '';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || '';
 
 export const isSupabaseConfigured = (): boolean => {
   return Boolean(
     supabaseUrl &&
-    supabaseKey &&
-    supabaseUrl !== 'https://your-project-id.supabase.co' &&
-    supabaseKey !== 'your-supabase-anon-key' &&
-    supabaseKey !== 'your_supabase_publishable_key' &&
+    supabasePublishableKey &&
+    supabaseUrl !== 'your_supabase_project_url' &&
+    supabasePublishableKey !== 'your_supabase_publishable_key' &&
     supabaseUrl.startsWith('https://')
   );
 };
@@ -25,7 +16,7 @@ export const isSupabaseConfigured = (): boolean => {
 // Initialize Supabase Client
 export const supabase = createClient(
   isSupabaseConfigured() ? supabaseUrl : 'https://placeholder.supabase.co',
-  isSupabaseConfigured() ? supabaseKey : 'placeholder-anon-key',
+  isSupabaseConfigured() ? supabasePublishableKey : 'placeholder-publishable-key',
   {
     realtime: {
       params: {

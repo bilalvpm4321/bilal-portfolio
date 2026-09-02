@@ -8,6 +8,7 @@ export interface Profile {
   phone: string | null;
   location: string | null;
   avatar_url: string | null;
+  about_image_url?: string | null;
   resume_url: string | null;
   availability_status: string | null;
   years_experience: string | null;
@@ -33,6 +34,7 @@ export interface Project {
   detailed_description: string | null;
   category: string;
   image_url: string | null;
+  video_url?: string | null;
   gallery_images: string[];
   github_url: string | null;
   live_url: string | null;

@@ -26,21 +26,21 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-xl active:scale-[0.98] select-none cursor-pointer';
+      'inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#738666] [.theme-admin_&]:focus-visible:ring-sky-400 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-xl active:scale-[0.98] select-none cursor-pointer';
 
     const variants = {
       primary:
-        'bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5',
+        'bg-[#738666] hover:bg-[#627456] text-white border border-[#738666] font-semibold shadow-md shadow-[#738666]/20 hover:-translate-y-0.5 [.theme-admin_&]:bg-sky-500 [.theme-admin_&]:hover:bg-sky-400 [.theme-admin_&]:text-slate-950 [.theme-admin_&]:border-transparent [.theme-admin_&]:shadow-sky-500/25',
       secondary:
-        'bg-slate-800/80 hover:bg-slate-700/80 text-gray-100 border border-slate-700/80 hover:border-slate-600 backdrop-blur-sm',
+        'bg-[#f8faf6] hover:bg-[#f1f4ed] text-[#1b281c] border border-[#738666]/30 hover:border-[#738666] [.theme-admin_&]:bg-slate-800/80 [.theme-admin_&]:hover:bg-slate-700/80 [.theme-admin_&]:text-gray-100 [.theme-admin_&]:border-slate-700/80',
       outline:
-        'border border-slate-700 hover:border-sky-400/60 bg-transparent text-gray-200 hover:text-white hover:bg-sky-500/10',
+        'border border-[#738666]/35 hover:border-[#738666] bg-white text-[#1b281c] hover:bg-[#738666]/10 [.theme-admin_&]:border-slate-700 [.theme-admin_&]:hover:border-sky-400/60 [.theme-admin_&]:text-gray-200 [.theme-admin_&]:hover:bg-sky-500/10',
       ghost:
-        'text-gray-300 hover:text-white hover:bg-white/5',
+        'text-[#3b4e39] hover:text-[#1b281c] hover:bg-[#738666]/10 [.theme-admin_&]:text-slate-300 [.theme-admin_&]:hover:text-white [.theme-admin_&]:hover:bg-white/5',
       danger:
         'bg-rose-600/90 hover:bg-rose-500 text-white shadow-lg shadow-rose-600/20',
       gradient:
-        'bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:via-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5',
+        'bg-gradient-to-r from-[#738666] to-[#556950] text-white font-semibold shadow-md shadow-[#738666]/20 hover:-translate-y-0.5 border border-[#738666]/30 [.theme-admin_&]:from-sky-500 [.theme-admin_&]:via-blue-600 [.theme-admin_&]:to-indigo-600',
     };
 
     const sizes = {
