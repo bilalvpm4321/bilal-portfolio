@@ -87,7 +87,8 @@ export const HeroSection: React.FC = () => {
   const { data } = usePortfolio();
   const profile = data.profile;
 
-  const headline = profile?.headline || 'AI & Data Science | Full Stack Developer';
+  const rawHeadline = profile?.headline || 'Generative AI | Full Stack Developer';
+  const headline = rawHeadline.replace(/AI\s*&\s*Data\s*Science/gi, 'Generative AI');
   const bio =
     profile?.bio ||
     'M.Tech Computer Science and Engineering (AI & Data Science) student at CUSAT with hands-on experience in full-stack development, Generative AI, Machine Learning, cloud technologies, and real-time systems.';
@@ -110,63 +111,77 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden bg-white text-[#1b281c]">
-      {/* Subtle Ambient Sage Wash */}
-      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#738666]/[0.06] rounded-full blur-[160px]" />
-      </div>
+      {/* Clean background without circles */}
 
       {/* Main Magazine Cover Container */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex-1 flex flex-col justify-center">
         
-        {/* Top Editorial Metadata Row - Matching Screenshot */}
-        <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex items-start justify-between text-xs sm:text-sm font-bold uppercase tracking-tight mb-2 px-2 sm:px-6"
-        >
-          {/* Left Tag */}
-          <div className="flex flex-col leading-tight text-left">
-            <span className="text-[#1b281c] font-display">Creative</span>
-            <span className="text-[#556950]">Developer</span>
-          </div>
-
-          {/* Right Tag */}
-          <div className="flex flex-col leading-tight text-right">
-            <span className="text-[#1b281c] font-display">AI & Full Stack</span>
-            <span className="text-[#556950]">Developer</span>
-          </div>
-        </motion.div>
 
         {/* Magazine Masthead & Layered Portrait Stage */}
         <div className="relative w-full my-2 flex flex-col items-center justify-center">
           
-          {/* LAYER 1: The Massive "Bilal" Masthead Display Typography */}
+          {/* LAYER 1: The Massive "BILAL AHAMED" Dual Stroke & Solid Display Typography */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full text-center select-none pointer-events-none"
+            className="w-full text-center select-none pointer-events-none z-0"
           >
-            <h1
-              className="font-editorial text-[19vw] sm:text-[18vw] md:text-[16vw] lg:text-[180px] font-extrabold leading-[0.82] tracking-tighter text-[#738666] transition-all"
-              style={{
-                letterSpacing: '-0.05em',
-              }}
-            >
-              Bilal
+            <h1 className="font-display text-[11.5vw] sm:text-[10.5vw] md:text-[9.8vw] lg:text-[120px] xl:text-[138px] font-black leading-[0.85] uppercase tracking-[0.06em] sm:tracking-[0.08em] flex items-center justify-center gap-3 sm:gap-6 md:gap-8 whitespace-nowrap">
+              {/* Outlined Stroke Text for BILAL */}
+              <span
+                className="text-transparent"
+                style={{
+                  WebkitTextStroke: '2.8px #738666',
+                }}
+              >
+                BILAL
+              </span>
+
+              {/* Solid Fill Text for AHAMED - Olive Green */}
+              <span className="text-[#738666]">
+                AHAMED
+              </span>
             </h1>
           </motion.div>
 
-          {/* LAYER 2: Central Portrait overlapping the typography */}
+          {/* LAYER 2: Central Portrait with Flowing Role Stream across exact Center */}
           {avatarImage && (
-            <div className="relative -mt-[18vw] sm:-mt-[17vw] md:-mt-[170px] lg:-mt-[195px] w-full max-w-lg sm:max-w-xl md:max-w-2xl mx-auto flex items-center justify-center">
+            <div className="relative -mt-[12.5vw] sm:-mt-[11.5vw] md:-mt-[125px] lg:-mt-[150px] w-full max-w-lg sm:max-w-xl md:max-w-2xl mx-auto flex items-center justify-center z-10">
+              
+              {/* Flowing Role Stream Passing 3cm Below Center Behind Photo */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[60px] sm:translate-y-[85px] lg:translate-y-[110px] w-screen z-0 overflow-hidden select-none pointer-events-none">
+                <div className="animate-marquee-flow flex items-center whitespace-nowrap gap-10 text-[#738666]/30 font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-[105px] xl:text-[124px] tracking-[0.16em] uppercase">
+
+
+                  <span>CLOUD ENGINEER</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>FULL STACK DEVELOPER</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>AI & ML ENGINEER</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>PROMPT ENGINEER</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>GENERATIVE AI ARCHITECT</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>CLOUD ENGINEER</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>FULL STACK DEVELOPER</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>AI & ML ENGINEER</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>PROMPT ENGINEER</span>
+                  <span className="text-[#c8a869]">•</span>
+                  <span>GENERATIVE AI ARCHITECT</span>
+                </div>
+              </div>
+
               {/* Portrait Frame */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.15 }}
-                className="relative w-80 sm:w-96 md:w-[450px] lg:w-[490px] aspect-[4/5] group flex items-end justify-center"
+                className="relative z-10 w-80 sm:w-96 md:w-[450px] lg:w-[490px] aspect-[4/5] group flex items-end justify-center"
               >
                 <img
                   src={avatarImage}
@@ -176,6 +191,7 @@ export const HeroSection: React.FC = () => {
               </motion.div>
             </div>
           )}
+
         </div>
 
         {/* Editorial Subheading & Bio */}
@@ -203,7 +219,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-8"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3.5"
           >
             <Button
               variant="primary"
@@ -235,41 +251,8 @@ export const HeroSection: React.FC = () => {
             )}
           </motion.div>
         </div>
-
-        {/* Flowing Highlights Strip (Right to Left loop, pauses on hover) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="relative w-full max-w-5xl mx-auto pt-6 border-t border-[#738666]/20 overflow-hidden"
-        >
-          {/* Subtle Left & Right gradient edge fades for smooth entry/exit */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
-
-          {/* Marquee Track: flows continuously right-to-left, freezes on hover */}
-          <div className="animate-marquee-flow flex items-center gap-3.5 py-1">
-            {[...highlightsList, ...highlightsList].map((item: any, idx: number) => (
-              <div
-                key={idx}
-                className="w-60 shrink-0 p-3 rounded-2xl bg-[#f8faf6] border border-[#738666]/20 hover:border-[#738666]/60 hover:bg-[#f1f4ed] backdrop-blur-sm flex items-center gap-3 transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer select-none"
-              >
-                <div className="w-9 h-9 rounded-xl bg-white border border-[#738666]/25 flex items-center justify-center shrink-0 shadow-xs">
-                  {typeof item.icon === 'string' ? getHighlightIcon(item.icon) : item.icon}
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="text-xs font-bold text-[#1b281c] font-display truncate">
-                    {item.title}
-                  </span>
-                  <span className="text-[11px] text-[#556950] font-medium truncate">
-                    {item.subtitle}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
+
   );
 };

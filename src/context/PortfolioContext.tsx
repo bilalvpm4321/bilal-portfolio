@@ -237,22 +237,41 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   // Profile Updates
   const updateProfile = async (updates: Partial<Profile>) => {
     try {
-      if (isSupabaseConfigured() && data.profile?.id) {
-        const { error: sbError } = await supabase
-          .from('profiles')
-          .update(updates)
-          .eq('id', data.profile.id);
-        if (sbError) throw sbError;
+      if (isSupabaseConfigured()) {
+        // Exclude non-existent database columns and metadata
+        const { about_image_url, id, created_at, updated_at, ...profileColumns } = updates as any;
+        profileColumns.updated_at = new Date().toISOString();
+
+        if (data.profile?.id && data.profile.id !== '00000000-0000-0000-0000-000000000001') {
+          const { error: sbError } = await supabase
+            .from('profiles')
+            .update(profileColumns)
+            .eq('id', data.profile.id);
+          if (sbError) throw sbError;
+        } else {
+          // If profile does not exist yet in Supabase, upsert the first profile record
+          const { data: newProfile, error: sbError } = await supabase
+            .from('profiles')
+            .upsert([profileColumns])
+            .select()
+            .single();
+          if (sbError) throw sbError;
+          if (newProfile?.id) {
+            updates.id = newProfile.id;
+          }
+        }
       }
 
       const updatedProfile = { ...(data.profile || initialPortfolioData.profile!), ...updates };
       syncLocal({ ...data, profile: updatedProfile });
       return { success: true, error: null };
+
     } catch (err: any) {
       console.error('Update profile error:', err);
       return { success: false, error: err };
     }
   };
+
 
   // Projects CRUD
   const createProject = async (
@@ -751,7 +770,7 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       if (isSupabaseConfigured()) {
         const { error: sbError } = await supabase
           .from('site_settings')
-          .upsert({ key, value });
+          .upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: 'key' });
         if (sbError) throw sbError;
       }
 
@@ -759,9 +778,11 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       syncLocal({ ...data, siteSettings: updatedSettings });
       return { success: true, error: null };
     } catch (err: any) {
+      console.error('Update site setting error:', err);
       return { success: false, error: err };
     }
   };
+
 
   // Messages
   const fetchMessages = async () => {

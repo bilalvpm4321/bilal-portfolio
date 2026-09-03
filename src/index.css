@@ -71,12 +71,40 @@
 .animate-marquee-flow {
   display: flex;
   width: max-content;
-  animation: marquee-flow-left 26s linear infinite;
+  animation: marquee-flow-left 70s linear infinite;
   will-change: transform;
 }
 
+
 .animate-marquee-flow:hover {
   animation-play-state: paused !important;
+}
+
+/* Concentric Dashed Circle Rotations for Entrance Loader */
+@keyframes spin-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-ccw {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-slow-cw {
+  animation: spin-cw 14s linear infinite;
+}
+
+.animate-spin-slow-ccw {
+  animation: spin-ccw 10s linear infinite;
 }
 
 /* Admin Dashboard Specific Isolation */

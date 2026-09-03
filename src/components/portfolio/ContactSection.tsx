@@ -81,20 +81,23 @@ export const ContactSection: React.FC = () => {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden bg-white text-[#1b281c]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Center Bottom Glowing Radial Orb (700px) */}
+        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#738666]/20 rounded-full blur-[140px]" />
+        {/* Top-Right Floating Filled Circle (350px) */}
+        <div className="absolute top-8 -right-14 w-[350px] h-[350px] bg-[#738666]/22 border border-[#738666]/35 rounded-full animate-pulse blur-xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <Badge variant="primary" size="md" className="mb-3" icon={<MessageSquare className="w-3.5 h-3.5 text-[#738666]" />}>
-            Get In Touch
-          </Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1b281c] font-display tracking-tight">
             Let's Build Something Exceptional
           </h2>
-          <p className="text-[#4a5d46] text-sm max-w-xl mt-2">
-            Available for AI/ML development, full-stack engineering roles, technical collaborations, and research opportunities.
-          </p>
           <div className="w-12 h-1 bg-[#738666] rounded-full mt-3" />
         </div>
+
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Contact Details & Social Cards */}

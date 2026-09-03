@@ -130,8 +130,9 @@ export const AdminProfilePage: React.FC = () => {
     e.preventDefault();
     setIsSaving(true);
     try {
+      const { about_image_url, ...profileFields } = formData;
       const [profileRes, settingRes, aboutSettingRes] = await Promise.all([
-        updateProfile(formData),
+        updateProfile(profileFields),
         updateSiteSetting('hero', {
           ...(data.siteSettings?.hero || {}),
           highlights,
@@ -141,6 +142,7 @@ export const AdminProfilePage: React.FC = () => {
           image_url: formData.about_image_url,
         }),
       ]);
+
 
       if (profileRes.success && settingRes.success) {
         success('Profile & Photos saved successfully!', 'Changes are now live across your portfolio.');

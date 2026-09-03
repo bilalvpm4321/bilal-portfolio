@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
-import { MapPin, GraduationCap, Briefcase, Sparkles } from 'lucide-react';
+import { Sparkles, Cpu, Database, Wrench } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const { data } = usePortfolio();
@@ -11,9 +11,9 @@ export const AboutSection: React.FC = () => {
 
   const aboutText =
     profile?.about ||
+    profile?.bio ||
     'M.Tech Computer Science and Engineering (AI & Data Science) student at Cochin University of Science and Technology with hands-on experience in full-stack development, Artificial Intelligence, Machine Learning, cloud technologies, and real-time applications. Skilled in Python, React, Firebase, AWS, and Google Cloud Platform, with experience developing AI-powered applications using OpenAI technologies. Proficient in AI coding tools, prompt engineering, database integration, debugging, testing, deployment, and collaborative software development.';
 
-  // Separate About Section photo with fallback to hero avatar
   const aboutImageUrl =
     profile?.about_image_url ||
     data.siteSettings?.about?.image_url ||
@@ -22,18 +22,18 @@ export const AboutSection: React.FC = () => {
 
   return (
     <section id="about" className="pt-8 sm:pt-12 pb-24 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+      {/* Clean background without circles */}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Interactive Staged Grid: Photo stands tall on left, Heading & Box on right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-start relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative">
           
-          {/* Visual / Profile Image (Standing tall at top with no dead space above) */}
+          {/* Left Column: Standalone Profile Visual */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 flex items-start justify-center lg:justify-end relative z-20 pointer-events-none"
+            className="lg:col-span-5 flex items-start justify-center lg:justify-end relative z-20"
           >
             {aboutImageUrl ? (
               <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-[490px] xl:max-w-[530px] flex items-start justify-center lg:justify-end">
@@ -53,88 +53,89 @@ export const AboutSection: React.FC = () => {
             )}
           </motion.div>
 
-          {/* Right Column: Heading in the space next to head + Big Box under hand + Small Boxes */}
+          {/* Right Column: Bio Narrative & Technical Skill Domain Boxes */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-7 flex flex-col gap-6 relative z-10 lg:pt-1"
           >
-            {/* The Section Heading Positioned in the Rounded Space Next to Head & Shoulders */}
+            {/* Section Heading with Big Display Typography in Full Olive Green */}
             <div className="flex flex-col items-start text-left space-y-2">
-              <Badge variant="primary" size="md" icon={<Sparkles className="w-3.5 h-3.5 text-[#738666]" />}>
-                About Me
-              </Badge>
-              <h2 className="text-3xl sm:text-5xl lg:text-[50px] xl:text-[56px] font-extrabold text-[#1b281c] font-display tracking-wide lg:tracking-[0.04em] leading-[1.08]">
-                <span className="block">Background &</span>
-                <span className="inline-flex flex-col items-center">
-                  <span>Technical Focus</span>
-                  <span className="w-20 h-1 bg-[#738666]/70 rounded-full mt-2 inline-block" />
-                </span>
+              <h2 className="text-5xl sm:text-7xl lg:text-[84px] xl:text-[98px] font-black text-[#738666] font-display uppercase tracking-tight leading-[0.9] flex items-center gap-3 sm:gap-4">
+                <span>ABOUT ME</span>
               </h2>
             </div>
 
-            {/* The Big Box resting directly under his outstretched hand (exact position preserved) */}
-            <Card className="p-6 sm:p-8 pt-7 sm:pt-9 bg-white border-[#738666]/12 shadow-xs hover:border-[#738666]/25 transition-all rounded-3xl relative lg:-ml-10 xl:-ml-14 lg:mt-[58px] xl:mt-[62px]">
-              <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] font-display mb-3.5 leading-snug">
-                Bridging Intelligent AI Models with Scalable Full-Stack Architectures
+
+            {/* Bio Card Narrative Resting Directly Under His Outstretched Hand */}
+            <Card className="p-6 sm:p-8 pt-7 sm:pt-9 bg-white border-[#738666]/15 shadow-sm rounded-3xl relative lg:-ml-16 xl:-ml-24 lg:mt-[104px] xl:mt-[118px]">
+
+              <h3 className="text-xl sm:text-2xl font-extrabold text-[#1b281c] mb-3 font-display">
+                Building Intelligent Web Systems & AI Solutions
               </h3>
-              <p className="text-[#4a5d46] leading-relaxed text-sm sm:text-base font-normal">
+              <p className="text-sm sm:text-base text-[#4a5d46] leading-relaxed">
                 {aboutText}
               </p>
             </Card>
 
-            {/* Small Boxes Resized with Subtle, Refined Borders */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 lg:-ml-10 xl:-ml-14">
-              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/20 shadow-xs hover:shadow-sm transition-all rounded-2xl">
+            {/* Technical Skill Domain Boxes */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 lg:-ml-16 xl:-ml-24">
+
+
+              {/* Skill Box 1: Generative AI & ML */}
+              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/30 shadow-xs hover:shadow-md transition-all rounded-2xl group">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0">
-                    <GraduationCap className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
+                    <Sparkles className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Current Degree</h4>
-                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate">M.Tech AI & Data Science</p>
-                    <p className="text-[11px] text-[#738666] font-medium truncate">CUSAT (2025–2027)</p>
+                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">AI & Machine Learning</h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate font-display">Generative AI & LLMs</p>
+                    <p className="text-[11px] text-[#738666] font-medium truncate">OpenAI APIs • PyTorch • LangChain</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/20 shadow-xs hover:shadow-sm transition-all rounded-2xl">
+              {/* Skill Box 2: Full-Stack Web Development */}
+              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/30 shadow-xs hover:shadow-md transition-all rounded-2xl group">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0">
-                    <GraduationCap className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
+                    <Cpu className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Undergraduate Degree</h4>
-                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate">B.Tech Information Tech</p>
-                    <p className="text-[11px] text-[#738666] font-medium truncate">GEC Idukki (2021–2025)</p>
+                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Frontend & Backend</h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate font-display">Full-Stack Web Engineering</p>
+                    <p className="text-[11px] text-[#738666] font-medium truncate">React • TypeScript • Python • Next.js</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/20 shadow-xs hover:shadow-sm transition-all rounded-2xl">
+              {/* Skill Box 3: Cloud & Realtime Systems */}
+              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/30 shadow-xs hover:shadow-md transition-all rounded-2xl group">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
+                    <Database className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Location</h4>
-                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate">{profile?.location || 'Kerala, India'}</p>
-                    <p className="text-[11px] text-[#738666] font-medium truncate">Open to Remote / Relocation</p>
+                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Cloud & Realtime DB</h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate font-display">Cloud Infrastructure</p>
+                    <p className="text-[11px] text-[#738666] font-medium truncate">GCP • Firebase • AWS • Supabase</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/20 shadow-xs hover:shadow-sm transition-all rounded-2xl">
+              {/* Skill Box 4: Development & AI Coding Tools */}
+              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/30 shadow-xs hover:shadow-md transition-all rounded-2xl group">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0">
-                    <Briefcase className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
+                    <Wrench className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Primary Stack</h4>
-                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate">React • Python • FastAPI</p>
-                    <p className="text-[11px] text-[#738666] font-medium truncate">GCP • Firebase • Supabase</p>
+                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Tooling & Engineering</h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate font-display">AI Tooling & Debugging</p>
+                    <p className="text-[11px] text-[#738666] font-medium truncate">Prompt Engineering • Git • Docker</p>
                   </div>
                 </div>
               </Card>

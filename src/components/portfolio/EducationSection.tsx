@@ -11,20 +11,23 @@ export const EducationSection: React.FC = () => {
 
   return (
     <section id="education" className="py-24 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Center-Left Massive Blur Orb (660px) */}
+        <div className="absolute -top-20 -left-44 w-[660px] h-[660px] bg-[#738666]/18 rounded-full blur-[140px]" />
+        {/* Bottom-Right Medium Filled Circle (320px) */}
+        <div className="absolute bottom-8 -right-16 w-[320px] h-[320px] bg-[#738666]/20 border border-[#738666]/30 rounded-full blur-xl" />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <Badge variant="primary" size="md" className="mb-3" icon={<GraduationCap className="w-3.5 h-3.5 text-[#738666]" />}>
-            Academic Background
-          </Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1b281c] font-display tracking-tight">
             Education & Qualifications
           </h2>
-          <p className="text-[#4a5d46] text-sm max-w-xl mt-2">
-            Higher academic foundation in Artificial Intelligence, Data Science, and Information Technology.
-          </p>
           <div className="w-12 h-1 bg-[#738666] rounded-full mt-3" />
         </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {educations.map((edu, index) => (

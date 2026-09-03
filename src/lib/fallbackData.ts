@@ -4,7 +4,7 @@ export const initialPortfolioData: PortfolioData = {
   profile: {
     id: '00000000-0000-0000-0000-000000000001',
     full_name: 'Bilal Ahamed PT',
-    headline: 'AI & Data Science | Full Stack Developer',
+    headline: 'Generative AI | Full Stack Developer',
     bio: 'M.Tech Computer Science and Engineering (AI & Data Science) student at CUSAT with hands-on experience in full-stack development, Generative AI, Machine Learning, cloud technologies, and real-time systems.',
     about: 'M.Tech Computer Science and Engineering (AI & Data Science) student at Cochin University of Science and Technology with hands-on experience in full-stack development, Artificial Intelligence, Machine Learning, cloud technologies, and real-time applications. Skilled in Python, React, Firebase, AWS, and Google Cloud Platform, with experience developing AI-powered applications using OpenAI technologies. Proficient in AI coding tools, prompt engineering, database integration, debugging, testing, deployment, and collaborative software development.',
     email: 'bilalvpm2@gmail.com',

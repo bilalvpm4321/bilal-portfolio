@@ -101,18 +101,26 @@ export const ProjectsSection: React.FC = () => {
 
   return (
     <section id="projects" className="py-20 sm:py-24 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+      {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Top-Left Glow Circle (580px) */}
+        <div className="absolute -top-20 -left-28 w-[580px] h-[580px] bg-[#738666]/18 rounded-full blur-[130px]" />
+        {/* Center-Right Giant Filled Orb (650px) */}
+        <div className="absolute top-1/4 -right-40 w-[650px] h-[650px] bg-[#738666]/18 border-2 border-[#738666]/25 rounded-full blur-2xl" />
+        {/* Bottom-Center Medium Glow (340px) */}
+        <div className="absolute -bottom-16 left-1/3 w-[340px] h-[340px] bg-[#738666]/20 rounded-full blur-[80px]" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
-          <Badge variant="primary" size="md" className="mb-2.5" icon={<FolderGit2 className="w-3.5 h-3.5 text-[#738666]" />}>
-            Featured Work
-          </Badge>
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#1b281c] font-display tracking-tight leading-tight">
             Projects & Technical Implementations
           </h2>
           <div className="w-14 h-1 bg-[#738666]/60 rounded-full mt-3.5" />
         </div>
+
 
         {/* Workstation Stage: Full, Grand, Crystal-Clear Laptop Screen Showcase */}
         <div 
@@ -124,12 +132,15 @@ export const ProjectsSection: React.FC = () => {
           {/* Ambient Screen Glow */}
           <div className="absolute -inset-4 bg-[#738666]/12 rounded-3xl blur-2xl -z-10 pointer-events-none" />
 
-          {/* Laptop Display Chassis */}
-          <div className="bg-[#1c221e] border-2 border-[#333d35] rounded-t-2xl sm:rounded-t-3xl p-2.5 sm:p-3.5 shadow-2xl relative">
+          {/* Silver Metallic Studio Monitor Display Chassis */}
+          <div className="bg-[#121614] border-[6px] sm:border-[8px] border-[#e1e4e9] rounded-t-2xl sm:rounded-t-[28px] p-2 sm:p-3 shadow-2xl relative overflow-hidden">
             
-            {/* Top Bezel: Camera & Indicator */}
-            <div className="flex items-center justify-center relative mb-2">
-              <div className="w-2 h-2 rounded-full bg-[#0d120f] border border-[#3e4a40] flex items-center justify-center">
+            {/* Glossy Screen Glass Reflection Sheen */}
+            <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-white/[0.08] via-transparent to-transparent pointer-events-none z-20" />
+
+            {/* Top Bezel: Subtle Web Camera Lens */}
+            <div className="flex items-center justify-center relative mb-1.5 z-10">
+              <div className="w-2 h-2 rounded-full bg-[#0a0d0b] border border-[#d1d5db]/40 flex items-center justify-center">
                 <div className="w-0.5 h-0.5 rounded-full bg-[#738666]" />
               </div>
             </div>
@@ -138,7 +149,7 @@ export const ProjectsSection: React.FC = () => {
             <div className="relative bg-[#0d110e] rounded-xl sm:rounded-2xl overflow-hidden border border-[#2a342c] aspect-[16/10] flex flex-col group">
               
               {/* Browser OS Top Navigation Bar */}
-              <div className="h-7 sm:h-9 bg-[#1b221d] border-b border-[#2d382f] px-3 sm:px-4 flex items-center justify-between shrink-0 select-none">
+              <div className="h-7 sm:h-9 bg-[#1b221d] border-b border-[#2d382f] px-3 sm:px-4 flex items-center justify-between shrink-0 select-none z-10">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/80 inline-block" />
                   <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/80 inline-block" />
@@ -160,7 +171,7 @@ export const ProjectsSection: React.FC = () => {
                 </button>
               </div>
 
-              {/* Main Screen Canvas: Full Crystal-Clear Project Image */}
+              {/* Main Screen Canvas: Full Project Preview Image */}
               <div 
                 onClick={() => setActiveModalProject(currentProject)}
                 className="relative flex-1 w-full h-full overflow-hidden cursor-pointer bg-[#121814]"
@@ -186,8 +197,8 @@ export const ProjectsSection: React.FC = () => {
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Subtle Floating Bottom Badge with Project Title & Category */}
-                <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 bg-gradient-to-t from-black/85 via-black/45 to-transparent flex items-end justify-between pointer-events-none">
+                {/* Floating Bottom Badge with Project Title & Category */}
+                <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 bg-gradient-to-t from-black/85 via-black/45 to-transparent flex items-end justify-between pointer-events-none z-10">
                   <div className="text-white drop-shadow-md">
                     <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#738666]/90 text-white text-[10px] sm:text-xs font-semibold mb-1">
                       {currentProject.category}
@@ -196,23 +207,23 @@ export const ProjectsSection: React.FC = () => {
                       {currentProject.title}
                     </h3>
                   </div>
-
-                  <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-white/90 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15">
-                    <span>Click Screen to View Full Specs</span>
-                    <Maximize2 className="w-3.5 h-3.5" />
-                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Laptop Base / Keyboard Hinge Deck */}
-          <div className="relative">
-            <div className="h-4 sm:h-5 bg-gradient-to-b from-[#2b352d] to-[#1a211b] border-t border-[#3e4a40] rounded-b-xl sm:rounded-b-2xl shadow-md flex items-center justify-center">
-              <div className="w-20 sm:w-28 h-1 sm:h-1.5 rounded-full bg-[#121713] border border-[#3e4a40]/50" />
-            </div>
-            <div className="h-2 w-[94%] mx-auto bg-black/20 blur-sm rounded-full" />
+          {/* Silver Metallic Studio Display Stand & Base Plate */}
+          <div className="relative pointer-events-none flex flex-col items-center">
+            {/* Stand Neck */}
+            <div className="w-24 sm:w-36 h-6 sm:h-9 bg-gradient-to-b from-[#b8bcc3] via-[#dcdfe4] to-[#a6abb3] border-x border-[#9fa4ad] shadow-inner" />
+            
+            {/* Stand Base Plate */}
+            <div className="w-52 sm:w-72 h-3.5 sm:h-4.5 bg-gradient-to-b from-[#e3e6eb] via-[#d0d4da] to-[#999ea7] rounded-b-lg shadow-xl border-t border-white/80" />
+            
+            {/* Ambient Stand Drop Shadow */}
+            <div className="h-2 w-60 sm:w-80 bg-black/25 blur-md rounded-full mt-0.5" />
           </div>
+
         </div>
 
         {/* Controls Below the Entire Setup */}
