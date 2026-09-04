@@ -8,6 +8,7 @@ import { ToastProvider } from './components/common/Toast';
 // Public Pages
 import { HomePage } from './pages/HomePage';
 import { ProjectDetailsPage } from './pages/ProjectDetailsPage';
+import { CertificatesPage } from './pages/CertificatesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 // Admin CMS Pages
@@ -22,6 +23,7 @@ import { AdminEducationPage } from './pages/admin/AdminEducationPage';
 import { AdminAchievementsPage } from './pages/admin/AdminAchievementsPage';
 import { AdminLeadershipPage } from './pages/admin/AdminLeadershipPage';
 import { AdminCertificationsPage } from './pages/admin/AdminCertificationsPage';
+import { AdminCertificateUploadPage } from './pages/admin/AdminCertificateUploadPage';
 import { AdminSocialLinksPage } from './pages/admin/AdminSocialLinksPage';
 import { AdminMediaPage } from './pages/admin/AdminMediaPage';
 import { AdminMessagesPage } from './pages/admin/AdminMessagesPage';
@@ -38,6 +40,7 @@ export const App: React.FC = () => {
                 {/* Public Portfolio Routes */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/projects/:slug" element={<ProjectDetailsPage />} />
+                <Route path="/certificates" element={<CertificatesPage />} />
 
                 {/* Direct Admin CMS Dashboard Routes (accessible via /admin URL) */}
                 <Route path="/admin" element={<AdminLayout />}>
@@ -53,6 +56,10 @@ export const App: React.FC = () => {
                   <Route path="achievements" element={<AdminAchievementsPage />} />
                   <Route path="leadership" element={<AdminLeadershipPage />} />
                   <Route path="certifications" element={<AdminCertificationsPage />} />
+                  <Route path="certifications/new" element={<AdminCertificateUploadPage />} />
+                  <Route path="certifications/:id/edit" element={<AdminCertificateUploadPage />} />
+                  <Route path="certificates" element={<Navigate to="/admin/certifications" replace />} />
+                  <Route path="certificates/new" element={<Navigate to="/admin/certifications/new" replace />} />
                   <Route path="social-links" element={<AdminSocialLinksPage />} />
                   <Route path="media" element={<AdminMediaPage />} />
                   <Route path="messages" element={<AdminMessagesPage />} />

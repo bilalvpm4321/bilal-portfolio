@@ -9,6 +9,8 @@ import {
   Brain,
   Briefcase,
   Trophy,
+  Award,
+  Upload,
   MessageSquare,
   Plus,
   User,
@@ -29,6 +31,7 @@ export const AdminDashboardPage: React.FC = () => {
   const totalSkills = data.skills.length;
   const totalExperience = data.experience.length;
   const totalAchievements = data.achievements.length;
+  const totalCertifications = data.certifications.length;
   const totalMessages = messages.length;
   const unreadMessages = messages.filter((m) => !m.is_read).length;
 
@@ -52,9 +55,14 @@ export const AdminDashboardPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <Link to="/admin/certifications/new">
+              <Button variant="primary" size="md" leftIcon={<Upload className="w-4 h-4" />}>
+                Upload Certificate
+              </Button>
+            </Link>
             <Link to="/admin/projects/new">
-              <Button variant="primary" size="md" leftIcon={<Plus className="w-4 h-4" />}>
+              <Button variant="secondary" size="md" leftIcon={<Plus className="w-4 h-4" />}>
                 Add Project
               </Button>
             </Link>
@@ -68,7 +76,22 @@ export const AdminDashboardPage: React.FC = () => {
       </div>
 
       {/* Metrics Cards Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-6 gap-4">
+        {/* Certifications */}
+        <Link to="/admin/certifications">
+          <Card hoverEffect className="p-4 bg-[#0d0f17]/95 border-white/[0.08]">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-xs font-semibold text-slate-400 uppercase">Certificates</span>
+              <div className="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                <Award className="w-4 h-4" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="text-2xl font-bold text-white font-display">{totalCertifications}</span>
+              <span className="text-[11px] text-sky-400 font-medium">Verified</span>
+            </div>
+          </Card>
+        </Link>
         {/* Projects */}
         <Link to="/admin/projects">
           <Card hoverEffect className="p-4 bg-[#0d0f17]/95 border-white/[0.08]">

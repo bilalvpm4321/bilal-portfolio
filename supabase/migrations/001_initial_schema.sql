@@ -133,6 +133,12 @@ CREATE TABLE IF NOT EXISTS public.certifications (
     issue_date TEXT,
     credential_id TEXT,
     credential_url TEXT,
+    certificate_url TEXT,
+    image_url TEXT,
+    category TEXT DEFAULT 'General',
+    description TEXT,
+    skills TEXT[] DEFAULT '{}'::TEXT[],
+    expires_at TEXT,
     display_order INTEGER NOT NULL DEFAULT 0,
     is_visible BOOLEAN NOT NULL DEFAULT true,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()

@@ -14,7 +14,8 @@ const PAGE_TITLES: Record<string, string> = {
   '/admin/education': 'Education & Degrees',
   '/admin/achievements': 'Achievements & Honors',
   '/admin/leadership': 'Leadership & Volunteering',
-  '/admin/certifications': 'Certifications',
+  '/admin/certifications': 'Certifications & Accreditations',
+  '/admin/certifications/new': 'Upload New Certificate',
   '/admin/social-links': 'Social Links & Contact Channels',
   '/admin/media': 'Media & Storage Explorer',
   '/admin/messages': 'Contact Messages Inbox',
@@ -25,7 +26,16 @@ export const AdminLayout: React.FC = () => {
   const location = useLocation();
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
-  const currentTitle = PAGE_TITLES[location.pathname] || 'Admin Dashboard';
+  let currentTitle = PAGE_TITLES[location.pathname];
+  if (!currentTitle) {
+    if (location.pathname.startsWith('/admin/certifications/') && location.pathname.endsWith('/edit')) {
+      currentTitle = 'Edit Certificate';
+    } else if (location.pathname.startsWith('/admin/projects/') && location.pathname.endsWith('/edit')) {
+      currentTitle = 'Edit Project';
+    } else {
+      currentTitle = 'Admin Dashboard';
+    }
+  }
 
   return (
     <div className="theme-admin min-h-screen bg-[#07080c] text-gray-100 flex">

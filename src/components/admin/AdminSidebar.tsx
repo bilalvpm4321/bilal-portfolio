@@ -19,6 +19,7 @@ import {
   ExternalLink,
   LogOut,
   Sparkles,
+  Plus,
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -78,7 +79,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onCloseMobil
                 to={item.path}
                 onClick={onCloseMobile}
                 className={({ isActive }) =>
-                  `flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+                  `flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all group ${
                     isActive
                       ? 'bg-sky-500/15 text-sky-400 border border-sky-500/20'
                       : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -90,11 +91,41 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onCloseMobil
                   <span>{item.name}</span>
                 </div>
 
-                {item.name === 'Messages' && unreadMessagesCount > 0 && (
-                  <span className="px-1.5 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-bold">
-                    {unreadMessagesCount}
-                  </span>
-                )}
+                <div className="flex items-center gap-1">
+                  {item.name === 'Certifications' && (
+                    <Link
+                      to="/admin/certifications/new"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onCloseMobile?.();
+                      }}
+                      className="p-1 rounded-md text-slate-500 hover:text-sky-400 hover:bg-white/[0.08] transition-colors"
+                      title="Upload Certificate"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+
+                  {item.name === 'Projects' && (
+                    <Link
+                      to="/admin/projects/new"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onCloseMobile?.();
+                      }}
+                      className="p-1 rounded-md text-slate-500 hover:text-sky-400 hover:bg-white/[0.08] transition-colors"
+                      title="Add Project"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+
+                  {item.name === 'Messages' && unreadMessagesCount > 0 && (
+                    <span className="px-1.5 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-bold">
+                      {unreadMessagesCount}
+                    </span>
+                  )}
+                </div>
               </NavLink>
             );
           })}

@@ -1,0 +1,50 @@
+/* Certificate Ambient Background Watermark Animation */
+@keyframes cert-marquee-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes cert-marquee-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.cert-marquee-track-left {
+  display: flex;
+  width: max-content;
+  animation: cert-marquee-left 190s linear infinite;
+  will-change: transform;
+}
+
+.cert-marquee-track-right {
+  display: flex;
+  width: max-content;
+  animation: cert-marquee-right 190s linear infinite;
+  will-change: transform;
+}
+
+/* Alternate row speeds for organic, slow, calm parallax depth */
+.cert-marquee-speed-slow {
+  animation-duration: 240s;
+}
+
+.cert-marquee-speed-mid {
+  animation-duration: 190s;
+}
+
+.cert-marquee-speed-fast {
+  animation-duration: 150s;
+}
+
+.cert-bg-mask {
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0) 100%);
+}

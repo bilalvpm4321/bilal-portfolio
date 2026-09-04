@@ -145,8 +145,24 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         settingsMap[setting.key] = setting.value;
       });
 
+      const certsMeta = settingsMap['certifications_meta'] || {};
+      const mergedCertifications = (certificationsRes.data || []).map((cert: any) => {
+        const meta = certsMeta[cert.id] || {};
+        const isImage = (u?: string | null) => Boolean(u && (/\.(png|jpe?g|webp|gif|svg|pdf)($|\?)/i.test(u) || u.includes('/storage/v1/object/public/')));
+        const certImg = cert.certificate_url || cert.image_url || meta.certificate_url || meta.image_url || (isImage(cert.credential_url) ? cert.credential_url : null);
+        return {
+          ...cert,
+          certificate_url: certImg,
+          image_url: certImg,
+          category: cert.category || meta.category || 'Specialization',
+          description: cert.description || meta.description || null,
+          skills: cert.skills && cert.skills.length > 0 ? cert.skills : (meta.skills || []),
+          expires_at: cert.expires_at || meta.expires_at || null,
+        };
+      });
+
       const hasRemoteData = Boolean(
-        profileRes.data || (projectsRes.data && projectsRes.data.length > 0)
+        profileRes.data || (projectsRes.data && projectsRes.data.length > 0) || (certificationsRes.data && certificationsRes.data.length > 0)
       );
 
       if (hasRemoteData) {
@@ -158,7 +174,7 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           education: (educationRes.data && educationRes.data.length > 0) ? educationRes.data : initialPortfolioData.education,
           achievements: (achievementsRes.data && achievementsRes.data.length > 0) ? achievementsRes.data : initialPortfolioData.achievements,
           leadership: (leadershipRes.data && leadershipRes.data.length > 0) ? leadershipRes.data : initialPortfolioData.leadership,
-          certifications: certificationsRes.data || [],
+          certifications: mergedCertifications.length > 0 ? mergedCertifications : initialPortfolioData.certifications,
           socialLinks: (socialLinksRes.data && socialLinksRes.data.length > 0) ? socialLinksRes.data : initialPortfolioData.socialLinks,
           siteSettings: Object.keys(settingsMap).length > 0 ? settingsMap : initialPortfolioData.siteSettings,
         });
@@ -674,13 +690,39 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
       if (isSupabaseConfigured()) {
         const { error: sbError } = await supabase.from('certifications').insert([payload]);
-        if (sbError) throw sbError;
+        if (sbError) {
+          console.warn('Supabase certifications insert warning:', sbError);
+          // Fallback to base columns if remote schema is missing new columns
+          const { certificate_url, image_url, category, description, skills, expires_at, ...basePayload } = payload;
+          const { error: retryErr } = await supabase.from('certifications').insert([basePayload]);
+          if (retryErr) throw sbError;
+        }
+
+        // Persist extra metadata to site_settings so image_url & certificate_url survive across all devices & sessions
+        try {
+          const currentMeta = { ...(data.siteSettings?.certifications_meta || {}) };
+          currentMeta[payload.id] = {
+            certificate_url: payload.certificate_url,
+            image_url: payload.image_url || payload.certificate_url,
+            category: payload.category,
+            description: payload.description,
+            skills: payload.skills,
+            expires_at: payload.expires_at,
+          };
+          await supabase.from('site_settings').upsert({
+            key: 'certifications_meta',
+            value: currentMeta,
+          }, { onConflict: 'key' });
+        } catch (metaErr) {
+          console.warn('Failed to sync certifications_meta to site_settings:', metaErr);
+        }
       }
 
       const updated = [...data.certifications, payload].sort((a, b) => a.display_order - b.display_order);
       syncLocal({ ...data, certifications: updated });
       return { success: true, error: null };
     } catch (err: any) {
+      console.error('Error creating certification:', err);
       return { success: false, error: err };
     }
   };
@@ -689,13 +731,40 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     try {
       if (isSupabaseConfigured()) {
         const { error: sbError } = await supabase.from('certifications').update(updates).eq('id', id);
-        if (sbError) throw sbError;
+        if (sbError) {
+          console.warn('Supabase certifications update warning:', sbError);
+          // Fallback to base columns if remote schema is missing new columns
+          const { certificate_url, image_url, category, description, skills, expires_at, ...baseUpdates } = updates;
+          const { error: retryErr } = await supabase.from('certifications').update(baseUpdates).eq('id', id);
+          if (retryErr) throw sbError;
+        }
+
+        // Persist extra metadata to site_settings
+        try {
+          const currentMeta = { ...(data.siteSettings?.certifications_meta || {}) };
+          currentMeta[id] = {
+            ...(currentMeta[id] || {}),
+            certificate_url: updates.certificate_url,
+            image_url: updates.image_url || updates.certificate_url,
+            category: updates.category,
+            description: updates.description,
+            skills: updates.skills,
+            expires_at: updates.expires_at,
+          };
+          await supabase.from('site_settings').upsert({
+            key: 'certifications_meta',
+            value: currentMeta,
+          }, { onConflict: 'key' });
+        } catch (metaErr) {
+          console.warn('Failed to sync certifications_meta to site_settings:', metaErr);
+        }
       }
 
       const updated = data.certifications.map((c) => (c.id === id ? { ...c, ...updates } : c));
       syncLocal({ ...data, certifications: updated });
       return { success: true, error: null };
     } catch (err: any) {
+      console.error('Error updating certification:', err);
       return { success: false, error: err };
     }
   };
@@ -705,6 +774,17 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       if (isSupabaseConfigured()) {
         const { error: sbError } = await supabase.from('certifications').delete().eq('id', id);
         if (sbError) throw sbError;
+
+        try {
+          const currentMeta = { ...(data.siteSettings?.certifications_meta || {}) };
+          delete currentMeta[id];
+          await supabase.from('site_settings').upsert({
+            key: 'certifications_meta',
+            value: currentMeta,
+          }, { onConflict: 'key' });
+        } catch (metaErr) {
+          console.warn('Failed to delete certifications_meta from site_settings:', metaErr);
+        }
       }
 
       const updated = data.certifications.filter((c) => c.id !== id);

@@ -41,10 +41,10 @@ export const ExperienceSection: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1b281c] font-display tracking-tight">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-none">
             Work Experience
           </h2>
-          <div className="w-12 h-1 bg-[#738666] rounded-full mt-3" />
+          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] rounded-full mt-4" />
         </div>
 
 

@@ -119,6 +119,12 @@ export interface Certification {
   issue_date: string | null;
   credential_id: string | null;
   credential_url: string | null;
+  certificate_url?: string | null;
+  image_url?: string | null;
+  category?: string | null;
+  description?: string | null;
+  skills?: string[];
+  expires_at?: string | null;
   display_order: number;
   is_visible: boolean;
   created_at: string;
