@@ -699,9 +699,14 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         }
 
         // Persist extra metadata to site_settings so image_url & certificate_url survive across all devices & sessions
+        let currentMeta: Record<string, any> = { ...(data.siteSettings?.certifications_meta || {}) };
         try {
-          const currentMeta = { ...(data.siteSettings?.certifications_meta || {}) };
+          const { data: remoteSetting } = await supabase.from('site_settings').select('value').eq('key', 'certifications_meta').maybeSingle();
+          if (remoteSetting?.value && typeof remoteSetting.value === 'object') {
+            currentMeta = { ...remoteSetting.value, ...currentMeta };
+          }
           currentMeta[payload.id] = {
+            ...(currentMeta[payload.id] || {}),
             certificate_url: payload.certificate_url,
             image_url: payload.image_url || payload.certificate_url,
             category: payload.category,
@@ -719,7 +724,21 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       }
 
       const updated = [...data.certifications, payload].sort((a, b) => a.display_order - b.display_order);
-      syncLocal({ ...data, certifications: updated });
+      syncLocal({
+        ...data,
+        certifications: updated,
+        siteSettings: {
+          ...data.siteSettings,
+          certifications_meta: { ...(data.siteSettings?.certifications_meta || {}), [payload.id]: {
+            certificate_url: payload.certificate_url,
+            image_url: payload.image_url || payload.certificate_url,
+            category: payload.category,
+            description: payload.description,
+            skills: payload.skills,
+            expires_at: payload.expires_at,
+          }},
+        },
+      });
       return { success: true, error: null };
     } catch (err: any) {
       console.error('Error creating certification:', err);
@@ -729,6 +748,7 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   const updateCertification = async (id: string, updates: Partial<Certification>) => {
     try {
+      let currentMeta: Record<string, any> = { ...(data.siteSettings?.certifications_meta || {}) };
       if (isSupabaseConfigured()) {
         const { error: sbError } = await supabase.from('certifications').update(updates).eq('id', id);
         if (sbError) {
@@ -741,15 +761,18 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
         // Persist extra metadata to site_settings
         try {
-          const currentMeta = { ...(data.siteSettings?.certifications_meta || {}) };
+          const { data: remoteSetting } = await supabase.from('site_settings').select('value').eq('key', 'certifications_meta').maybeSingle();
+          if (remoteSetting?.value && typeof remoteSetting.value === 'object') {
+            currentMeta = { ...remoteSetting.value, ...currentMeta };
+          }
           currentMeta[id] = {
             ...(currentMeta[id] || {}),
-            certificate_url: updates.certificate_url,
-            image_url: updates.image_url || updates.certificate_url,
-            category: updates.category,
-            description: updates.description,
-            skills: updates.skills,
-            expires_at: updates.expires_at,
+            certificate_url: updates.certificate_url !== undefined ? updates.certificate_url : currentMeta[id]?.certificate_url,
+            image_url: updates.image_url !== undefined ? updates.image_url : (updates.certificate_url !== undefined ? updates.certificate_url : currentMeta[id]?.image_url),
+            category: updates.category !== undefined ? updates.category : currentMeta[id]?.category,
+            description: updates.description !== undefined ? updates.description : currentMeta[id]?.description,
+            skills: updates.skills !== undefined ? updates.skills : currentMeta[id]?.skills,
+            expires_at: updates.expires_at !== undefined ? updates.expires_at : currentMeta[id]?.expires_at,
           };
           await supabase.from('site_settings').upsert({
             key: 'certifications_meta',
@@ -761,7 +784,14 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       }
 
       const updated = data.certifications.map((c) => (c.id === id ? { ...c, ...updates } : c));
-      syncLocal({ ...data, certifications: updated });
+      syncLocal({
+        ...data,
+        certifications: updated,
+        siteSettings: {
+          ...data.siteSettings,
+          certifications_meta: currentMeta,
+        },
+      });
       return { success: true, error: null };
     } catch (err: any) {
       console.error('Error updating certification:', err);
@@ -771,12 +801,16 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   const deleteCertification = async (id: string) => {
     try {
+      let currentMeta: Record<string, any> = { ...(data.siteSettings?.certifications_meta || {}) };
       if (isSupabaseConfigured()) {
         const { error: sbError } = await supabase.from('certifications').delete().eq('id', id);
         if (sbError) throw sbError;
 
         try {
-          const currentMeta = { ...(data.siteSettings?.certifications_meta || {}) };
+          const { data: remoteSetting } = await supabase.from('site_settings').select('value').eq('key', 'certifications_meta').maybeSingle();
+          if (remoteSetting?.value && typeof remoteSetting.value === 'object') {
+            currentMeta = { ...remoteSetting.value, ...currentMeta };
+          }
           delete currentMeta[id];
           await supabase.from('site_settings').upsert({
             key: 'certifications_meta',
@@ -785,10 +819,19 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         } catch (metaErr) {
           console.warn('Failed to delete certifications_meta from site_settings:', metaErr);
         }
+      } else {
+        delete currentMeta[id];
       }
 
       const updated = data.certifications.filter((c) => c.id !== id);
-      syncLocal({ ...data, certifications: updated });
+      syncLocal({
+        ...data,
+        certifications: updated,
+        siteSettings: {
+          ...data.siteSettings,
+          certifications_meta: currentMeta,
+        },
+      });
       return { success: true, error: null };
     } catch (err: any) {
       return { success: false, error: err };
