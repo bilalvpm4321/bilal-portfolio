@@ -200,7 +200,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base sm:text-lg font-bold text-[#1b281c] mb-3"
+            className="text-lg sm:text-xl font-extrabold text-[#1b281c] mb-3"
           >
             {headline}
           </motion.p>
@@ -209,7 +209,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xs sm:text-sm text-[#4a5d46] leading-relaxed mb-6"
+            className="text-sm sm:text-base text-[#2e422b] leading-relaxed mb-7 font-normal"
           >
             {bio}
           </motion.p>

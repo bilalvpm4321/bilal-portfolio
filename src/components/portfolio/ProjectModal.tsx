@@ -59,25 +59,25 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         <div className="space-y-2">
           {hasVideo && (
             <div className="flex items-center justify-between pb-1">
-              <div className="flex items-center gap-1.5 bg-[#f1f4ed] p-1 rounded-lg border border-[#738666]/20">
+              <div className="flex items-center gap-1.5 bg-[#f1f4ed] p-1.5 rounded-xl border border-[#738666]/20">
                 <button
                   type="button"
                   onClick={() => setShowVideo(true)}
-                  className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-semibold cursor-pointer ${
-                    showVideo ? 'bg-[#738666] text-white' : 'text-[#556950] hover:text-[#1b281c]'
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold cursor-pointer transition-all ${
+                    showVideo ? 'bg-[#738666] text-white shadow-xs' : 'text-[#556950] hover:text-[#1b281c]'
                   }`}
                 >
-                  <VideoIcon className="w-3.5 h-3.5" />
+                  <VideoIcon className="w-4 h-4" />
                   <span>Video Demo</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowVideo(false)}
-                  className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-semibold cursor-pointer ${
-                    !showVideo ? 'bg-[#738666] text-white' : 'text-[#556950] hover:text-[#1b281c]'
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold cursor-pointer transition-all ${
+                    !showVideo ? 'bg-[#738666] text-white shadow-xs' : 'text-[#556950] hover:text-[#1b281c]'
                   }`}
                 >
-                  <ImageIcon className="w-3.5 h-3.5" />
+                  <ImageIcon className="w-4 h-4" />
                   <span>Cover Photo</span>
                 </button>
               </div>
@@ -116,16 +116,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between text-white">
+                <div className="absolute bottom-3.5 left-4 right-4 flex items-end justify-between text-white">
                   <div>
-                    <span className="text-xs font-semibold text-[#cce3bf] uppercase tracking-wider">
+                    <span className="text-xs sm:text-sm font-bold text-[#cce3bf] uppercase tracking-wider">
                       {project.category}
                     </span>
-                    <h2 className="text-xl font-bold font-display mt-0.5">{project.title}</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold font-display mt-0.5">{project.title}</h2>
                   </div>
                   {project.project_date && (
-                    <span className="text-xs font-medium flex items-center gap-1 bg-black/60 px-2.5 py-1 rounded-md border border-white/20">
-                      <Calendar className="w-3.5 h-3.5 text-[#cce3bf]" />
+                    <span className="text-xs sm:text-sm font-semibold flex items-center gap-1.5 bg-black/60 px-3 py-1 rounded-md border border-white/20">
+                      <Calendar className="w-4 h-4 text-[#cce3bf]" />
                       {project.project_date}
                     </span>
                   )}
@@ -137,10 +137,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         {/* Detailed Description */}
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#556950] mb-2">
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] mb-2.5">
             Overview
           </h3>
-          <p className="text-[#1b281c] text-sm leading-relaxed whitespace-pre-line">
+          <p className="text-[#1b281c] text-[15px] sm:text-base leading-relaxed whitespace-pre-line font-normal">
             {project.detailed_description || project.short_description}
           </p>
         </div>
@@ -148,17 +148,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Highlights / Key Capabilities */}
         {project.highlights && project.highlights.length > 0 && (
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#556950] mb-3">
+            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] mb-3">
               Key Capabilities & Innovations
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {project.highlights.map((highlight, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-2 p-2.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 text-xs text-[#1b281c]"
+                  className="flex items-start gap-2.5 p-3 rounded-xl bg-[#f8faf6] border border-[#738666]/20 text-sm sm:text-[15px] text-[#1b281c]"
                 >
                   <CheckCircle className="w-4 h-4 text-[#738666] shrink-0 mt-0.5" />
-                  <span>{highlight}</span>
+                  <span className="font-normal leading-relaxed">{highlight}</span>
                 </div>
               ))}
             </div>
@@ -168,17 +168,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Metrics if present */}
         {project.metrics && Object.keys(project.metrics).length > 0 && (
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#556950] mb-3">
+            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] mb-3">
               Performance & Impact Metrics
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {Object.entries(project.metrics).map(([key, value]) => (
                 <div
                   key={key}
-                  className="p-3 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex flex-col"
+                  className="p-3.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex flex-col"
                 >
-                  <span className="text-lg font-bold text-[#738666]">{String(value)}</span>
-                  <span className="text-[11px] text-[#556950] capitalize mt-0.5 font-medium">
+                  <span className="text-xl font-bold text-[#738666]">{String(value)}</span>
+                  <span className="text-xs sm:text-sm text-[#465d41] capitalize mt-1 font-semibold">
                     {key.replace(/([A-Z])/g, ' $1')}
                   </span>
                 </div>
@@ -190,13 +190,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Technologies List */}
         {project.technologies && project.technologies.length > 0 && (
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#556950] mb-2.5 flex items-center gap-2">
+            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] mb-3 flex items-center gap-2">
               <Layers className="w-4 h-4 text-[#738666]" />
               <span>Technologies Used</span>
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
-                <Badge key={tech.id || tech.name} variant="secondary" size="sm">
+                <Badge key={tech.id || tech.name} variant="secondary" size="md">
                   {tech.name}
                 </Badge>
               ))}
@@ -206,7 +206,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#738666]/15">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             {project.github_url && (
               <a
                 href={project.github_url}
@@ -215,9 +215,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               >
                 <Button
                   variant="outline"
-                  size="sm"
+                  size="md"
                   leftIcon={<Github className="w-4 h-4" />}
-                  className="border-[#738666]/30 text-[#1b281c]"
+                  className="border-[#738666]/30 text-[#1b281c] text-xs sm:text-sm font-semibold"
                 >
                   Source Code
                 </Button>
@@ -232,9 +232,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               >
                 <Button
                   variant="primary"
-                  size="sm"
+                  size="md"
                   leftIcon={<ExternalLink className="w-4 h-4" />}
-                  className="bg-[#738666] hover:bg-[#627456] text-white border-[#738666]"
+                  className="bg-[#738666] hover:bg-[#627456] text-white border-[#738666] text-xs sm:text-sm font-semibold"
                 >
                   Live Demo
                 </Button>
@@ -243,7 +243,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
 
           <Link to={`/projects/${project.slug}`} onClick={onClose}>
-            <Button variant="ghost" size="sm" className="text-[#738666] hover:text-[#1b281c]">
+            <Button variant="ghost" size="md" className="text-[#738666] hover:text-[#1b281c] text-xs sm:text-sm font-semibold">
               Full Project Page →
             </Button>
           </Link>

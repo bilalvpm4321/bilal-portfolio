@@ -109,21 +109,21 @@ export const ContactSection: React.FC = () => {
             className="lg:col-span-5 flex flex-col justify-between gap-6"
           >
             <div>
-              <h3 className="text-xl font-bold text-[#1b281c] font-display mb-2">Direct Contact Channels</h3>
-              <p className="text-[#4a5d46] text-xs leading-relaxed mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] font-display mb-2">Direct Contact Channels</h3>
+              <p className="text-[#2d422a] text-sm sm:text-base leading-relaxed mb-6 font-normal">
                 Feel free to email, call, or connect via LinkedIn and GitHub. I respond quickly to inquiries.
               </p>
 
               <div className="space-y-3.5">
                 {/* Email Card */}
-                <div className="p-4 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
+                <div className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs">
+                  <div className="flex items-center gap-3.5">
+                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wider text-[#556950]">Email</p>
-                      <a href={`mailto:${email}`} className="text-sm font-bold text-[#1b281c] hover:text-[#738666] transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940]">Email</p>
+                      <a href={`mailto:${email}`} className="text-sm sm:text-base font-bold text-[#1b281c] hover:text-[#556950] transition-colors">
                         {email}
                       </a>
                     </div>
@@ -131,7 +131,7 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => copyToClipboard(email, 'email')}
-                    className="p-2 rounded-lg text-[#556950] hover:text-[#1b281c] hover:bg-[#738666]/10 transition-colors cursor-pointer"
+                    className="p-2.5 rounded-xl text-[#556950] hover:text-[#1b281c] hover:bg-[#738666]/10 transition-colors cursor-pointer"
                     title="Copy Email"
                   >
                     {copiedKey === 'email' ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
@@ -139,14 +139,14 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 {/* Phone Card */}
-                <div className="p-4 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
+                <div className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs">
+                  <div className="flex items-center gap-3.5">
+                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wider text-[#556950]">Phone</p>
-                      <a href={`tel:${phone}`} className="text-sm font-bold text-[#1b281c] hover:text-[#738666] transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940]">Phone</p>
+                      <a href={`tel:${phone}`} className="text-sm sm:text-base font-bold text-[#1b281c] hover:text-[#556950] transition-colors">
                         {phone}
                       </a>
                     </div>
@@ -154,7 +154,7 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => copyToClipboard(phone, 'phone')}
-                    className="p-2 rounded-lg text-[#556950] hover:text-[#1b281c] hover:bg-[#738666]/10 transition-colors cursor-pointer"
+                    className="p-2.5 rounded-xl text-[#556950] hover:text-[#1b281c] hover:bg-[#738666]/10 transition-colors cursor-pointer"
                     title="Copy Phone"
                   >
                     {copiedKey === 'phone' ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
@@ -166,15 +166,15 @@ export const ContactSection: React.FC = () => {
                   href="https://www.linkedin.com/in/bilalvpm4321"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs"
+                  className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
+                  <div className="flex items-center gap-3.5">
+                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
                       <Linkedin className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wider text-[#556950]">LinkedIn</p>
-                      <p className="text-sm font-bold text-[#1b281c] group-hover:text-[#738666] transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940]">LinkedIn</p>
+                      <p className="text-sm sm:text-base font-bold text-[#1b281c] group-hover:text-[#556950] transition-colors">
                         linkedin.com/in/bilalvpm4321
                       </p>
                     </div>
@@ -187,15 +187,15 @@ export const ContactSection: React.FC = () => {
                   href="https://github.com/bilalvpm4321"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs"
+                  className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
+                  <div className="flex items-center gap-3.5">
+                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
                       <Github className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wider text-[#556950]">GitHub</p>
-                      <p className="text-sm font-bold text-[#1b281c] group-hover:text-[#738666] transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940]">GitHub</p>
+                      <p className="text-sm sm:text-base font-bold text-[#1b281c] group-hover:text-[#556950] transition-colors">
                         github.com/bilalvpm4321
                       </p>
                     </div>
@@ -215,68 +215,68 @@ export const ContactSection: React.FC = () => {
             className="lg:col-span-7"
           >
             <Card className="p-6 sm:p-8 bg-white border-[#738666]/20 shadow-md">
-              <h3 className="text-xl font-bold text-[#1b281c] font-display mb-2">Send a Direct Message</h3>
-              <p className="text-[#4a5d46] text-xs mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] font-display mb-2">Send a Direct Message</h3>
+              <p className="text-[#2d422a] text-sm sm:text-base mb-6 font-normal">
                 Have a project or opportunity in mind? Send a message and it will be received securely.
               </p>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4.5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[#1b281c] uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs sm:text-sm font-bold text-[#1b281c] uppercase tracking-wider mb-1.5">
                       Your Name <span className="text-[#738666]">*</span>
                     </label>
                     <input
                       {...register('name')}
                       type="text"
                       placeholder="e.g. John Doe"
-                      className="w-full px-4 py-2.5 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm sm:text-base placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
                     />
                     {errors.name && (
-                      <p className="text-[11px] text-rose-500 mt-1 font-medium">{errors.name.message}</p>
+                      <p className="text-xs text-rose-500 mt-1 font-semibold">{errors.name.message}</p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#1b281c] uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs sm:text-sm font-bold text-[#1b281c] uppercase tracking-wider mb-1.5">
                       Email Address <span className="text-[#738666]">*</span>
                     </label>
                     <input
                       {...register('email')}
                       type="email"
                       placeholder="e.g. john@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm sm:text-base placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
                     />
                     {errors.email && (
-                      <p className="text-[11px] text-rose-500 mt-1 font-medium">{errors.email.message}</p>
+                      <p className="text-xs text-rose-500 mt-1 font-semibold">{errors.email.message}</p>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#1b281c] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs sm:text-sm font-bold text-[#1b281c] uppercase tracking-wider mb-1.5">
                     Subject / Topic
                   </label>
                   <input
                     {...register('subject')}
                     type="text"
                     placeholder="e.g. Full-Stack / AI Opportunity or Project Collaboration"
-                    className="w-full px-4 py-2.5 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm sm:text-base placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#1b281c] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs sm:text-sm font-bold text-[#1b281c] uppercase tracking-wider mb-1.5">
                     Your Message <span className="text-[#738666]">*</span>
                   </label>
                   <textarea
                     {...register('message')}
                     rows={4}
                     placeholder="Tell me about your project, role, or proposal..."
-                    className="w-full px-4 py-2.5 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm sm:text-base placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all resize-none"
                   />
                   {errors.message && (
-                    <p className="text-[11px] text-rose-500 mt-1 font-medium">{errors.message.message}</p>
+                    <p className="text-xs text-rose-500 mt-1 font-semibold">{errors.message.message}</p>
                   )}
                 </div>
 
@@ -286,7 +286,7 @@ export const ContactSection: React.FC = () => {
                   size="lg"
                   isLoading={isSubmitting}
                   rightIcon={<Send className="w-4 h-4" />}
-                  className="w-full bg-[#738666] hover:bg-[#627456] text-white border-[#738666]"
+                  className="w-full bg-[#738666] hover:bg-[#627456] text-white border-[#738666] text-sm sm:text-base font-bold py-3.5"
                 >
                   Send Message
                 </Button>

@@ -2,9 +2,14 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { Card } from '../common/Card';
-import { Badge } from '../common/Badge';
 import { TiltCard } from '../common/TiltCard';
-import { Briefcase, Calendar, MapPin, CheckCircle2, Building2, ExternalLink } from 'lucide-react';
+import {
+  Calendar,
+  MapPin,
+  CheckCircle2,
+  Building2,
+  ExternalLink,
+} from 'lucide-react';
 
 export const ExperienceSection: React.FC = () => {
   const { data } = usePortfolio();
@@ -47,7 +52,6 @@ export const ExperienceSection: React.FC = () => {
           <div className="w-20 sm:w-24 h-1.5 bg-[#738666] rounded-full mt-4" />
         </div>
 
-
         {/* Timeline Container */}
         <div
           ref={timelineRef}
@@ -72,25 +76,26 @@ export const ExperienceSection: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className="relative"
             >
-
               {/* 3D Tilt Card Wrapper */}
               <TiltCard maxTilt={8} scale={1.015}>
-                <Card className="p-6 sm:p-7 bg-white border-[#738666]/20 hover:border-[#738666]/50 transition-all shadow-xs hover:shadow-md">
+                <Card className="p-6 sm:p-8 bg-white border-[#738666]/20 hover:border-[#738666]/50 transition-all shadow-xs hover:shadow-md">
                   {/* Header Row */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3.5">
                     <div>
-                      <h3 className="text-xl font-bold text-[#1b281c] tracking-tight font-display">{exp.title}</h3>
-                      <div className="flex items-center gap-2 text-sm text-[#738666] font-semibold mt-0.5">
-                        <Building2 className="w-4 h-4" />
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] tracking-tight font-display">
+                        {exp.title}
+                      </h3>
+                      <div className="flex items-center gap-2 text-[15px] sm:text-base text-[#4f6749] font-bold mt-1">
+                        <Building2 className="w-4 h-4 text-[#738666]" />
                         {exp.company_url ? (
                           <a
                             href={exp.company_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:underline flex items-center gap-1"
+                            className="hover:underline flex items-center gap-1.5"
                           >
                             {exp.company}
-                            <ExternalLink className="w-3 h-3" />
+                            <ExternalLink className="w-3.5 h-3.5" />
                           </a>
                         ) : (
                           <span>{exp.company}</span>
@@ -99,8 +104,8 @@ export const ExperienceSection: React.FC = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f8faf6] text-xs font-mono font-medium text-[#556950] border border-[#738666]/20">
-                        <Calendar className="w-3.5 h-3.5 text-[#738666]" />
+                      <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f2f6ee] text-xs sm:text-sm font-mono font-bold text-[#2d4429] border border-[#738666]/30 shadow-xs">
+                        <Calendar className="w-4 h-4 text-[#738666]" />
                         {exp.start_date} – {exp.is_current ? 'Present' : exp.end_date}
                       </span>
                     </div>
@@ -108,26 +113,29 @@ export const ExperienceSection: React.FC = () => {
 
                   {/* Location */}
                   {exp.location && (
-                    <div className="flex items-center gap-1.5 text-xs text-[#556950] mb-4">
-                      <MapPin className="w-3.5 h-3.5 text-[#738666]" />
+                    <div className="flex items-center gap-1.5 text-sm text-[#445b3f] font-medium mb-4">
+                      <MapPin className="w-4 h-4 text-[#738666]" />
                       <span>{exp.location}</span>
                     </div>
                   )}
 
                   {/* Short summary */}
                   {exp.description && (
-                    <p className="text-sm text-[#4a5d46] leading-relaxed mb-4">
+                    <p className="text-[15px] sm:text-base text-[#2c4028] leading-relaxed mb-5 font-normal">
                       {exp.description}
                     </p>
                   )}
 
                   {/* Responsibilities list */}
                   {exp.responsibilities && exp.responsibilities.length > 0 && (
-                    <div className="space-y-2 mb-5">
+                    <div className="space-y-2.5 mb-6">
                       {exp.responsibilities.map((resp, rIdx) => (
-                        <div key={rIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#2d432b]">
-                          <CheckCircle2 className="w-4 h-4 text-[#738666] shrink-0 mt-0.5" />
-                          <span className="leading-relaxed">{resp}</span>
+                        <div
+                          key={rIdx}
+                          className="flex items-start gap-2.5 text-sm sm:text-[15px] text-[#1e2e1d]"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-[#738666] shrink-0 mt-1" />
+                          <span className="leading-relaxed font-normal">{resp}</span>
                         </div>
                       ))}
                     </div>
@@ -135,11 +143,11 @@ export const ExperienceSection: React.FC = () => {
 
                   {/* Technologies used */}
                   {exp.technologies && exp.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[#738666]/15">
+                    <div className="flex flex-wrap gap-2 pt-4 border-t border-[#738666]/15">
                       {exp.technologies.map((tech, tIdx) => (
                         <span
                           key={tIdx}
-                          className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-[#f1f4ed] text-[#2d432b] border border-[#738666]/20"
+                          className="text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg bg-[#f0f4ec] text-[#22381f] border border-[#738666]/25 shadow-xs"
                         >
                           {tech}
                         </span>

@@ -44,36 +44,36 @@ export const EducationSection: React.FC = () => {
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25 group-hover:scale-105 group-hover:bg-[#738666] group-hover:text-white transition-all">
+                    <div className="p-3.5 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25 group-hover:scale-105 group-hover:bg-[#738666] group-hover:text-white transition-all">
                       <GraduationCap className="w-6 h-6" />
                     </div>
 
                     <div className="flex flex-col items-end">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f8faf6] text-xs font-mono font-medium text-[#556950] border border-[#738666]/20">
-                        <Calendar className="w-3.5 h-3.5 text-[#738666]" />
+                      <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f2f6ee] text-xs sm:text-sm font-mono font-bold text-[#2d4429] border border-[#738666]/30 shadow-xs">
+                        <Calendar className="w-4 h-4 text-[#738666]" />
                         {edu.start_year} – {edu.end_year}
                       </span>
                       {edu.grade_or_status && (
-                        <span className="text-[11px] font-semibold text-[#738666] mt-1">
+                        <span className="text-xs sm:text-sm font-bold text-[#455d3f] mt-1.5">
                           ● {edu.grade_or_status}
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#1b281c] mb-1 group-hover:text-[#738666] transition-colors font-display">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] mb-1.5 group-hover:text-[#556950] transition-colors font-display">
                     {edu.degree} in {edu.field_of_study}
                   </h3>
 
-                  <div className="flex items-center gap-1.5 text-sm text-[#556950] font-semibold mb-3">
-                    <Building className="w-4 h-4 text-[#738666]" />
+                  <div className="flex items-center gap-2 text-[15px] sm:text-base text-[#32492f] font-semibold mb-3">
+                    <Building className="w-4 h-4 text-[#738666] shrink-0" />
                     <span>{edu.institution}</span>
                   </div>
                 </div>
 
                 {edu.location && (
-                  <div className="flex items-center gap-1.5 text-xs text-[#556950] pt-4 border-t border-[#738666]/15">
-                    <MapPin className="w-3.5 h-3.5 text-[#738666]" />
+                  <div className="flex items-center gap-1.5 text-sm text-[#445b3f] font-medium pt-4 border-t border-[#738666]/15">
+                    <MapPin className="w-4 h-4 text-[#738666] shrink-0" />
                     <span>{edu.location}</span>
                   </div>
                 )}

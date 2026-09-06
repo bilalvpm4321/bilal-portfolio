@@ -157,17 +157,17 @@ export const ProjectsSection: React.FC = () => {
                 </div>
 
                 {/* Browser URL Pill */}
-                <div className="flex items-center gap-1.5 px-3 py-0.5 sm:py-1 rounded-md bg-[#0d120e]/80 border border-[#333e35] text-[10px] sm:text-xs font-mono text-[#a3b699] max-w-[200px] sm:max-w-xs truncate">
-                  <Lock className="w-3 h-3 text-[#738666] shrink-0" />
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#0d120e]/80 border border-[#333e35] text-xs sm:text-sm font-mono text-[#b2c6a8] max-w-[220px] sm:max-w-sm truncate">
+                  <Lock className="w-3.5 h-3.5 text-[#738666] shrink-0" />
                   <span className="truncate">bilal.dev/project/{currentProject.slug || 'architecture'}</span>
                 </div>
 
                 <button
                   onClick={() => setActiveModalProject(currentProject)}
                   title="Expand details"
-                  className="text-[#738666] hover:text-white transition-colors cursor-pointer"
+                  className="text-[#738666] hover:text-white transition-colors cursor-pointer p-1"
                 >
-                  <Maximize2 className="w-3.5 h-3.5" />
+                  <Maximize2 className="w-4 h-4" />
                 </button>
               </div>
 
@@ -198,12 +198,12 @@ export const ProjectsSection: React.FC = () => {
                 </AnimatePresence>
 
                 {/* Floating Bottom Badge with Project Title & Category */}
-                <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 bg-gradient-to-t from-black/85 via-black/45 to-transparent flex items-end justify-between pointer-events-none z-10">
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-between pointer-events-none z-10">
                   <div className="text-white drop-shadow-md">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#738666]/90 text-white text-[10px] sm:text-xs font-semibold mb-1">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#738666] text-white text-xs sm:text-sm font-bold mb-1.5 shadow-xs">
                       {currentProject.category}
                     </span>
-                    <h3 className="text-base sm:text-2xl font-bold tracking-tight">
+                    <h3 className="text-lg sm:text-3xl font-extrabold tracking-tight">
                       {currentProject.title}
                     </h3>
                   </div>
@@ -247,7 +247,7 @@ export const ProjectsSection: React.FC = () => {
               type="button"
               onClick={() => setActiveModalProject(currentProject)}
               size="lg"
-              className="px-6 sm:px-8 py-3 bg-[#738666] hover:bg-[#5f7053] text-white font-semibold rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center gap-2.5 cursor-pointer"
+              className="px-6 sm:px-8 py-3.5 bg-[#738666] hover:bg-[#5f7053] text-white text-sm sm:text-base font-bold rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center gap-2.5 cursor-pointer"
             >
               <span>View Complete Details</span>
               <ExternalLink className="w-4 h-4" />
@@ -266,7 +266,7 @@ export const ProjectsSection: React.FC = () => {
 
           {/* Project Progress Count & Active Dot Indicators */}
           <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center gap-2.5 text-xs font-medium text-[#556950]">
+            <div className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-[#3b5237]">
               <span className="font-mono font-bold text-[#738666]">
                 {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
               </span>
@@ -275,7 +275,7 @@ export const ProjectsSection: React.FC = () => {
             </div>
 
             {/* Pagination Indicator Dots */}
-            <div className="flex items-center gap-1.5 mt-1">
+            <div className="flex items-center gap-2 mt-1">
               {publishedProjects.map((_, idx) => (
                 <button
                   key={idx}
@@ -285,10 +285,10 @@ export const ProjectsSection: React.FC = () => {
                     setCurrentIndex(idx);
                   }}
                   aria-label={`Jump to project ${idx + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                     idx === currentIndex
-                      ? 'w-7 bg-[#738666]'
-                      : 'w-2 bg-[#738666]/25 hover:bg-[#738666]/50'
+                      ? 'w-8 bg-[#738666]'
+                      : 'w-2.5 bg-[#738666]/30 hover:bg-[#738666]/60'
                   }`}
                 />
               ))}

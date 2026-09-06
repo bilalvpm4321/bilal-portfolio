@@ -5,6 +5,7 @@ import { HeroSection } from '../components/portfolio/HeroSection';
 import { AboutSection } from '../components/portfolio/AboutSection';
 import { ProjectsSection } from '../components/portfolio/ProjectsSection';
 import { ExperienceSection } from '../components/portfolio/ExperienceSection';
+import { SkillsSection } from '../components/portfolio/SkillsSection';
 import { EducationSection } from '../components/portfolio/EducationSection';
 import { AchievementsSection } from '../components/portfolio/AchievementsSection';
 import { CertificatesSection } from '../components/portfolio/CertificatesSection';
@@ -37,35 +38,39 @@ export const HomePage: React.FC = () => {
 
           {/* Pinned Card Scroll Deck */}
           <ScrollStackContainer>
-            <ScrollStackItem id="about" index={0} totalCards={8}>
+            <ScrollStackItem id="about" index={0} totalCards={9}>
               <AboutSection />
             </ScrollStackItem>
 
-            <ScrollStackItem id="projects" index={1} totalCards={8}>
+            <ScrollStackItem id="projects" index={1} totalCards={9}>
               <ProjectsSection />
             </ScrollStackItem>
 
-            <ScrollStackItem id="experience" index={2} totalCards={8}>
+            <ScrollStackItem id="experience" index={2} totalCards={9}>
               <ExperienceSection />
             </ScrollStackItem>
 
-            <ScrollStackItem id="education" index={3} totalCards={8}>
+            <ScrollStackItem id="skills" index={3} totalCards={9}>
+              <SkillsSection />
+            </ScrollStackItem>
+
+            <ScrollStackItem id="education" index={4} totalCards={9}>
               <EducationSection />
             </ScrollStackItem>
 
-            <ScrollStackItem id="achievements" index={4} totalCards={8}>
+            <ScrollStackItem id="achievements" index={5} totalCards={9}>
               <AchievementsSection />
             </ScrollStackItem>
 
-            <ScrollStackItem id="certificates" index={5} totalCards={8}>
+            <ScrollStackItem id="certificates" index={6} totalCards={9}>
               <CertificatesSection />
             </ScrollStackItem>
 
-            <ScrollStackItem id="leadership" index={6} totalCards={8}>
+            <ScrollStackItem id="leadership" index={7} totalCards={9}>
               <LeadershipSection />
             </ScrollStackItem>
 
-            <ScrollStackItem id="contact" index={7} totalCards={8}>
+            <ScrollStackItem id="contact" index={8} totalCards={9}>
               <ContactSection />
             </ScrollStackItem>
           </ScrollStackContainer>

@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Skills', href: '#skills' },
   { name: 'Education', href: '#education' },
   { name: 'Honors', href: '#achievements' },
   { name: 'Certificates', href: '#certificates' },
@@ -59,17 +60,17 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center relative">
         {/* Desktop Navigation Links (Centered) */}
-        <nav className="hidden lg:flex items-center gap-1 bg-white/80 border border-[#738666]/20 px-3 py-1.5 rounded-full backdrop-blur-md shadow-xs">
+        <nav className="hidden lg:flex items-center gap-1.5 bg-white/90 border border-[#738666]/25 px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-xs">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.substring(1) && location.pathname === '/';
             return (
               <a
                 key={link.name}
                 href={location.pathname === '/' ? link.href : `/${link.href}`}
-                className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
+                className={`px-3.5 py-1.5 text-sm rounded-full transition-all duration-200 ${
                   isActive
-                    ? 'bg-[#738666] text-white font-semibold shadow-xs'
-                    : 'text-[#3b4e39] hover:text-[#1b281c] hover:bg-[#738666]/10'
+                    ? 'bg-[#738666] text-white font-bold shadow-xs'
+                    : 'text-[#2a3e28] font-semibold hover:text-[#1b281c] hover:bg-[#738666]/12'
                 }`}
               >
                 {link.name}

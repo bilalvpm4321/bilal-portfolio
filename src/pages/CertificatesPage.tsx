@@ -279,55 +279,55 @@ export const CertificatesPage: React.FC = () => {
                     ) : (
                       <div className="flex flex-col items-center gap-2 text-[#738666] p-6 text-center">
                         <Award className="w-10 h-10 stroke-1" />
-                        <span className="text-xs font-semibold">Verified Certificate</span>
+                        <span className="text-sm font-semibold text-[#32452e]">Verified Certificate</span>
                       </div>
                     )}
 
                     {/* Category pill on top of image */}
-                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-white/90 backdrop-blur-md text-[#3b4e39] border border-[#738666]/20 shadow-xs">
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs sm:text-sm font-bold bg-white/95 backdrop-blur-md text-[#273b24] border border-[#738666]/25 shadow-xs">
                       {cert.category || 'Certification'}
                     </div>
 
                     {cert.issue_date && (
-                      <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md text-white text-[10px] font-mono">
+                      <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-white text-xs font-mono font-bold">
                         {cert.issue_date}
                       </div>
                     )}
 
                     {/* Hover Inspect Overlay */}
                     <div className="absolute inset-0 bg-[#1b281c]/40 backdrop-blur-xs opacity-0 group-hover/preview:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="px-4 py-2 rounded-full bg-white text-[#1b281c] text-xs font-semibold shadow-lg flex items-center gap-1.5">
-                        <Eye className="w-3.5 h-3.5 text-[#738666]" />
+                      <span className="px-4.5 py-2.5 rounded-full bg-white text-[#1b281c] text-sm font-bold shadow-lg flex items-center gap-2">
+                        <Eye className="w-4 h-4 text-[#738666]" />
                         Inspect Certificate
                       </span>
                     </div>
                   </div>
 
                   {/* Card Body */}
-                  <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-[#1b281c] font-display line-clamp-2 mb-1 group-hover:text-[#556950] transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#1b281c] font-display line-clamp-2 mb-1.5 group-hover:text-[#556950] transition-colors">
                         {cert.name}
                       </h3>
 
-                      <p className="text-xs font-semibold text-[#556950] mb-3 flex items-center gap-1.5">
-                        <Award className="w-3.5 h-3.5 text-[#738666] shrink-0" />
+                      <p className="text-sm sm:text-base font-semibold text-[#3b5038] mb-3 flex items-center gap-1.5">
+                        <Award className="w-4 h-4 text-[#738666] shrink-0" />
                         <span>{cert.issuer}</span>
                       </p>
 
                       {cert.description && (
-                        <p className="text-xs text-[#3b4e39]/80 line-clamp-2 mb-4 leading-relaxed">
+                        <p className="text-sm text-[#273a24] line-clamp-2 mb-4 leading-relaxed font-normal">
                           {cert.description}
                         </p>
                       )}
 
                       {/* Verified Skills */}
                       {cert.skills && cert.skills.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 mb-4">
+                        <div className="flex flex-wrap gap-2 mb-4">
                           {cert.skills.map((skill) => (
                             <span
                               key={skill}
-                              className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#738666]/10 text-[#2c3e2b]"
+                              className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#738666]/12 text-[#223520] border border-[#738666]/20"
                             >
                               {skill}
                             </span>
@@ -340,9 +340,9 @@ export const CertificatesPage: React.FC = () => {
                     <div className="pt-4 border-t border-[#738666]/15 flex items-center justify-between gap-2">
                       <button
                         onClick={() => setSelectedCert(cert)}
-                        className="text-xs font-semibold text-[#3b4e39] hover:text-[#1b281c] flex items-center gap-1 cursor-pointer transition-colors"
+                        className="text-xs sm:text-sm font-bold text-[#2d402a] hover:text-[#1b281c] flex items-center gap-1.5 cursor-pointer transition-colors"
                       >
-                        <Eye className="w-3.5 h-3.5 text-[#738666]" />
+                        <Eye className="w-4 h-4 text-[#738666]" />
                         <span>Inspect</span>
                       </button>
 
@@ -351,14 +351,14 @@ export const CertificatesPage: React.FC = () => {
                           href={cert.credential_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#738666] hover:bg-[#5b6e50] text-white text-xs font-semibold shadow-xs transition-all"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#738666] hover:bg-[#5b6e50] text-white text-xs sm:text-sm font-bold shadow-xs transition-all"
                         >
-                          <ShieldCheck className="w-3 h-3" />
+                          <ShieldCheck className="w-4 h-4" />
                           <span>Verify</span>
-                          <ExternalLink className="w-2.5 h-2.5 ml-0.5" />
+                          <ExternalLink className="w-3 h-3 ml-0.5" />
                         </a>
                       ) : (
-                        <span className="text-[11px] text-[#556950] font-mono">
+                        <span className="text-xs font-mono font-semibold text-[#486045]">
                           ID: {cert.credential_id || 'N/A'}
                         </span>
                       )}

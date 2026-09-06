@@ -75,7 +75,7 @@ export const AboutSection: React.FC = () => {
               <h3 className="text-xl sm:text-2xl font-extrabold text-[#1b281c] mb-3 font-display">
                 Building Intelligent Web Systems & AI Solutions
               </h3>
-              <p className="text-sm sm:text-base text-[#4a5d46] leading-relaxed">
+              <p className="text-base sm:text-lg text-[#253922] leading-relaxed font-normal">
                 {aboutText}
               </p>
             </Card>
@@ -85,57 +85,57 @@ export const AboutSection: React.FC = () => {
 
 
               {/* Skill Box 1: Generative AI & ML */}
-              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/30 shadow-xs hover:shadow-md transition-all rounded-2xl group">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
+              <Card className="p-4 bg-white border-[#738666]/15 hover:border-[#738666]/35 shadow-xs hover:shadow-md transition-all rounded-2xl group">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/18 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
                     <Sparkles className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">AI & Machine Learning</h4>
-                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate font-display">Generative AI & LLMs</p>
-                    <p className="text-[11px] text-[#738666] font-medium truncate">OpenAI APIs • PyTorch • LangChain</p>
+                    <h4 className="text-xs font-bold text-[#42583f] uppercase tracking-wider truncate">AI & Machine Learning</h4>
+                    <p className="text-sm sm:text-base font-extrabold text-[#1b281c] truncate font-display">Generative AI & LLMs</p>
+                    <p className="text-xs sm:text-sm text-[#4b6547] font-semibold truncate">OpenAI APIs • PyTorch • LangChain</p>
                   </div>
                 </div>
               </Card>
 
               {/* Skill Box 2: Full-Stack Web Development */}
-              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/30 shadow-xs hover:shadow-md transition-all rounded-2xl group">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
+              <Card className="p-4 bg-white border-[#738666]/15 hover:border-[#738666]/35 shadow-xs hover:shadow-md transition-all rounded-2xl group">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/18 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
                     <Cpu className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Frontend & Backend</h4>
-                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate font-display">Full-Stack Web Engineering</p>
-                    <p className="text-[11px] text-[#738666] font-medium truncate">React • TypeScript • Python • Next.js</p>
+                    <h4 className="text-xs font-bold text-[#42583f] uppercase tracking-wider truncate">Frontend & Backend</h4>
+                    <p className="text-sm sm:text-base font-extrabold text-[#1b281c] truncate font-display">Full-Stack Web Engineering</p>
+                    <p className="text-xs sm:text-sm text-[#4b6547] font-semibold truncate">React • TypeScript • Python • Next.js</p>
                   </div>
                 </div>
               </Card>
 
               {/* Skill Box 3: Cloud & Realtime Systems */}
-              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/30 shadow-xs hover:shadow-md transition-all rounded-2xl group">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
+              <Card className="p-4 bg-white border-[#738666]/15 hover:border-[#738666]/35 shadow-xs hover:shadow-md transition-all rounded-2xl group">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/18 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
                     <Database className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Cloud & Realtime DB</h4>
-                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate font-display">Cloud Infrastructure</p>
-                    <p className="text-[11px] text-[#738666] font-medium truncate">GCP • Firebase • AWS • Supabase</p>
+                    <h4 className="text-xs font-bold text-[#42583f] uppercase tracking-wider truncate">Cloud & Realtime DB</h4>
+                    <p className="text-sm sm:text-base font-extrabold text-[#1b281c] truncate font-display">Cloud Infrastructure</p>
+                    <p className="text-xs sm:text-sm text-[#4b6547] font-semibold truncate">GCP • Firebase • AWS • Supabase</p>
                   </div>
                 </div>
               </Card>
 
               {/* Skill Box 4: Development & AI Coding Tools */}
-              <Card className="p-3.5 sm:p-4 bg-white border-[#738666]/12 hover:border-[#738666]/30 shadow-xs hover:shadow-md transition-all rounded-2xl group">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/15 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
+              <Card className="p-4 bg-white border-[#738666]/15 hover:border-[#738666]/35 shadow-xs hover:shadow-md transition-all rounded-2xl group">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/18 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
                     <Wrench className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[11px] font-semibold text-[#556950] uppercase tracking-wider truncate">Tooling & Engineering</h4>
-                    <p className="text-xs sm:text-sm font-bold text-[#1b281c] truncate font-display">AI Tooling & Debugging</p>
-                    <p className="text-[11px] text-[#738666] font-medium truncate">Prompt Engineering • Git • Docker</p>
+                    <h4 className="text-xs font-bold text-[#42583f] uppercase tracking-wider truncate">Tooling & Engineering</h4>
+                    <p className="text-sm sm:text-base font-extrabold text-[#1b281c] truncate font-display">AI Tooling & Debugging</p>
+                    <p className="text-xs sm:text-sm text-[#4b6547] font-semibold truncate">Prompt Engineering • Git • Docker</p>
                   </div>
                 </div>
               </Card>

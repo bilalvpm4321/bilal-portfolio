@@ -267,10 +267,10 @@ export const ProjectDetailsPage: React.FC = () => {
           {/* Main Description Column */}
           <div className="lg:col-span-8 space-y-8">
             <Card className="p-6 sm:p-8 bg-white border-[#738666]/20 shadow-xs">
-              <h2 className="text-lg font-bold text-[#1b281c] font-display mb-4">
+              <h2 className="text-xl font-bold text-[#1b281c] font-display mb-4">
                 Architecture & Implementation Overview
               </h2>
-              <div className="text-[#4a5d46] leading-relaxed text-sm sm:text-base space-y-4 whitespace-pre-line">
+              <div className="text-[#2a3e27] leading-relaxed text-base sm:text-lg space-y-4 whitespace-pre-line font-normal">
                 {project.detailed_description || project.short_description}
               </div>
             </Card>
@@ -278,7 +278,7 @@ export const ProjectDetailsPage: React.FC = () => {
             {/* Key Highlights / Capabilities */}
             {project.highlights && project.highlights.length > 0 && (
               <Card className="p-6 sm:p-8 bg-white border-[#738666]/20 shadow-xs">
-                <h2 className="text-lg font-bold text-[#1b281c] font-display mb-4 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-[#1b281c] font-display mb-4 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-[#c8a869]" />
                   <span>Key Innovations & Features</span>
                 </h2>
@@ -286,10 +286,10 @@ export const ProjectDetailsPage: React.FC = () => {
                   {project.highlights.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-3 p-3.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20"
+                      className="flex items-start gap-3.5 p-4 rounded-xl bg-[#f8faf6] border border-[#738666]/20"
                     >
                       <CheckCircle2 className="w-5 h-5 text-[#738666] shrink-0 mt-0.5" />
-                      <span className="text-sm text-[#1b281c]">{item}</span>
+                      <span className="text-[15px] sm:text-base text-[#1b281c] font-normal leading-relaxed">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -299,7 +299,7 @@ export const ProjectDetailsPage: React.FC = () => {
             {/* Gallery Images if provided */}
             {project.gallery_images && project.gallery_images.length > 0 && (
               <Card className="p-6 sm:p-8 bg-white border-[#738666]/20 shadow-xs">
-                <h2 className="text-lg font-bold text-[#1b281c] font-display mb-4 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-[#1b281c] font-display mb-4 flex items-center gap-2">
                   <ImageIcon className="w-5 h-5 text-[#738666]" />
                   <span>Screenshots & System Architecture</span>
                 </h2>
@@ -326,7 +326,7 @@ export const ProjectDetailsPage: React.FC = () => {
             {/* Technologies */}
             {project.technologies && project.technologies.length > 0 && (
               <Card className="p-6 bg-white border-[#738666]/20 shadow-xs">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#556950] mb-4 flex items-center gap-2">
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3d5337] mb-4 flex items-center gap-2">
                   <Layers className="w-4 h-4 text-[#738666]" />
                   <span>Technology Stack</span>
                 </h3>
@@ -334,7 +334,7 @@ export const ProjectDetailsPage: React.FC = () => {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech.id || tech.name}
-                      className="px-3 py-1.5 rounded-xl bg-[#f1f4ed] text-[#2d432b] border border-[#738666]/20 text-xs font-semibold"
+                      className="px-3.5 py-1.5 rounded-xl bg-[#f1f4ed] text-[#22381f] border border-[#738666]/25 text-xs sm:text-sm font-semibold shadow-xs"
                     >
                       {tech.name}
                     </span>
@@ -346,7 +346,7 @@ export const ProjectDetailsPage: React.FC = () => {
             {/* Performance Metrics */}
             {project.metrics && Object.keys(project.metrics).length > 0 && (
               <Card className="p-6 bg-white border-[#738666]/20 shadow-xs">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#556950] mb-4 flex items-center gap-2">
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3d5337] mb-4 flex items-center gap-2">
                   <Activity className="w-4 h-4 text-[#738666]" />
                   <span>Performance Benchmarks</span>
                 </h3>
@@ -354,12 +354,12 @@ export const ProjectDetailsPage: React.FC = () => {
                   {Object.entries(project.metrics).map(([key, value]) => (
                     <div
                       key={key}
-                      className="p-3 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between"
+                      className="p-3.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between"
                     >
-                      <span className="text-xs text-[#556950] capitalize font-medium">
+                      <span className="text-xs sm:text-sm text-[#445b3f] capitalize font-semibold">
                         {key.replace(/([A-Z])/g, ' $1')}
                       </span>
-                      <span className="text-sm font-mono font-bold text-[#738666]">
+                      <span className="text-base font-mono font-bold text-[#738666]">
                         {String(value)}
                       </span>
                     </div>
