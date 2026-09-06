@@ -797,3 +797,43 @@ INSERT INTO public.site_settings (key, value) VALUES
 ('general', '{"siteTitle": "Bilal Ahamed PT | AI & Full Stack Developer", "metaDescription": "Official portfolio of Bilal Ahamed PT. M.Tech AI & Data Science student at CUSAT, Full Stack Developer, Generative AI & ML specialist.", "accentColor": "#38bdf8", "enableContactForm": true, "enableRealtime": true}'::JSONB),
 ('hero', '{"badgeText": "Available for AI & Full-Stack Roles", "yearsExperience": "2+", "completedProjects": "10+", "focusArea": "Generative AI & Scalable Web Systems"}'::JSONB)
 ON CONFLICT (key) DO NOTHING;
+
+-- ==============================================================================
+-- 16. STORAGE BUCKET CONFIGURATION (PORTFOLIO - UP TO 200MB FOR VIDEOS & ASSETS)
+-- ==============================================================================
+INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+VALUES (
+    'portfolio',
+    'portfolio',
+    true,
+    209715200, -- 200MB limit (supporting up to 130MB+ videos)
+    ARRAY[
+        'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml', 'application/pdf',
+        'video/mp4', 'video/webm', 'video/quicktime', 'video/ogg', 'video/x-matroska', 'video/avi', 'video/mpeg', 'video/x-msvideo'
+    ]
+)
+ON CONFLICT (id) DO UPDATE SET
+    public = true,
+    file_size_limit = 209715200,
+    allowed_mime_types = ARRAY[
+        'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml', 'application/pdf',
+        'video/mp4', 'video/webm', 'video/quicktime', 'video/ogg', 'video/x-matroska', 'video/avi', 'video/mpeg', 'video/x-msvideo'
+    ];
+
+-- Public read access
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Public Access') THEN
+        CREATE POLICY "Public Access" ON storage.objects FOR SELECT USING (bucket_id = 'portfolio');
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Direct Upload Access') THEN
+        CREATE POLICY "Direct Upload Access" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'portfolio');
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Direct Update Access') THEN
+        CREATE POLICY "Direct Update Access" ON storage.objects FOR UPDATE USING (bucket_id = 'portfolio');
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Direct Delete Access') THEN
+        CREATE POLICY "Direct Delete Access" ON storage.objects FOR DELETE USING (bucket_id = 'portfolio');
+    END IF;
+END $$;
+

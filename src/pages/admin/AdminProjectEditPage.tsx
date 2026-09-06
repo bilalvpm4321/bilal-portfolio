@@ -496,7 +496,7 @@ export const AdminProjectEditPage: React.FC = () => {
               onVideoChange={(url) => setFormData((prev) => ({ ...prev, video_url: url || '' }))}
               folder="projects/videos"
               label="Project Demo Video / Screen Recording"
-              helperText="Upload an MP4/WebM video or screen recording of the project. If uploaded, it will play at the top of the project details page."
+              helperText="Upload an MP4/WebM video or screen recording up to 130MB, or paste a direct video link (YouTube, Vimeo, Cloudinary, Drive). If uploaded, it will play at the top of the project details page."
             />
           </Card>
 

@@ -25,7 +25,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   const hasVideo = !!project.video_url;
 
   const isYouTubeOrVimeo = (url: string) => {
-    return url.includes('youtube.com') || url.includes('youtu.be') || url.includes('vimeo.com');
+    return (
+      url.includes('youtube.com') ||
+      url.includes('youtu.be') ||
+      url.includes('vimeo.com') ||
+      url.includes('drive.google.com')
+    );
   };
 
   const getEmbedUrl = (url: string) => {
@@ -34,8 +39,15 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
       return `https://www.youtube.com/embed/${videoId}`;
     }
     if (url.includes('youtu.be/')) {
-      const id = url.split('youtu.be/')[1].split('?')[0];
+      const id = url.split('youtu.be/')[1]?.split('?')[0];
       return `https://www.youtube.com/embed/${id}`;
+    }
+    if (url.includes('vimeo.com/')) {
+      const id = url.split('vimeo.com/')[1]?.split('?')[0];
+      return `https://player.vimeo.com/video/${id}`;
+    }
+    if (url.includes('drive.google.com/file/d/')) {
+      return url.replace('/view', '/preview');
     }
     return url;
   };
