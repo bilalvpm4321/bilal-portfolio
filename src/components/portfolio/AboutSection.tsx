@@ -21,11 +21,11 @@ export const AboutSection: React.FC = () => {
     '';
 
   return (
-    <section id="about" className="pt-8 sm:pt-12 pb-24 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+    <section id="about" className="py-6 sm:py-8 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
       {/* Clean background without circles */}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start relative">
           
           {/* Left Column: Standalone Profile Visual */}
           <motion.div
@@ -59,7 +59,7 @@ export const AboutSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-7 flex flex-col gap-6 relative z-10 lg:pt-1"
+            className="lg:col-span-7 flex flex-col gap-4 relative z-10 lg:pt-1"
           >
             {/* Section Heading with Big Display Typography in Full Olive Green */}
             <div className="flex flex-col items-start text-left space-y-2">
@@ -81,7 +81,7 @@ export const AboutSection: React.FC = () => {
             </Card>
 
             {/* Technical Skill Domain Boxes */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 lg:-ml-16 xl:-ml-24">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:-ml-16 xl:-ml-24">
 
 
               {/* Skill Box 1: Generative AI & ML */}

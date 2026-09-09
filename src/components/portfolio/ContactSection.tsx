@@ -80,7 +80,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-white text-[#1b281c]">
+    <section id="contact" className="py-6 sm:py-8 relative overflow-hidden bg-white text-[#1b281c]">
       {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Center Bottom Glowing Radial Orb (700px) */}
@@ -89,9 +89,9 @@ export const ContactSection: React.FC = () => {
         <div className="absolute top-8 -right-14 w-[350px] h-[350px] bg-[#738666]/22 border border-[#738666]/35 rounded-full animate-pulse blur-xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-tight sm:leading-none">
             Let's Build Something Exceptional
           </h2>
@@ -99,7 +99,7 @@ export const ContactSection: React.FC = () => {
         </div>
 
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
           {/* Contact Details & Social Cards */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

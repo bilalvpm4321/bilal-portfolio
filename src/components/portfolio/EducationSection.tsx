@@ -10,7 +10,7 @@ export const EducationSection: React.FC = () => {
   const educations = data.education;
 
   return (
-    <section id="education" className="py-24 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+    <section id="education" className="py-6 sm:py-8 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
       {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Center-Left Massive Blur Orb (660px) */}
@@ -19,9 +19,9 @@ export const EducationSection: React.FC = () => {
         <div className="absolute bottom-8 -right-16 w-[320px] h-[320px] bg-[#738666]/20 border border-[#738666]/30 rounded-full blur-xl" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-none">
             Education & Qualifications
           </h2>
@@ -29,7 +29,7 @@ export const EducationSection: React.FC = () => {
         </div>
 
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {educations.map((edu, index) => (
             <motion.div
               key={edu.id}

@@ -12,7 +12,7 @@ import { CertificatesSection } from '../components/portfolio/CertificatesSection
 import { LeadershipSection } from '../components/portfolio/LeadershipSection';
 import { ContactSection } from '../components/portfolio/ContactSection';
 import { Footer } from '../components/layout/Footer';
-import { PageBreakLoader } from '../components/portfolio/PageBreakLoader';
+import { CurtainWindowLoader } from '../components/portfolio/CurtainWindowLoader';
 import { ScrollStackContainer, ScrollStackItem } from '../components/portfolio/ScrollStack';
 
 export const HomePage: React.FC = () => {
@@ -21,14 +21,14 @@ export const HomePage: React.FC = () => {
   return (
     <>
       {showLoader && (
-        <PageBreakLoader onComplete={() => setShowLoader(false)} />
+        <CurtainWindowLoader onComplete={() => setShowLoader(false)} />
       )}
 
       <motion.div
         className="min-h-screen bg-[#f7f8f4] text-[#1b281c] selection:bg-[#738666]/25 selection:text-[#1b281c]"
-        initial={{ opacity: 0.85, scale: 0.985 }}
+        initial={{ opacity: 0.9, scale: 0.975 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
         <Navbar />
         

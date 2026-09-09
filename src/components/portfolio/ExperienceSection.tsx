@@ -32,7 +32,7 @@ export const ExperienceSection: React.FC = () => {
   const tracerTop = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden bg-white text-[#1b281c]">
+    <section id="experience" className="py-6 sm:py-8 relative overflow-hidden bg-white text-[#1b281c]">
       {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Top-Right Large Glow Orb (600px) */}
@@ -43,9 +43,9 @@ export const ExperienceSection: React.FC = () => {
         <div className="absolute bottom-12 right-10 w-[260px] h-[260px] bg-[#738666]/22 rounded-full blur-[70px]" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-none">
             Work Experience
           </h2>
@@ -55,7 +55,7 @@ export const ExperienceSection: React.FC = () => {
         {/* Timeline Container */}
         <div
           ref={timelineRef}
-          className="relative border-l-2 border-[#738666]/25 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-12"
+          className="relative border-l-2 border-[#738666]/25 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-4"
         >
           {/* Animated Concentric Circle Tracer Node that glides down on scroll */}
           <motion.div

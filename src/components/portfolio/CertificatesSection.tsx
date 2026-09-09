@@ -129,7 +129,7 @@ export const CertificatesSection: React.FC = () => {
   }, [visibleCertifications]);
 
   return (
-    <section className="py-20 sm:py-24 relative overflow-hidden bg-white text-[#1b281c]">
+    <section className="py-6 sm:py-8 relative overflow-hidden bg-white text-[#1b281c]">
       {/* Ambient Olive Green Circles */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute -top-20 right-10 w-[460px] h-[460px] bg-[#738666]/15 rounded-full blur-[110px]" />
@@ -141,7 +141,7 @@ export const CertificatesSection: React.FC = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-8 sm:mb-12">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-none">
             Certifications
           </h2>
@@ -194,7 +194,7 @@ export const CertificatesSection: React.FC = () => {
           </div>
         ) : (
           /* Grid View */
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {visibleCertifications.map((cert) => renderCertificateCard(cert))}
           </div>
         )}

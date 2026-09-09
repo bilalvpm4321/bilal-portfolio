@@ -43,11 +43,11 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
     <div
       ref={containerRef}
       id={id}
-      className="relative mb-12 sm:mb-20 last:mb-0 w-full"
+      className="relative mb-5 sm:mb-6 last:mb-0 w-full"
       style={{ zIndex }}
     >
       <motion.div
-        className={`sticky rounded-[32px] sm:rounded-[40px] border border-[#738666]/20 bg-white shadow-2xl shadow-[#1b281c]/[0.08] overflow-hidden will-change-transform ${className}`}
+        className={`sticky rounded-[28px] sm:rounded-[36px] border border-[#738666]/20 bg-white shadow-xl shadow-[#1b281c]/[0.06] overflow-hidden will-change-transform ${className}`}
         style={{
           top: `${topOffset}px`,
           scale,
@@ -65,5 +65,5 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
 };
 
 export const ScrollStackContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <div className="relative w-full max-w-[1360px] mx-auto px-3 sm:px-6 lg:px-8 pt-4 pb-16">{children}</div>;
+  return <div className="relative w-full max-w-[1360px] mx-auto px-2 sm:px-4 lg:px-6 pt-2 pb-10">{children}</div>;
 };

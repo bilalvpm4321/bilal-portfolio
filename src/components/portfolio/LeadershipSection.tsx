@@ -49,7 +49,7 @@ export const LeadershipSection: React.FC = () => {
   const galleryItems = leaderships.map(enrichLeadershipItem);
 
   return (
-    <section id="leadership" className="py-24 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+    <section id="leadership" className="py-6 sm:py-8 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
       {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Top-Left Giant Glow Circle (750px) */}
@@ -60,7 +60,7 @@ export const LeadershipSection: React.FC = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-12">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-none">
             Leadership & Volunteering
           </h2>

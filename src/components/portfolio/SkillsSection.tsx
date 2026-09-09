@@ -3,7 +3,7 @@ import { AutoRotatingSkillsCard } from './AutoRotatingSkillsCard';
 
 export const SkillsSection: React.FC = () => {
   return (
-    <section id="skills" className="py-24 relative overflow-hidden bg-white text-[#1b281c]">
+    <section id="skills" className="py-6 sm:py-8 relative overflow-hidden bg-white text-[#1b281c]">
       {/* Ambient Olive Green Circles matching Experience and Contact sections */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute -top-28 -right-36 w-[600px] h-[600px] bg-[#738666]/16 rounded-full blur-[130px]" />
@@ -11,9 +11,9 @@ export const SkillsSection: React.FC = () => {
         <div className="absolute bottom-12 right-10 w-[260px] h-[260px] bg-[#738666]/22 rounded-full blur-[70px]" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header matching Work Experience and other section cards */}
-        <div className="flex flex-col items-center text-center mb-14">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-none">
             Skills & Stack
           </h2>

@@ -23,7 +23,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
   const { data } = usePortfolio();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Group portfolio skills into the 6 major sessions
   const visibleSkills = (data?.skills || []).filter((s) => s.is_visible);
@@ -154,7 +154,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Main Container Card (matching Work & Contact card aesthetic) */}
-      <div className="relative rounded-3xl bg-white border border-[#738666]/20 shadow-lg shadow-[#1b281c]/[0.04] overflow-hidden p-6 sm:p-10 text-[#1b281c]">
+      <div className="relative rounded-3xl bg-white border border-[#738666]/20 shadow-lg shadow-[#1b281c]/[0.04] overflow-hidden p-4 sm:p-6 text-[#1b281c]">
         {/* Subtle Ambient Radial Glow */}
         <div className="pointer-events-none absolute -top-24 -left-24 w-80 h-80 bg-[#738666]/8 rounded-full blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 -right-24 w-80 h-80 bg-[#738666]/10 rounded-full blur-3xl" />
@@ -248,7 +248,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -12, scale: 0.98 }}
                 transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3.5 sm:gap-4 my-auto"
+                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-3.5 my-auto"
               >
                 {activeArea.skills.map((skill, index) => (
                   <motion.div
@@ -256,7 +256,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.03, duration: 0.2 }}
-                    className="p-4 sm:p-5 rounded-2xl bg-[#f8faf6] hover:bg-[#f1f5ec] border border-[#738666]/20 hover:border-[#738666]/50 transition-all duration-200 flex flex-col items-center justify-center gap-2.5 group shadow-2xs hover:shadow-md hover:-translate-y-1 cursor-pointer select-none"
+                    className="p-3 sm:p-4 rounded-2xl bg-[#f8faf6] hover:bg-[#f1f5ec] border border-[#738666]/20 hover:border-[#738666]/50 transition-all duration-200 flex flex-col items-center justify-center gap-2 group shadow-2xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer select-none"
                   >
                     {/* Authentic Colorful Brand SVG Icon */}
                     <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 drop-shadow-xs">

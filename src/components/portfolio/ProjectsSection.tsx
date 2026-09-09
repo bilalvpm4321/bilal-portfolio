@@ -100,7 +100,7 @@ export const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 sm:py-24 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+    <section id="projects" className="py-6 sm:py-8 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
       {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Top-Left Glow Circle (580px) */}
@@ -111,10 +111,10 @@ export const ProjectsSection: React.FC = () => {
         <div className="absolute -bottom-16 left-1/3 w-[340px] h-[340px] bg-[#738666]/20 rounded-full blur-[80px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-14">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#1b281c] font-display tracking-tight leading-tight">
             Projects & Technical Implementations
           </h2>
