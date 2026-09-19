@@ -3,7 +3,16 @@ import { motion } from 'framer-motion';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
-import { Sparkles, Cpu, Database, Wrench } from 'lucide-react';
+import {
+  Sparkles,
+  MapPin,
+  GraduationCap,
+  FileText,
+  ArrowRight,
+  ArrowUpRight,
+  Terminal,
+  Code2,
+} from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const { data } = usePortfolio();
@@ -14,135 +23,147 @@ export const AboutSection: React.FC = () => {
     profile?.bio ||
     'M.Tech Computer Science and Engineering (AI & Data Science) student at Cochin University of Science and Technology with hands-on experience in full-stack development, Artificial Intelligence, Machine Learning, cloud technologies, and real-time applications. Skilled in Python, React, Firebase, AWS, and Google Cloud Platform, with experience developing AI-powered applications using OpenAI technologies. Proficient in AI coding tools, prompt engineering, database integration, debugging, testing, deployment, and collaborative software development.';
 
-  const aboutImageUrl =
-    profile?.about_image_url ||
-    data.siteSettings?.about?.image_url ||
-    profile?.avatar_url ||
-    '';
+  const coreFocusTags = [
+    'Generative AI & LLMs',
+    'Python & FastAPI',
+    'React & Next.js',
+    'TypeScript',
+    'PyTorch & LangChain',
+    'Cloud Architecture (GCP / AWS)',
+    'Realtime Systems & Firebase',
+    'Prompt Engineering',
+  ];
 
   return (
-    <section id="about" className="py-6 sm:py-8 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
-      {/* Clean background without circles */}
+    <section id="about" className="py-8 sm:py-12 lg:py-14 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+      {/* Ambient Olive Green Atmospheric Lighting */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute -top-24 -right-28 w-[540px] h-[540px] bg-[#738666]/14 rounded-full blur-[130px]" />
+        <div className="absolute -bottom-24 -left-28 w-[480px] h-[480px] bg-[#738666]/12 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 right-1/3 w-[320px] h-[320px] bg-[#738666]/10 rounded-full blur-[90px]" />
+      </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start relative">
-          
-          {/* Left Column: Standalone Profile Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 flex items-start justify-center lg:justify-end relative z-20"
-          >
-            {aboutImageUrl ? (
-              <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-[490px] xl:max-w-[530px] flex items-start justify-center lg:justify-end">
-                <img
-                  src={aboutImageUrl}
-                  alt={profile?.full_name || 'Bilal'}
-                  className="w-auto h-auto max-h-[620px] sm:max-h-[700px] lg:max-h-[780px] xl:max-h-[820px] max-w-full object-contain object-top mx-auto lg:mr-0 drop-shadow-sm select-none pointer-events-auto transition-transform duration-500 hover:scale-[1.01]"
-                />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+          <Badge variant="primary" size="sm" className="mb-3 uppercase tracking-widest text-[11px] font-mono px-3.5 py-1">
+            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-[#738666]" />
+            About Bilal
+          </Badge>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1b281c] font-display tracking-tight leading-tight">
+            About Me
+          </h2>
+          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] rounded-full mt-3.5" />
+          <p className="mt-3.5 text-sm sm:text-base text-[#4a5e45] max-w-xl mx-auto font-medium leading-relaxed">
+            Bridging cutting-edge Artificial Intelligence with production-grade full-stack systems.
+          </p>
+        </div>
+
+        {/* Master Showcase Box: Building Intelligent Web Systems & AI Solutions */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full"
+        >
+          <Card className="p-6 sm:p-9 lg:p-11 bg-white border-[#738666]/25 hover:border-[#738666]/45 shadow-sm hover:shadow-xl hover:shadow-[#738666]/10 transition-all duration-300 rounded-[28px] sm:rounded-3xl relative overflow-hidden group">
+            
+            {/* Ambient subtle top edge gradient accent */}
+            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#738666]/45 to-transparent pointer-events-none" />
+
+            {/* Top Status & Context Pill Strip */}
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f2f6ee] border border-[#738666]/25 text-xs font-semibold text-[#2d4429] shadow-xs">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span>{profile?.availability_status || 'Open to Opportunities & Collaborations'}</span>
               </div>
-            ) : (
-              <div className="w-48 h-48 rounded-3xl bg-[#738666]/10 border border-[#738666]/15 flex flex-col items-center justify-center text-[#738666] mx-auto pointer-events-auto mt-6">
-                <div className="w-20 h-20 rounded-full bg-[#738666] text-white flex items-center justify-center text-3xl font-bold font-editorial shadow-xs">
-                  B
+
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#f8faf6] border border-[#738666]/20 text-xs font-medium text-[#4a5e45]">
+                  <MapPin className="w-3.5 h-3.5 text-[#738666]" />
+                  <span>{profile?.location || 'Kerala, India'}</span>
                 </div>
-                <span className="mt-3 text-xs font-mono tracking-wider text-[#556950]">Bilal</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#f8faf6] border border-[#738666]/20 text-xs font-medium text-[#4a5e45]">
+                  <GraduationCap className="w-3.5 h-3.5 text-[#738666]" />
+                  <span>CUSAT M.Tech Scholar</span>
+                </div>
               </div>
-            )}
-          </motion.div>
-
-          {/* Right Column: Bio Narrative & Technical Skill Domain Boxes */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-7 flex flex-col gap-4 relative z-10 lg:pt-1"
-          >
-            {/* Section Heading with Big Display Typography in Full Olive Green */}
-            <div className="flex flex-col items-start text-left space-y-2">
-              <h2 className="text-5xl sm:text-7xl lg:text-[84px] xl:text-[98px] font-black text-[#738666] font-display uppercase tracking-tight leading-[0.9] flex items-center gap-3 sm:gap-4">
-                <span>ABOUT ME</span>
-              </h2>
             </div>
 
-
-            {/* Bio Card Narrative Resting Directly Under His Outstretched Hand */}
-            <Card className="p-6 sm:p-8 pt-7 sm:pt-9 bg-white border-[#738666]/15 shadow-sm rounded-3xl relative lg:-ml-16 xl:-ml-24 lg:mt-[104px] xl:mt-[118px]">
-
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#1b281c] mb-3 font-display">
+            {/* Main Catchy Headline */}
+            <div className="space-y-2 mb-5">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#556950]">
+                <Code2 className="w-4 h-4 text-[#738666]" />
+                <span>Executive Profile & Vision</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-black text-[#1b281c] font-display tracking-tight leading-snug">
                 Building Intelligent Web Systems & AI Solutions
               </h3>
-              <p className="text-base sm:text-lg text-[#253922] leading-relaxed font-normal">
+            </div>
+
+            {/* Bio Narrative Body */}
+            <div className="relative">
+              <p className="text-base sm:text-[17px] text-[#253922] leading-[1.8] sm:leading-[1.85] font-normal">
                 {aboutText}
               </p>
-            </Card>
-
-            {/* Technical Skill Domain Boxes */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:-ml-16 xl:-ml-24">
-
-
-              {/* Skill Box 1: Generative AI & ML */}
-              <Card className="p-4 bg-white border-[#738666]/15 hover:border-[#738666]/35 shadow-xs hover:shadow-md transition-all rounded-2xl group">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/18 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="text-xs font-bold text-[#42583f] uppercase tracking-wider truncate">AI & Machine Learning</h4>
-                    <p className="text-sm sm:text-base font-extrabold text-[#1b281c] truncate font-display">Generative AI & LLMs</p>
-                    <p className="text-xs sm:text-sm text-[#4b6547] font-semibold truncate">OpenAI APIs • PyTorch • LangChain</p>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Skill Box 2: Full-Stack Web Development */}
-              <Card className="p-4 bg-white border-[#738666]/15 hover:border-[#738666]/35 shadow-xs hover:shadow-md transition-all rounded-2xl group">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/18 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
-                    <Cpu className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="text-xs font-bold text-[#42583f] uppercase tracking-wider truncate">Frontend & Backend</h4>
-                    <p className="text-sm sm:text-base font-extrabold text-[#1b281c] truncate font-display">Full-Stack Web Engineering</p>
-                    <p className="text-xs sm:text-sm text-[#4b6547] font-semibold truncate">React • TypeScript • Python • Next.js</p>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Skill Box 3: Cloud & Realtime Systems */}
-              <Card className="p-4 bg-white border-[#738666]/15 hover:border-[#738666]/35 shadow-xs hover:shadow-md transition-all rounded-2xl group">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/18 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
-                    <Database className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="text-xs font-bold text-[#42583f] uppercase tracking-wider truncate">Cloud & Realtime DB</h4>
-                    <p className="text-sm sm:text-base font-extrabold text-[#1b281c] truncate font-display">Cloud Infrastructure</p>
-                    <p className="text-xs sm:text-sm text-[#4b6547] font-semibold truncate">GCP • Firebase • AWS • Supabase</p>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Skill Box 4: Development & AI Coding Tools */}
-              <Card className="p-4 bg-white border-[#738666]/15 hover:border-[#738666]/35 shadow-xs hover:shadow-md transition-all rounded-2xl group">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/18 flex items-center justify-center shrink-0 group-hover:bg-[#738666] group-hover:text-white transition-colors">
-                    <Wrench className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="text-xs font-bold text-[#42583f] uppercase tracking-wider truncate">Tooling & Engineering</h4>
-                    <p className="text-sm sm:text-base font-extrabold text-[#1b281c] truncate font-display">AI Tooling & Debugging</p>
-                    <p className="text-xs sm:text-sm text-[#4b6547] font-semibold truncate">Prompt Engineering • Git • Docker</p>
-                  </div>
-                </div>
-              </Card>
             </div>
-          </motion.div>
-        </div>
+
+            {/* Core Competencies & Specializations Tags */}
+            <div className="mt-7 pt-5 border-t border-[#738666]/18">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-[#556950] font-bold mb-3 flex items-center gap-2">
+                <span>Core Engineering Focus & Technologies</span>
+              </div>
+              <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                {coreFocusTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 rounded-xl bg-[#f2f6ee] text-xs sm:text-[13px] font-semibold text-[#2d4429] border border-[#738666]/25 hover:border-[#738666]/50 hover:bg-[#e8f0e3] transition-all"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Bar & Credentials Footer */}
+            <div className="mt-8 pt-6 border-t border-[#738666]/18 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-[#4a5e45] text-center sm:text-left">
+                <Terminal className="w-4 h-4 text-[#738666] shrink-0" />
+                <span>Full-Stack Engineer • Generative AI Specialist</span>
+              </div>
+
+              <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+                {profile?.resume_url && (
+                  <a
+                    href={profile.resume_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#738666]/12 hover:bg-[#738666] text-[#2d4429] hover:text-white border border-[#738666]/30 text-xs sm:text-sm font-semibold transition-all duration-200 group/btn shadow-xs"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Curriculum Vitae</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                  </a>
+                )}
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#738666] hover:bg-[#5f7153] text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-xs"
+                >
+                  <span>Let's Connect</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+          </Card>
+        </motion.div>
       </div>
     </section>
   );
 };
+
