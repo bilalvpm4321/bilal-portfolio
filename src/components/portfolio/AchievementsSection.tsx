@@ -21,24 +21,23 @@ export const AchievementsSection: React.FC = () => {
   }));
 
   return (
-    <section id="achievements" className="py-6 sm:py-8 relative overflow-hidden bg-white text-[#1b281c]">
+    <section id="achievements" className="py-6 sm:py-8 relative overflow-hidden bg-white dark:bg-[#070a08] text-[#1b281c] dark:text-[#f1f5ee] transition-colors duration-300">
       {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Top-Center Stage Glow Circle (540px) */}
-        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[540px] h-[540px] bg-[#738666]/18 rounded-full blur-[120px]" />
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[540px] h-[540px] bg-[#738666]/18 dark:bg-[#738666]/22 rounded-full blur-[120px]" />
         {/* Bottom-Left Outer Filled Circle (380px) */}
-        <div className="absolute -bottom-20 -left-20 w-[380px] h-[380px] bg-[#738666]/20 border border-[#738666]/30 rounded-full blur-xl" />
+        <div className="absolute -bottom-20 -left-20 w-[380px] h-[380px] bg-[#738666]/20 dark:bg-[#738666]/25 border border-[#738666]/30 rounded-full blur-xl" />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-none">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] dark:text-[#f1f5ee] font-display tracking-tight leading-none">
             Achievements & Awards
           </h2>
-          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] rounded-full mt-4" />
+          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] dark:bg-[#8eb383] rounded-full mt-4" />
         </div>
-
 
         {/* 3D Circular Orbital Carousel */}
         <Orbital3DCarousel items={achievements} />

@@ -100,25 +100,25 @@ export const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-6 sm:py-8 relative overflow-hidden bg-[#f9faf7] text-[#1b281c]">
+    <section id="projects" className="py-6 sm:py-8 relative overflow-hidden bg-[#f9faf7] dark:bg-[#090d0a] text-[#1b281c] dark:text-[#f1f5ee] transition-colors duration-300">
       {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Top-Left Glow Circle (580px) */}
-        <div className="absolute -top-20 -left-28 w-[580px] h-[580px] bg-[#738666]/18 rounded-full blur-[130px]" />
+        <div className="absolute -top-20 -left-28 w-[580px] h-[580px] bg-[#738666]/18 dark:bg-[#738666]/22 rounded-full blur-[130px]" />
         {/* Center-Right Giant Filled Orb (650px) */}
-        <div className="absolute top-1/4 -right-40 w-[650px] h-[650px] bg-[#738666]/18 border-2 border-[#738666]/25 rounded-full blur-2xl" />
+        <div className="absolute top-1/4 -right-40 w-[650px] h-[650px] bg-[#738666]/18 dark:bg-[#738666]/20 border-2 border-[#738666]/25 dark:border-[#738666]/30 rounded-full blur-2xl" />
         {/* Bottom-Center Medium Glow (340px) */}
-        <div className="absolute -bottom-16 left-1/3 w-[340px] h-[340px] bg-[#738666]/20 rounded-full blur-[80px]" />
+        <div className="absolute -bottom-16 left-1/3 w-[340px] h-[340px] bg-[#738666]/20 dark:bg-[#738666]/25 rounded-full blur-[80px]" />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#1b281c] font-display tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#1b281c] dark:text-[#f1f5ee] font-display tracking-tight leading-tight">
             Projects & Technical Implementations
           </h2>
-          <div className="w-14 h-1 bg-[#738666]/60 rounded-full mt-3.5" />
+          <div className="w-14 h-1 bg-[#738666]/60 dark:bg-[#8eb383]/70 rounded-full mt-3.5" />
         </div>
 
 
@@ -130,10 +130,10 @@ export const ProjectsSection: React.FC = () => {
         >
           
           {/* Ambient Screen Glow */}
-          <div className="absolute -inset-4 bg-[#738666]/12 rounded-3xl blur-2xl -z-10 pointer-events-none" />
+          <div className="absolute -inset-4 bg-[#738666]/12 dark:bg-[#8eb383]/15 rounded-3xl blur-2xl -z-10 pointer-events-none" />
 
           {/* Silver Metallic Studio Monitor Display Chassis */}
-          <div className="bg-[#121614] border-[6px] sm:border-[8px] border-[#e1e4e9] rounded-t-2xl sm:rounded-t-[28px] p-2 sm:p-3 shadow-2xl relative overflow-hidden">
+          <div className="bg-[#121614] border-[6px] sm:border-[8px] border-[#e1e4e9] dark:border-[#2a342c] rounded-t-2xl sm:rounded-t-[28px] p-2 sm:p-3 shadow-2xl relative overflow-hidden">
             
             {/* Glossy Screen Glass Reflection Sheen */}
             <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-white/[0.08] via-transparent to-transparent pointer-events-none z-20" />
@@ -141,7 +141,7 @@ export const ProjectsSection: React.FC = () => {
             {/* Top Bezel: Subtle Web Camera Lens */}
             <div className="flex items-center justify-center relative mb-1.5 z-10">
               <div className="w-2 h-2 rounded-full bg-[#0a0d0b] border border-[#d1d5db]/40 flex items-center justify-center">
-                <div className="w-0.5 h-0.5 rounded-full bg-[#738666]" />
+                <div className="w-0.5 h-0.5 rounded-full bg-[#738666] dark:bg-[#8eb383]" />
               </div>
             </div>
 
@@ -158,14 +158,14 @@ export const ProjectsSection: React.FC = () => {
 
                 {/* Browser URL Pill */}
                 <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#0d120e]/80 border border-[#333e35] text-xs sm:text-sm font-mono text-[#b2c6a8] max-w-[220px] sm:max-w-sm truncate">
-                  <Lock className="w-3.5 h-3.5 text-[#738666] shrink-0" />
+                  <Lock className="w-3.5 h-3.5 text-[#738666] dark:text-[#8eb383] shrink-0" />
                   <span className="truncate">bilal.dev/project/{currentProject.slug || 'architecture'}</span>
                 </div>
 
                 <button
                   onClick={() => setActiveModalProject(currentProject)}
                   title="Expand details"
-                  className="text-[#738666] hover:text-white transition-colors cursor-pointer p-1"
+                  className="text-[#738666] dark:text-[#8eb383] hover:text-white transition-colors cursor-pointer p-1"
                 >
                   <Maximize2 className="w-4 h-4" />
                 </button>
@@ -215,13 +215,13 @@ export const ProjectsSection: React.FC = () => {
           {/* Silver Metallic Studio Display Stand & Base Plate */}
           <div className="relative pointer-events-none flex flex-col items-center">
             {/* Stand Neck */}
-            <div className="w-24 sm:w-36 h-6 sm:h-9 bg-gradient-to-b from-[#b8bcc3] via-[#dcdfe4] to-[#a6abb3] border-x border-[#9fa4ad] shadow-inner" />
+            <div className="w-24 sm:w-36 h-6 sm:h-9 bg-gradient-to-b from-[#b8bcc3] via-[#dcdfe4] to-[#a6abb3] dark:from-[#354037] dark:via-[#425044] dark:to-[#2c372f] border-x border-[#9fa4ad] dark:border-[#4a584d] shadow-inner" />
             
             {/* Stand Base Plate */}
-            <div className="w-52 sm:w-72 h-3.5 sm:h-4.5 bg-gradient-to-b from-[#e3e6eb] via-[#d0d4da] to-[#999ea7] rounded-b-lg shadow-xl border-t border-white/80" />
+            <div className="w-52 sm:w-72 h-3.5 sm:h-4.5 bg-gradient-to-b from-[#e3e6eb] via-[#d0d4da] to-[#999ea7] dark:from-[#3a473d] dark:via-[#303c32] dark:to-[#253027] rounded-b-lg shadow-xl border-t border-white/80 dark:border-white/10" />
             
             {/* Ambient Stand Drop Shadow */}
-            <div className="h-2 w-60 sm:w-80 bg-black/25 blur-md rounded-full mt-0.5" />
+            <div className="h-2 w-60 sm:w-80 bg-black/25 dark:bg-black/50 blur-md rounded-full mt-0.5" />
           </div>
 
         </div>
@@ -237,9 +237,9 @@ export const ProjectsSection: React.FC = () => {
               type="button"
               onClick={handlePrev}
               aria-label="Previous project"
-              className="w-12 h-12 rounded-2xl bg-white border border-[#738666]/20 hover:border-[#738666]/60 text-[#1b281c] hover:bg-[#f1f4ed] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer group"
+              className="w-12 h-12 rounded-2xl bg-white dark:bg-[#121814] border border-[#738666]/20 dark:border-[#738666]/35 hover:border-[#738666]/60 dark:hover:border-[#8eb383]/60 text-[#1b281c] dark:text-[#f1f5ee] hover:bg-[#f1f4ed] dark:hover:bg-[#18231d] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer group"
             >
-              <ChevronLeft className="w-5 h-5 text-[#556950] group-hover:text-[#1b281c] group-hover:-translate-x-0.5 transition-transform" />
+              <ChevronLeft className="w-5 h-5 text-[#556950] dark:text-[#8ea48b] group-hover:text-[#1b281c] dark:group-hover:text-white group-hover:-translate-x-0.5 transition-transform" />
             </button>
 
             {/* View Complete Details Button */}
@@ -247,7 +247,7 @@ export const ProjectsSection: React.FC = () => {
               type="button"
               onClick={() => setActiveModalProject(currentProject)}
               size="lg"
-              className="px-6 sm:px-8 py-3.5 bg-[#738666] hover:bg-[#5f7053] text-white text-sm sm:text-base font-bold rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center gap-2.5 cursor-pointer"
+              className="px-6 sm:px-8 py-3.5 bg-[#738666] hover:bg-[#5f7053] dark:hover:bg-[#8eb383] text-white text-sm sm:text-base font-bold rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center gap-2.5 cursor-pointer"
             >
               <span>View Complete Details</span>
               <ExternalLink className="w-4 h-4" />
@@ -258,20 +258,20 @@ export const ProjectsSection: React.FC = () => {
               type="button"
               onClick={handleNext}
               aria-label="Next project"
-              className="w-12 h-12 rounded-2xl bg-white border border-[#738666]/20 hover:border-[#738666]/60 text-[#1b281c] hover:bg-[#f1f4ed] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer group"
+              className="w-12 h-12 rounded-2xl bg-white dark:bg-[#121814] border border-[#738666]/20 dark:border-[#738666]/35 hover:border-[#738666]/60 dark:hover:border-[#8eb383]/60 text-[#1b281c] dark:text-[#f1f5ee] hover:bg-[#f1f4ed] dark:hover:bg-[#18231d] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer group"
             >
-              <ChevronRight className="w-5 h-5 text-[#556950] group-hover:text-[#1b281c] group-hover:translate-x-0.5 transition-transform" />
+              <ChevronRight className="w-5 h-5 text-[#556950] dark:text-[#8ea48b] group-hover:text-[#1b281c] dark:group-hover:text-white group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
 
           {/* Project Progress Count & Active Dot Indicators */}
           <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-[#3b5237]">
-              <span className="font-mono font-bold text-[#738666]">
+            <div className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-[#3b5237] dark:text-[#a8bfa5]">
+              <span className="font-mono font-bold text-[#738666] dark:text-[#8eb383]">
                 {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
               </span>
               <span>•</span>
-              <span className="font-bold text-[#1b281c]">{currentProject.title}</span>
+              <span className="font-bold text-[#1b281c] dark:text-[#f1f5ee]">{currentProject.title}</span>
             </div>
 
             {/* Pagination Indicator Dots */}

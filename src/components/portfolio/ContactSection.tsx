@@ -80,19 +80,19 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-6 sm:py-8 relative overflow-hidden bg-white text-[#1b281c]">
+    <section id="contact" className="py-6 sm:py-8 relative overflow-hidden bg-white dark:bg-[#080c09] text-[#1b281c] dark:text-[#e5ede4] transition-colors duration-300">
       {/* Ambient Olive Green Circles of Varied Sizes (Filled with Olive Green) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Center Bottom Glowing Radial Orb (700px) */}
-        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#738666]/20 rounded-full blur-[140px]" />
+        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#738666]/20 dark:bg-[#738666]/10 rounded-full blur-[140px]" />
         {/* Top-Right Floating Filled Circle (350px) */}
-        <div className="absolute top-8 -right-14 w-[350px] h-[350px] bg-[#738666]/22 border border-[#738666]/35 rounded-full animate-pulse blur-xl" />
+        <div className="absolute top-8 -right-14 w-[350px] h-[350px] bg-[#738666]/22 dark:bg-[#738666]/15 border border-[#738666]/35 rounded-full animate-pulse blur-xl" />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] font-display tracking-tight leading-tight sm:leading-none">
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] dark:text-[#f0f7ef] font-display tracking-tight leading-tight sm:leading-none">
             Let's Build Something Exceptional
           </h2>
           <div className="w-20 sm:w-24 h-1.5 bg-[#738666] rounded-full mt-4" />
@@ -109,21 +109,21 @@ export const ContactSection: React.FC = () => {
             className="lg:col-span-5 flex flex-col justify-between gap-6"
           >
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] font-display mb-2">Direct Contact Channels</h3>
-              <p className="text-[#2d422a] text-sm sm:text-base leading-relaxed mb-6 font-normal">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] dark:text-[#f0f7ef] font-display mb-2">Direct Contact Channels</h3>
+              <p className="text-[#2d422a] dark:text-[#b8ceb5] text-sm sm:text-base leading-relaxed mb-6 font-normal">
                 Feel free to email, call, or connect via LinkedIn and GitHub. I respond quickly to inquiries.
               </p>
 
               <div className="space-y-3.5">
                 {/* Email Card */}
-                <div className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs">
+                <div className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] dark:bg-[#0d140e] border border-[#738666]/20 dark:border-[#738666]/30 flex items-center justify-between group hover:border-[#738666]/50 dark:hover:border-[#738666]/60 transition-all shadow-xs">
                   <div className="flex items-center gap-3.5">
-                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
+                    <div className="p-3 rounded-xl bg-[#738666]/12 dark:bg-[#738666]/20 text-[#738666] dark:text-[#9bc490] border border-[#738666]/25 dark:border-[#738666]/35">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940]">Email</p>
-                      <a href={`mailto:${email}`} className="text-sm sm:text-base font-bold text-[#1b281c] hover:text-[#556950] transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940] dark:text-[#8ea788]">Email</p>
+                      <a href={`mailto:${email}`} className="text-sm sm:text-base font-bold text-[#1b281c] dark:text-[#eef5ed] hover:text-[#556950] dark:hover:text-[#a0c596] transition-colors">
                         {email}
                       </a>
                     </div>
@@ -131,22 +131,22 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => copyToClipboard(email, 'email')}
-                    className="p-2.5 rounded-xl text-[#556950] hover:text-[#1b281c] hover:bg-[#738666]/10 transition-colors cursor-pointer"
+                    className="p-2.5 rounded-xl text-[#556950] dark:text-[#8ea788] hover:text-[#1b281c] dark:hover:text-[#ffffff] hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 transition-colors cursor-pointer"
                     title="Copy Email"
                   >
-                    {copiedKey === 'email' ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                    {copiedKey === 'email' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
 
                 {/* Phone Card */}
-                <div className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs">
+                <div className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] dark:bg-[#0d140e] border border-[#738666]/20 dark:border-[#738666]/30 flex items-center justify-between group hover:border-[#738666]/50 dark:hover:border-[#738666]/60 transition-all shadow-xs">
                   <div className="flex items-center gap-3.5">
-                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
+                    <div className="p-3 rounded-xl bg-[#738666]/12 dark:bg-[#738666]/20 text-[#738666] dark:text-[#9bc490] border border-[#738666]/25 dark:border-[#738666]/35">
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940]">Phone</p>
-                      <a href={`tel:${phone}`} className="text-sm sm:text-base font-bold text-[#1b281c] hover:text-[#556950] transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940] dark:text-[#8ea788]">Phone</p>
+                      <a href={`tel:${phone}`} className="text-sm sm:text-base font-bold text-[#1b281c] dark:text-[#eef5ed] hover:text-[#556950] dark:hover:text-[#a0c596] transition-colors">
                         {phone}
                       </a>
                     </div>
@@ -154,10 +154,10 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => copyToClipboard(phone, 'phone')}
-                    className="p-2.5 rounded-xl text-[#556950] hover:text-[#1b281c] hover:bg-[#738666]/10 transition-colors cursor-pointer"
+                    className="p-2.5 rounded-xl text-[#556950] dark:text-[#8ea788] hover:text-[#1b281c] dark:hover:text-[#ffffff] hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 transition-colors cursor-pointer"
                     title="Copy Phone"
                   >
-                    {copiedKey === 'phone' ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                    {copiedKey === 'phone' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
 
@@ -166,20 +166,20 @@ export const ContactSection: React.FC = () => {
                   href="https://www.linkedin.com/in/bilalvpm4321"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs"
+                  className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] dark:bg-[#0d140e] border border-[#738666]/20 dark:border-[#738666]/30 flex items-center justify-between group hover:border-[#738666]/50 dark:hover:border-[#738666]/60 transition-all shadow-xs"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
+                    <div className="p-3 rounded-xl bg-[#738666]/12 dark:bg-[#738666]/20 text-[#738666] dark:text-[#9bc490] border border-[#738666]/25 dark:border-[#738666]/35">
                       <Linkedin className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940]">LinkedIn</p>
-                      <p className="text-sm sm:text-base font-bold text-[#1b281c] group-hover:text-[#556950] transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940] dark:text-[#8ea788]">LinkedIn</p>
+                      <p className="text-sm sm:text-base font-bold text-[#1b281c] dark:text-[#eef5ed] group-hover:text-[#556950] dark:group-hover:text-[#a0c596] transition-colors">
                         linkedin.com/in/bilalvpm4321
                       </p>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[#556950] group-hover:text-[#1b281c] transition-colors" />
+                  <ExternalLink className="w-4 h-4 text-[#556950] dark:text-[#8ea788] group-hover:text-[#1b281c] dark:group-hover:text-[#ffffff] transition-colors" />
                 </a>
 
                 {/* GitHub Card */}
@@ -187,20 +187,20 @@ export const ContactSection: React.FC = () => {
                   href="https://github.com/bilalvpm4321"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] border border-[#738666]/20 flex items-center justify-between group hover:border-[#738666]/50 transition-all shadow-xs"
+                  className="p-4 sm:p-4.5 rounded-xl bg-[#f8faf6] dark:bg-[#0d140e] border border-[#738666]/20 dark:border-[#738666]/30 flex items-center justify-between group hover:border-[#738666]/50 dark:hover:border-[#738666]/60 transition-all shadow-xs"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="p-3 rounded-xl bg-[#738666]/12 text-[#738666] border border-[#738666]/25">
+                    <div className="p-3 rounded-xl bg-[#738666]/12 dark:bg-[#738666]/20 text-[#738666] dark:text-[#9bc490] border border-[#738666]/25 dark:border-[#738666]/35">
                       <Github className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940]">GitHub</p>
-                      <p className="text-sm sm:text-base font-bold text-[#1b281c] group-hover:text-[#556950] transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#435940] dark:text-[#8ea788]">GitHub</p>
+                      <p className="text-sm sm:text-base font-bold text-[#1b281c] dark:text-[#eef5ed] group-hover:text-[#556950] dark:group-hover:text-[#a0c596] transition-colors">
                         github.com/bilalvpm4321
                       </p>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[#556950] group-hover:text-[#1b281c] transition-colors" />
+                  <ExternalLink className="w-4 h-4 text-[#556950] dark:text-[#8ea788] group-hover:text-[#1b281c] dark:group-hover:text-[#ffffff] transition-colors" />
                 </a>
               </div>
             </div>
@@ -214,23 +214,23 @@ export const ContactSection: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-7"
           >
-            <Card className="p-6 sm:p-8 bg-white border-[#738666]/20 shadow-md">
-              <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] font-display mb-2">Send a Direct Message</h3>
-              <p className="text-[#2d422a] text-sm sm:text-base mb-6 font-normal">
+            <Card className="p-6 sm:p-8 bg-white dark:bg-[#0e1610] border-[#738666]/20 dark:border-[#738666]/30 shadow-md">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] dark:text-[#f0f7ef] font-display mb-2">Send a Direct Message</h3>
+              <p className="text-[#2d422a] dark:text-[#b8ceb5] text-sm sm:text-base mb-6 font-normal">
                 Have a project or opportunity in mind? Send a message and it will be received securely.
               </p>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4.5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs sm:text-sm font-bold text-[#1b281c] uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs sm:text-sm font-bold text-[#1b281c] dark:text-[#dde8dc] uppercase tracking-wider mb-1.5">
                       Your Name <span className="text-[#738666]">*</span>
                     </label>
                     <input
                       {...register('name')}
                       type="text"
                       placeholder="e.g. John Doe"
-                      className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm sm:text-base placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] dark:bg-[#121c14] border border-[#738666]/25 dark:border-[#738666]/35 text-[#1b281c] dark:text-[#f0f7ef] text-sm sm:text-base placeholder:text-[#556950]/60 dark:placeholder:text-[#7f997a]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
                     />
                     {errors.name && (
                       <p className="text-xs text-rose-500 mt-1 font-semibold">{errors.name.message}</p>
@@ -238,14 +238,14 @@ export const ContactSection: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs sm:text-sm font-bold text-[#1b281c] uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs sm:text-sm font-bold text-[#1b281c] dark:text-[#dde8dc] uppercase tracking-wider mb-1.5">
                       Email Address <span className="text-[#738666]">*</span>
                     </label>
                     <input
                       {...register('email')}
                       type="email"
                       placeholder="e.g. john@example.com"
-                      className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm sm:text-base placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] dark:bg-[#121c14] border border-[#738666]/25 dark:border-[#738666]/35 text-[#1b281c] dark:text-[#f0f7ef] text-sm sm:text-base placeholder:text-[#556950]/60 dark:placeholder:text-[#7f997a]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
                     />
                     {errors.email && (
                       <p className="text-xs text-rose-500 mt-1 font-semibold">{errors.email.message}</p>
@@ -254,26 +254,26 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs sm:text-sm font-bold text-[#1b281c] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs sm:text-sm font-bold text-[#1b281c] dark:text-[#dde8dc] uppercase tracking-wider mb-1.5">
                     Subject / Topic
                   </label>
                   <input
                     {...register('subject')}
                     type="text"
                     placeholder="e.g. Full-Stack / AI Opportunity or Project Collaboration"
-                    className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm sm:text-base placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] dark:bg-[#121c14] border border-[#738666]/25 dark:border-[#738666]/35 text-[#1b281c] dark:text-[#f0f7ef] text-sm sm:text-base placeholder:text-[#556950]/60 dark:placeholder:text-[#7f997a]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs sm:text-sm font-bold text-[#1b281c] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs sm:text-sm font-bold text-[#1b281c] dark:text-[#dde8dc] uppercase tracking-wider mb-1.5">
                     Your Message <span className="text-[#738666]">*</span>
                   </label>
                   <textarea
                     {...register('message')}
                     rows={4}
                     placeholder="Tell me about your project, role, or proposal..."
-                    className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] border border-[#738666]/25 text-[#1b281c] text-sm sm:text-base placeholder:text-[#556950]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#f8faf6] dark:bg-[#121c14] border border-[#738666]/25 dark:border-[#738666]/35 text-[#1b281c] dark:text-[#f0f7ef] text-sm sm:text-base placeholder:text-[#556950]/60 dark:placeholder:text-[#7f997a]/60 focus:outline-none focus:border-[#738666] focus:ring-1 focus:ring-[#738666] transition-all resize-none"
                   />
                   {errors.message && (
                     <p className="text-xs text-rose-500 mt-1 font-semibold">{errors.message.message}</p>

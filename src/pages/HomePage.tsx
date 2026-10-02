@@ -25,7 +25,7 @@ export const HomePage: React.FC = () => {
       )}
 
       <motion.div
-        className="min-h-screen bg-[#f7f8f4] text-[#1b281c] selection:bg-[#738666]/25 selection:text-[#1b281c]"
+        className="min-h-screen bg-[#f7f8f4] dark:bg-[#070a08] text-[#1b281c] dark:text-[#f1f5ee] selection:bg-[#738666]/30 selection:text-[#1b281c] dark:selection:text-white transition-colors duration-300"
         initial={{ opacity: 0.9, scale: 0.975 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}

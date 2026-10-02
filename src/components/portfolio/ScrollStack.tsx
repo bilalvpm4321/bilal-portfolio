@@ -47,7 +47,7 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
       style={{ zIndex }}
     >
       <motion.div
-        className={`sticky rounded-[28px] sm:rounded-[36px] border border-[#738666]/20 bg-white shadow-xl shadow-[#1b281c]/[0.06] overflow-hidden will-change-transform ${className}`}
+        className={`sticky rounded-[28px] sm:rounded-[36px] border border-[#738666]/20 dark:border-[#738666]/30 bg-white dark:bg-[#0d120f] shadow-xl shadow-[#1b281c]/[0.06] dark:shadow-black/70 overflow-hidden will-change-transform transition-colors duration-300 ${className}`}
         style={{
           top: `${topOffset}px`,
           scale,
@@ -56,7 +56,7 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
         }}
       >
         {/* Card Ambient Top Highlight Edge */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#738666]/30 to-transparent pointer-events-none z-30" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#738666]/30 dark:via-[#8eb383]/40 to-transparent pointer-events-none z-30" />
         
         {children}
       </motion.div>

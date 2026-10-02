@@ -151,8 +151,8 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
                 style={cardStyle}
                 className={`absolute w-[245px] sm:w-[300px] h-[340px] sm:h-[410px] rounded-3xl p-5 sm:p-7 flex flex-col justify-between cursor-pointer text-left transition-all duration-500 ${
                   isActive
-                    ? 'bg-white border-2 border-[#c8a869] shadow-[0_25px_60px_rgba(200,168,105,0.3)]'
-                    : 'bg-[#f9faf7] border border-[#738666]/20 hover:border-[#738666]/50 shadow-xl'
+                    ? 'bg-white dark:bg-[#121914] border-2 border-[#c8a869] dark:border-[#d8b874] shadow-[0_25px_60px_rgba(200,168,105,0.3)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)]'
+                    : 'bg-[#f9faf7] dark:bg-[#0e1410] border border-[#738666]/20 dark:border-[#738666]/35 hover:border-[#738666]/50 dark:hover:border-[#8eb383]/50 shadow-xl dark:shadow-black/50'
                 }`}
               >
                 {/* Top Row: Trophy Icon Badge + Honor Badge */}
@@ -161,33 +161,33 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
                     <div className={`p-3 rounded-2xl border transition-all ${
                       isActive
                         ? 'bg-[#738666] text-white border-[#738666] scale-105'
-                        : 'bg-[#c8a869]/15 text-[#8d6d2b] border-[#c8a869]/30'
+                        : 'bg-[#c8a869]/15 text-[#8d6d2b] dark:text-[#d8b874] border-[#c8a869]/30'
                     }`}>
                       <Trophy className="w-6 h-6" />
                     </div>
 
                     {item.badge && (
-                      <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#c8a869]/15 text-[#8d6d2b] border border-[#c8a869]/30 font-mono shadow-xs">
+                      <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#c8a869]/15 text-[#8d6d2b] dark:text-[#d8b874] border border-[#c8a869]/30 font-mono shadow-xs">
                         {item.badge}
                       </span>
                     )}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg sm:text-2xl font-extrabold text-[#1b281c] mb-1.5 font-display leading-snug">
+                  <h3 className="text-lg sm:text-2xl font-extrabold text-[#1b281c] dark:text-[#f1f5ee] mb-1.5 font-display leading-snug">
                     {item.title}
                   </h3>
 
                   {/* Subtitle / Issuer */}
                   {item.subtitle && (
-                    <p className="text-sm font-bold text-[#556c50] mb-3">
+                    <p className="text-sm font-bold text-[#556c50] dark:text-[#a8bfa5] mb-3">
                       {item.subtitle}
                     </p>
                   )}
 
                   {/* Description Narrative - Full text on active, line-clamp on side cards */}
                   {item.description && (
-                    <p className={`text-sm sm:text-base text-[#243820] leading-relaxed font-normal ${
+                    <p className={`text-sm sm:text-base text-[#243820] dark:text-[#c7d8c4] leading-relaxed font-normal ${
                       isActive ? 'line-clamp-none' : 'line-clamp-3'
                     }`}>
                       {item.description}
@@ -197,8 +197,8 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
 
                 {/* Bottom Row: Date / Year Tag */}
                 {item.date_or_year && (
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-mono font-bold text-[#32452e] pt-3.5 border-t border-[#738666]/15 shrink-0">
-                    <Calendar className="w-4 h-4 text-[#c8a869]" />
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-mono font-bold text-[#32452e] dark:text-[#a8bfa5] pt-3.5 border-t border-[#738666]/15 dark:border-[#738666]/25 shrink-0">
+                    <Calendar className="w-4 h-4 text-[#c8a869] dark:text-[#d8b874]" />
                     <span>{item.date_or_year}</span>
                   </div>
                 )}
@@ -215,7 +215,7 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
             href={activeItem.credential_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#556c50] hover:text-[#1b281c] transition-colors py-1 px-3 rounded-lg hover:bg-[#738666]/10"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#556c50] dark:text-[#8eb383] hover:text-[#1b281c] dark:hover:text-white transition-colors py-1 px-3 rounded-lg hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20"
           >
             <span>View Verified Credential</span>
             <ExternalLink className="w-4 h-4" />
@@ -234,8 +234,8 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
               aria-label={`Go to slide ${index + 1}`}
               className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
                 isActive
-                  ? 'w-7 bg-[#1b281c]'
-                  : 'w-2.5 bg-[#738666]/30 hover:bg-[#738666]/70'
+                  ? 'w-7 bg-[#1b281c] dark:bg-[#f1f5ee]'
+                  : 'w-2.5 bg-[#738666]/30 dark:bg-[#738666]/40 hover:bg-[#738666]/70'
               }`}
             />
           );

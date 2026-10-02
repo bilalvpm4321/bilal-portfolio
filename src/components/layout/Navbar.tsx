@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { ThemeToggle } from './ThemeToggle';
 
 const NAV_LINKS = [
   { name: 'About', href: '#about' },
@@ -48,19 +48,20 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const resumeUrl = data.profile?.resume_url || '/resume.pdf';
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 backdrop-blur-md border-b border-[#738666]/15 py-3 shadow-sm shadow-[#738666]/5'
+          ? 'bg-white/85 dark:bg-[#080c09]/85 backdrop-blur-md border-b border-[#738666]/15 dark:border-[#738666]/25 py-3 shadow-sm shadow-[#738666]/5'
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center relative">
-        {/* Desktop Navigation Links (Centered) */}
-        <nav className="hidden lg:flex items-center gap-1.5 bg-white/90 border border-[#738666]/25 px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
+        {/* Left spacer for balance on desktop */}
+        <div className="hidden lg:block w-10" />
+
+        {/* Desktop Navigation Links (Centered Pill) */}
+        <nav className="hidden lg:flex items-center gap-1.5 bg-white/90 dark:bg-[#121914]/90 border border-[#738666]/25 dark:border-[#738666]/35 px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-xs transition-colors duration-300">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.substring(1) && location.pathname === '/';
             return (
@@ -70,7 +71,7 @@ export const Navbar: React.FC = () => {
                 className={`px-3.5 py-1.5 text-sm rounded-full transition-all duration-200 ${
                   isActive
                     ? 'bg-[#738666] text-white font-bold shadow-xs'
-                    : 'text-[#2a3e28] font-semibold hover:text-[#1b281c] hover:bg-[#738666]/12'
+                    : 'text-[#2a3e28] dark:text-[#b8cbb4] font-semibold hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/12 dark:hover:bg-[#738666]/25'
                 }`}
               >
                 {link.name}
@@ -79,16 +80,30 @@ export const Navbar: React.FC = () => {
           })}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center justify-end w-full sm:hidden">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl text-[#1b281c] bg-[#738666]/10 border border-[#738666]/20"
-            aria-label="Toggle navigation menu"
+        {/* Right Action Area (Theme Switcher on Desktop) */}
+        <div className="hidden lg:flex items-center justify-end">
+          <ThemeToggle />
+        </div>
+
+        {/* Mobile Header Bar: Theme Toggle + Menu Hamburger */}
+        <div className="flex items-center justify-between w-full lg:hidden">
+          <a
+            href="/"
+            className="font-editorial text-xl font-bold tracking-tight text-[#1b281c] dark:text-[#f1f5ee]"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+            Bilal Ahamed
+          </a>
+          <div className="flex items-center gap-2">
+            <ThemeToggle size="sm" />
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl text-[#1b281c] dark:text-[#f1f5ee] bg-[#738666]/10 dark:bg-[#738666]/20 border border-[#738666]/20 dark:border-[#738666]/30 cursor-pointer"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -99,7 +114,7 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="sm:hidden border-b border-[#738666]/20 bg-white/98 backdrop-blur-xl px-4 pt-3 pb-6 shadow-lg"
+            className="lg:hidden border-b border-[#738666]/20 dark:border-[#738666]/30 bg-white/98 dark:bg-[#0a0f0c]/98 backdrop-blur-xl px-4 pt-3 pb-6 shadow-xl"
           >
             <div className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
@@ -107,7 +122,7 @@ export const Navbar: React.FC = () => {
                   key={link.name}
                   href={location.pathname === '/' ? link.href : `/${link.href}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 text-sm text-[#3b4e39] hover:text-[#1b281c] hover:bg-[#738666]/10 rounded-lg font-medium transition-colors"
+                  className="px-3.5 py-2.5 text-sm text-[#3b4e39] dark:text-[#b8cbb4] hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 rounded-xl font-medium transition-colors"
                 >
                   {link.name}
                 </a>
@@ -116,7 +131,6 @@ export const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
     </header>
   );
 };

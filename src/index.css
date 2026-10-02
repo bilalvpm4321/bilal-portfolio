@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --background: #ffffff;
@@ -12,12 +14,30 @@
     --sage-primary: #738666;
     --forest-deep: #23422e;
     --brass-gold: #c8a869;
+    --text-muted: #556950;
+    --glow-color: rgba(115, 134, 102, 0.15);
+  }
+
+  .dark {
+    --background: #080c09;
+    --foreground: #f1f5ee;
+    --surface: #0e1410;
+    --surface-card: #121914;
+    --surface-hover: #19231c;
+    --border-subtle: rgba(127, 168, 115, 0.18);
+    --border-highlight: rgba(127, 168, 115, 0.4);
+    --sage-primary: #8eb383;
+    --forest-deep: #b0cca9;
+    --brass-gold: #d8b874;
+    --text-muted: #8ea48b;
+    --glow-color: rgba(127, 168, 115, 0.15);
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -48,14 +68,27 @@
   background: #f8faf6;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #080c09;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #c3cec0;
   border-radius: 9999px;
   border: 2px solid #f8faf6;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #243327;
+  border-color: #080c09;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #738666;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #8eb383;
 }
 
 /* Infinite Marquee Animation with Pause on Hover */

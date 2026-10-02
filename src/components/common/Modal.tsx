@@ -66,22 +66,22 @@ export const Modal: React.FC<ModalProps> = ({
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
             className={cn(
-              'relative w-full bg-white border border-[#738666]/25 rounded-2xl shadow-2xl p-6 text-[#1b281c] z-10 my-8 max-h-[90vh] overflow-y-auto [.theme-admin_&]:bg-[#0d0f17] [.theme-admin_&]:border-slate-800/90 [.theme-admin_&]:text-gray-100',
+              'relative w-full bg-white dark:bg-[#111713] border border-[#738666]/25 dark:border-[#738666]/35 rounded-2xl shadow-2xl p-6 text-[#1b281c] dark:text-[#f1f5ee] z-10 my-8 max-h-[90vh] overflow-y-auto [.theme-admin_&]:bg-[#0d0f17] [.theme-admin_&]:border-slate-800/90 [.theme-admin_&]:text-gray-100',
               maxWClasses[maxWidth],
               className
             )}
             role="dialog"
             aria-modal="true"
           >
-            <div className="flex items-start justify-between pb-4 border-b border-[#738666]/15 mb-5 [.theme-admin_&]:border-slate-800/80">
+            <div className="flex items-start justify-between pb-4 border-b border-[#738666]/15 dark:border-[#738666]/25 mb-5 [.theme-admin_&]:border-slate-800/80">
               <div>
-                {title && <h3 className="text-xl font-bold text-[#1b281c] tracking-tight [.theme-admin_&]:text-white">{title}</h3>}
-                {description && <p className="text-sm text-[#4a5d46] mt-1 [.theme-admin_&]:text-slate-400">{description}</p>}
+                {title && <h3 className="text-xl font-bold text-[#1b281c] dark:text-[#f1f5ee] tracking-tight [.theme-admin_&]:text-white">{title}</h3>}
+                {description && <p className="text-sm text-[#4a5d46] dark:text-[#a8bfa5] mt-1 [.theme-admin_&]:text-slate-400">{description}</p>}
               </div>
               <button
                 type="button"
                 onClick={onClose}
-                className="text-[#556950] hover:text-[#1b281c] p-1.5 rounded-lg hover:bg-[#738666]/10 transition-colors [.theme-admin_&]:text-slate-400 [.theme-admin_&]:hover:text-white"
+                className="text-[#556950] dark:text-[#8ea48b] hover:text-[#1b281c] dark:hover:text-white p-1.5 rounded-lg hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 transition-colors [.theme-admin_&]:text-slate-400 [.theme-admin_&]:hover:text-white cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />

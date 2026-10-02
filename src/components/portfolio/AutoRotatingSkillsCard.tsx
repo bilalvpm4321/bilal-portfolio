@@ -154,43 +154,43 @@ export const AutoRotatingSkillsCard: React.FC = () => {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Main Container Card (matching Work & Contact card aesthetic) */}
-      <div className="relative rounded-3xl bg-white border border-[#738666]/20 shadow-lg shadow-[#1b281c]/[0.04] overflow-hidden p-4 sm:p-6 text-[#1b281c]">
+      <div className="relative rounded-3xl bg-white dark:bg-[#111713] border border-[#738666]/20 dark:border-[#738666]/30 shadow-lg shadow-[#1b281c]/[0.04] dark:shadow-black/50 overflow-hidden p-4 sm:p-6 text-[#1b281c] dark:text-[#f1f5ee] transition-colors duration-300">
         {/* Subtle Ambient Radial Glow */}
-        <div className="pointer-events-none absolute -top-24 -left-24 w-80 h-80 bg-[#738666]/8 rounded-full blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -right-24 w-80 h-80 bg-[#738666]/10 rounded-full blur-3xl" />
+        <div className="pointer-events-none absolute -top-24 -left-24 w-80 h-80 bg-[#738666]/8 dark:bg-[#738666]/15 rounded-full blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 w-80 h-80 bg-[#738666]/10 dark:bg-[#738666]/18 rounded-full blur-3xl" />
 
         {/* 3-Second Auto Progress Timer Bar at Top */}
-        <div className="absolute top-0 inset-x-0 h-1 bg-[#738666]/10 overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-1 bg-[#738666]/10 dark:bg-[#738666]/20 overflow-hidden">
           <motion.div
             key={activeIndex}
             initial={{ width: '0%' }}
             animate={{ width: isPaused ? '100%' : '100%' }}
             transition={{ duration: isPaused ? 0 : 3, ease: 'linear' }}
-            className="h-full bg-gradient-to-r from-[#738666]/60 via-[#738666] to-[#556950]"
+            className="h-full bg-gradient-to-r from-[#738666]/60 via-[#738666] to-[#556950] dark:via-[#8eb383] dark:to-[#738666]"
           />
         </div>
 
         <div className="flex flex-col md:flex-row items-stretch gap-6 sm:gap-8 relative z-10 min-h-[380px]">
           {/* LEFT COLUMN: Vertical rotated Area Label with olive accent line */}
-          <div className="hidden md:flex flex-col items-center justify-center pr-2 sm:pr-4 border-r border-[#738666]/15 select-none">
+          <div className="hidden md:flex flex-col items-center justify-center pr-2 sm:pr-4 border-r border-[#738666]/15 dark:border-[#738666]/25 select-none">
             <div className="flex items-center gap-3 py-6 [writing-mode:vertical-lr] rotate-180">
               {/* Olive accent bar matching our UI theme */}
-              <div className="w-1.5 h-10 rounded-full bg-[#738666] shadow-sm shadow-[#738666]/35" />
-              <span className="font-display font-extrabold text-sm sm:text-base tracking-[0.25em] text-[#738666] uppercase whitespace-nowrap">
+              <div className="w-1.5 h-10 rounded-full bg-[#738666] dark:bg-[#8eb383] shadow-sm shadow-[#738666]/35 dark:shadow-[#8eb383]/40" />
+              <span className="font-display font-extrabold text-sm sm:text-base tracking-[0.25em] text-[#738666] dark:text-[#8eb383] uppercase whitespace-nowrap">
                 {activeArea.shortLabel}
               </span>
             </div>
           </div>
 
           {/* Mobile Top Header (only on small screens) */}
-          <div className="flex md:hidden items-center justify-between gap-3 pb-4 border-b border-[#738666]/15">
+          <div className="flex md:hidden items-center justify-between gap-3 pb-4 border-b border-[#738666]/15 dark:border-[#738666]/25">
             <div className="flex items-center gap-2.5">
-              <div className="w-1.5 h-6 rounded-full bg-[#738666]" />
-              <span className="font-display font-extrabold text-base tracking-widest text-[#738666] uppercase">
+              <div className="w-1.5 h-6 rounded-full bg-[#738666] dark:bg-[#8eb383]" />
+              <span className="font-display font-extrabold text-base tracking-widest text-[#738666] dark:text-[#8eb383] uppercase">
                 {activeArea.shortLabel}
               </span>
             </div>
-            <span className="text-xs text-[#556950] font-mono font-bold">
+            <span className="text-xs text-[#556950] dark:text-[#8ea48b] font-mono font-bold">
               0{activeIndex + 1} / 0{areas.length}
             </span>
           </div>
@@ -200,13 +200,13 @@ export const AutoRotatingSkillsCard: React.FC = () => {
             {/* Area Title & Subtitle */}
             <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h4 className="text-xl sm:text-2xl font-bold font-display tracking-tight text-[#1b281c] flex items-center gap-2.5">
+                <h4 className="text-xl sm:text-2xl font-bold font-display tracking-tight text-[#1b281c] dark:text-[#f1f5ee] flex items-center gap-2.5">
                   <span>{activeArea.title}</span>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#738666]/12 text-[#2d4229] border border-[#738666]/25">
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#738666]/12 dark:bg-[#738666]/22 text-[#2d4229] dark:text-[#c4d7c0] border border-[#738666]/25 dark:border-[#738666]/35">
                     {activeArea.skills.length} Tools
                   </span>
                 </h4>
-                <p className="text-xs sm:text-sm text-[#556950] mt-1 font-normal">
+                <p className="text-xs sm:text-sm text-[#556950] dark:text-[#a8bfa5] mt-1 font-normal">
                   {activeArea.subtitle}
                 </p>
               </div>
@@ -216,7 +216,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsPaused(!isPaused)}
-                  className="p-2 rounded-xl bg-[#f8faf6] hover:bg-[#f0f4ec] border border-[#738666]/20 text-[#3d5337] hover:text-[#1b281c] transition-colors cursor-pointer shadow-2xs"
+                  className="p-2 rounded-xl bg-[#f8faf6] dark:bg-[#16201a] hover:bg-[#f0f4ec] dark:hover:bg-[#1f2c23] border border-[#738666]/20 dark:border-[#738666]/35 text-[#3d5337] dark:text-[#c4d7c0] hover:text-[#1b281c] dark:hover:text-white transition-colors cursor-pointer shadow-2xs"
                   title={isPaused ? 'Resume 3s auto-change' : 'Pause auto-change'}
                 >
                   {isPaused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
@@ -224,7 +224,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="p-2 rounded-xl bg-[#f8faf6] hover:bg-[#f0f4ec] border border-[#738666]/20 text-[#3d5337] hover:text-[#1b281c] transition-colors cursor-pointer shadow-2xs"
+                  className="p-2 rounded-xl bg-[#f8faf6] dark:bg-[#16201a] hover:bg-[#f0f4ec] dark:hover:bg-[#1f2c23] border border-[#738666]/20 dark:border-[#738666]/35 text-[#3d5337] dark:text-[#c4d7c0] hover:text-[#1b281c] dark:hover:text-white transition-colors cursor-pointer shadow-2xs"
                   title="Previous area"
                 >
                   <ChevronLeft className="w-3.5 h-3.5" />
@@ -232,7 +232,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="p-2 rounded-xl bg-[#f8faf6] hover:bg-[#f0f4ec] border border-[#738666]/20 text-[#3d5337] hover:text-[#1b281c] transition-colors cursor-pointer shadow-2xs"
+                  className="p-2 rounded-xl bg-[#f8faf6] dark:bg-[#16201a] hover:bg-[#f0f4ec] dark:hover:bg-[#1f2c23] border border-[#738666]/20 dark:border-[#738666]/35 text-[#3d5337] dark:text-[#c4d7c0] hover:text-[#1b281c] dark:hover:text-white transition-colors cursor-pointer shadow-2xs"
                   title="Next area"
                 >
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -256,7 +256,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.03, duration: 0.2 }}
-                    className="p-3 sm:p-4 rounded-2xl bg-[#f8faf6] hover:bg-[#f1f5ec] border border-[#738666]/20 hover:border-[#738666]/50 transition-all duration-200 flex flex-col items-center justify-center gap-2 group shadow-2xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer select-none"
+                    className="p-3 sm:p-4 rounded-2xl bg-[#f8faf6] dark:bg-[#16201a] hover:bg-[#f1f5ec] dark:hover:bg-[#1f2d24] border border-[#738666]/20 dark:border-[#738666]/35 hover:border-[#738666]/50 dark:hover:border-[#8eb383]/50 transition-all duration-200 flex flex-col items-center justify-center gap-2 group shadow-2xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer select-none"
                   >
                     {/* Authentic Colorful Brand SVG Icon */}
                     <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 drop-shadow-xs">
@@ -264,12 +264,12 @@ export const AutoRotatingSkillsCard: React.FC = () => {
                     </div>
 
                     {/* Uppercase Skill Name in Dark High-Contrast Text */}
-                    <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#1b281c] group-hover:text-[#2d4229] text-center leading-tight">
+                    <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#1b281c] dark:text-[#f1f5ee] group-hover:text-[#2d4229] dark:group-hover:text-white text-center leading-tight">
                       {skill.name}
                     </span>
 
                     {/* Level Badge indicator */}
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white text-[#455c41] border border-[#738666]/20 group-hover:border-[#738666]/40 shadow-2xs">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white dark:bg-[#111713] text-[#455c41] dark:text-[#a8bfa5] border border-[#738666]/20 dark:border-[#738666]/35 group-hover:border-[#738666]/40 dark:group-hover:border-[#8eb383]/40 shadow-2xs">
                       {skill.level}
                     </span>
                   </motion.div>
@@ -279,7 +279,7 @@ export const AutoRotatingSkillsCard: React.FC = () => {
           </div>
 
           {/* RIGHT COLUMN: Vertical Dash Indicators (Theme matched) */}
-          <div className="hidden sm:flex flex-col items-center justify-center pl-2 sm:pl-4 border-l border-[#738666]/15 gap-2.5 select-none">
+          <div className="hidden sm:flex flex-col items-center justify-center pl-2 sm:pl-4 border-l border-[#738666]/15 dark:border-[#738666]/25 gap-2.5 select-none">
             {areas.map((_, idx) => {
               const isActive = activeIndex === idx;
               return (
@@ -293,8 +293,8 @@ export const AutoRotatingSkillsCard: React.FC = () => {
                   <div
                     className={`transition-all duration-300 rounded-full ${
                       isActive
-                        ? 'w-1.5 h-9 bg-[#738666] shadow-sm shadow-[#738666]/40'
-                        : 'w-1 h-6 bg-[#738666]/20 group-hover:bg-[#738666]/50'
+                        ? 'w-1.5 h-9 bg-[#738666] dark:bg-[#8eb383] shadow-sm shadow-[#738666]/40 dark:shadow-[#8eb383]/40'
+                        : 'w-1 h-6 bg-[#738666]/20 dark:bg-[#738666]/30 group-hover:bg-[#738666]/50'
                     }`}
                   />
                 </button>

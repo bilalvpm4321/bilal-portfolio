@@ -275,15 +275,15 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
               <div
                 className={`absolute inset-0 transition-opacity duration-500 ${
                   isActive
-                    ? 'bg-gradient-to-br from-white via-[#fbfcf9] to-[#f4f7f1]'
-                    : 'bg-[#fafbfa] hover:bg-[#f5f8f2]'
+                    ? 'bg-gradient-to-br from-white via-[#fbfcf9] to-[#f4f7f1] dark:from-[#111913] dark:via-[#0e1610] dark:to-[#080d09]'
+                    : 'bg-[#fafbfa] dark:bg-[#0c130d] hover:bg-[#f5f8f2] dark:hover:bg-[#121c13]'
                 }`}
               />
 
               {/* Decorative Subtle Geometric Emblem in Background of Active Card */}
               <div
                 className={`absolute -right-12 -bottom-12 w-64 h-64 rounded-full pointer-events-none transition-opacity duration-700 ${
-                  isActive ? 'opacity-[0.06]' : 'opacity-0'
+                  isActive ? 'opacity-[0.06] dark:opacity-[0.1]' : 'opacity-0'
                 } bg-radial from-[#738666] to-transparent`}
               />
 
@@ -302,7 +302,7 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                 }}
               >
                 {/* Top: Icon in soft badge */}
-                <div className="w-10 h-10 rounded-2xl bg-white border border-[#738666]/20 shadow-xs flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-2xl bg-white dark:bg-[#141e15] border border-[#738666]/20 dark:border-[#738666]/30 shadow-xs flex items-center justify-center shrink-0">
                   {icon}
                 </div>
 
@@ -312,7 +312,7 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                 </div>
 
                 {/* Bottom: Period Tag */}
-                <div className="text-xs font-mono font-bold text-[#2d4429] bg-[#738666]/15 px-2.5 py-1 rounded-full border border-[#738666]/25 shrink-0">
+                <div className="text-xs font-mono font-bold text-[#2d4429] dark:text-[#c4d7c0] bg-[#738666]/15 dark:bg-[#738666]/25 px-2.5 py-1 rounded-full border border-[#738666]/25 dark:border-[#738666]/35 shrink-0">
                   {item.period}
                 </div>
               </div>
@@ -333,51 +333,51 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
               >
                 <div className="ag-panel__inner-wrap">
                   {/* Header: Meta Bar with Period & Badge */}
-                  <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-[#738666]/15">
+                  <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-[#738666]/15 dark:border-[#738666]/25">
                     <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold px-3.5 py-1.5 rounded-full bg-[#738666]/12 text-[#23422e] border border-[#738666]/30 shadow-xs">
+                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold px-3.5 py-1.5 rounded-full bg-[#738666]/12 dark:bg-[#738666]/20 text-[#23422e] dark:text-[#c8dec6] border border-[#738666]/30 dark:border-[#738666]/40 shadow-xs">
                         <Calendar className="w-4 h-4 text-[#738666]" />
                         {item.period}
                       </span>
 
                       {item.badge && (
-                        <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#1b281c] text-white tracking-wide shadow-xs">
+                        <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#1b281c] dark:bg-[#738666] text-white dark:text-[#080c09] tracking-wide shadow-xs">
                           {item.badge}
                         </span>
                       )}
                     </div>
 
-                    <div className="w-10 h-10 rounded-xl bg-[#738666]/15 border border-[#738666]/25 flex items-center justify-center text-[#23422e] shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-[#738666]/15 dark:bg-[#738666]/25 border border-[#738666]/25 dark:border-[#738666]/35 flex items-center justify-center text-[#23422e] dark:text-[#c8dec6] shrink-0">
                       {icon}
                     </div>
                   </div>
 
                   {/* Main Body: Role, Organization, and Narrative */}
                   <div className="my-auto py-3.5">
-                    <h3 className="text-xl sm:text-2xl lg:text-[28px] font-extrabold text-[#1b281c] font-display tracking-tight leading-snug mb-2">
+                    <h3 className="text-xl sm:text-2xl lg:text-[28px] font-extrabold text-[#1b281c] dark:text-[#f0f7ef] font-display tracking-tight leading-snug mb-2">
                       {item.role}
                     </h3>
 
-                    <div className="flex items-center gap-2 text-[15px] sm:text-base font-semibold text-[#3a5237] mb-4">
+                    <div className="flex items-center gap-2 text-[15px] sm:text-base font-semibold text-[#3a5237] dark:text-[#9bb393] mb-4">
                       <Building className="w-4 h-4 text-[#738666] shrink-0" />
                       <span>{item.organization}</span>
                     </div>
 
                     {item.description && (
-                      <p className="text-base sm:text-[17px] text-[#223620] leading-relaxed font-normal line-clamp-4">
+                      <p className="text-base sm:text-[17px] text-[#223620] dark:text-[#c5d8c3] leading-relaxed font-normal line-clamp-4">
                         {item.description}
                       </p>
                     )}
                   </div>
 
                   {/* Footer: Tags & Competencies */}
-                  <div className="pt-3.5 border-t border-[#738666]/15 flex items-center justify-between gap-3">
+                  <div className="pt-3.5 border-t border-[#738666]/15 dark:border-[#738666]/25 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2 flex-wrap">
                       {(item.tags || ['Leadership', 'Event Management', 'Community']).map(
                         (tag, tIdx) => (
                           <span
                             key={tIdx}
-                            className="text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg bg-white text-[#2b4129] border border-[#738666]/25 shadow-xs"
+                            className="text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg bg-white dark:bg-[#141e15] text-[#2b4129] dark:text-[#b8ceb5] border border-[#738666]/25 dark:border-[#738666]/35 shadow-xs"
                           >
                             #{tag}
                           </span>
@@ -385,7 +385,7 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                       )}
                     </div>
 
-                    <span className="text-xs sm:text-sm font-bold text-[#556c50] inline-flex items-center gap-1 shrink-0">
+                    <span className="text-xs sm:text-sm font-bold text-[#556c50] dark:text-[#8ea788] inline-flex items-center gap-1 shrink-0">
                       <span>Key Role</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </span>

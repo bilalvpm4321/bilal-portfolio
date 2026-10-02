@@ -110,7 +110,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden bg-white text-[#1b281c]">
+    <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden bg-white dark:bg-[#070a08] text-[#1b281c] dark:text-[#f1f5ee] transition-colors duration-300">
       {/* Clean background without circles */}
 
       {/* Main Magazine Cover Container */}
@@ -139,7 +139,7 @@ export const HeroSection: React.FC = () => {
               </span>
 
               {/* Solid Fill Text for AHAMED - Olive Green */}
-              <span className="text-[#738666]">
+              <span className="text-[#738666] dark:text-[#8eb383]">
                 AHAMED
               </span>
             </h1>
@@ -151,7 +151,7 @@ export const HeroSection: React.FC = () => {
               
               {/* Flowing Role Stream Passing 3cm Below Center Behind Photo */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[60px] sm:translate-y-[85px] lg:translate-y-[110px] w-screen z-0 overflow-hidden select-none pointer-events-none">
-                <div className="animate-marquee-flow flex items-center whitespace-nowrap gap-10 text-[#738666]/30 font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-[105px] xl:text-[124px] tracking-[0.16em] uppercase">
+                <div className="animate-marquee-flow flex items-center whitespace-nowrap gap-10 text-[#738666]/30 dark:text-[#738666]/20 font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-[105px] xl:text-[124px] tracking-[0.16em] uppercase">
 
 
                   <span>CLOUD ENGINEER</span>
@@ -200,7 +200,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl font-extrabold text-[#1b281c] mb-3"
+            className="text-lg sm:text-xl font-extrabold text-[#1b281c] dark:text-[#f1f5ee] mb-3"
           >
             {headline}
           </motion.p>
@@ -209,7 +209,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-sm sm:text-base text-[#2e422b] leading-relaxed mb-7 font-normal"
+            className="text-sm sm:text-base text-[#2e422b] dark:text-[#a8bfa5] leading-relaxed mb-7 font-normal"
           >
             {bio}
           </motion.p>
@@ -226,7 +226,7 @@ export const HeroSection: React.FC = () => {
               size="lg"
               onClick={() => scrollToSection('projects')}
               rightIcon={<ArrowRight className="w-4 h-4" />}
-              className="w-full sm:w-auto bg-[#738666] hover:bg-[#627456] text-white border border-[#738666] shadow-md shadow-[#738666]/25 font-semibold"
+              className="w-full sm:w-auto bg-[#738666] hover:bg-[#627456] dark:hover:bg-[#8eb383] text-white border border-[#738666] shadow-md shadow-[#738666]/25 font-semibold"
             >
               View Projects
             </Button>
@@ -242,8 +242,8 @@ export const HeroSection: React.FC = () => {
                 <Button
                   variant="secondary"
                   size="lg"
-                  leftIcon={<FileDown className="w-4 h-4 text-[#738666]" />}
-                  className="w-full sm:w-auto bg-white hover:bg-[#738666]/10 text-[#1b281c] border border-[#738666]/30 shadow-xs"
+                  leftIcon={<FileDown className="w-4 h-4 text-[#738666] dark:text-[#8eb383]" />}
+                  className="w-full sm:w-auto bg-white dark:bg-[#121814] hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 text-[#1b281c] dark:text-[#f1f5ee] border border-[#738666]/30 dark:border-[#738666]/40 shadow-xs"
                 >
                   Download Resume
                 </Button>

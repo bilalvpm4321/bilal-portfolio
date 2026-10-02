@@ -48,6 +48,21 @@
   box-shadow: 0 16px 40px -12px rgba(27, 40, 28, 0.16);
 }
 
+html.dark .ag-panel {
+  background: #0c130d;
+  border-color: rgba(115, 134, 102, 0.22);
+  box-shadow: 0 6px 24px -10px rgba(0, 0, 0, 0.6);
+}
+
+html.dark .ag-panel:hover {
+  border-color: rgba(115, 134, 102, 0.45);
+}
+
+html.dark .ag-panel--active {
+  border-color: rgba(115, 134, 102, 0.7);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.75);
+}
+
 .ag-panel:focus-visible {
   box-shadow:
     0 0 0 2px var(--ag-accent),
@@ -88,6 +103,10 @@
   max-height: 290px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+html.dark .ag-panel__vertical-text {
+  color: #e5ede4;
 }
 
 /* Expanded Panel Content - Pure GSAP Controlled */
