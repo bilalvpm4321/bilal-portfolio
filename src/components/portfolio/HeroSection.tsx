@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { Button } from '../common/Button';
+import CursorRingField from '../originkit/ui/cursor-ring-field';
+import { SparkleBurstField } from './SparkleBurstField';
 import {
   ArrowRight,
   FileDown,
@@ -94,6 +96,14 @@ export const HeroSection: React.FC = () => {
     'M.Tech Computer Science and Engineering (AI & Data Science) student at CUSAT with hands-on experience in full-stack development, Generative AI, Machine Learning, cloud technologies, and real-time systems.';
   const resumeUrl = profile?.resume_url || '/resume.pdf';
 
+  // Dynamic Full Name from Profile (Admin CMS) - strictly Bilal Ahamed
+  const rawFullName = profile?.full_name || 'Bilal Ahamed';
+  const cleanFullName = rawFullName.replace(/\b(PT|P\.T\.|P\s*T)\b/gi, '').replace(/\s+/g, ' ').trim();
+  const fullName = cleanFullName || 'Bilal Ahamed';
+  const nameParts = fullName.split(/\s+/);
+  const firstName = nameParts[0] || 'BILAL';
+  const lastName = nameParts.slice(1).join(' ') || '';
+
   // Bilal's avatar image
   const avatarImage = profile?.avatar_url || '';
 
@@ -110,8 +120,22 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden bg-white dark:bg-[#070a08] text-[#1b281c] dark:text-[#f1f5ee] transition-colors duration-300">
-      {/* Clean background without circles */}
+    <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden bg-white dark:bg-[#08080a] text-[#1b281c] dark:text-white transition-colors duration-300">
+      {/* Interactive Cursor Ring Particle Field Background from Originkit */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
+        <CursorRingField
+          background="transparent"
+          density={300}
+          dotSize={58}
+          speed={6}
+          cameraDistance={160}
+          ring={{ push: 50, width: 9, radius: 12, turbulence: 90 }}
+          style={{ width: '100%', height: '100%' }}
+        />
+      </div>
+
+      {/* Dynamic Supernova Sparkle & Stardust Blast on Rapid Cursor Movement (>= 3 fast continuous sweeps) */}
+      <SparkleBurstField />
 
       {/* Main Magazine Cover Container */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex-1 flex flex-col justify-center">
@@ -128,20 +152,23 @@ export const HeroSection: React.FC = () => {
             className="w-full text-center select-none pointer-events-none z-0"
           >
             <h1 className="font-display text-[11.5vw] sm:text-[10.5vw] md:text-[9.8vw] lg:text-[120px] xl:text-[138px] font-black leading-[0.85] uppercase tracking-[0.06em] sm:tracking-[0.08em] flex items-center justify-center gap-3 sm:gap-6 md:gap-8 whitespace-nowrap">
-              {/* Outlined Stroke Text for BILAL */}
-              <span
-                className="text-transparent"
-                style={{
-                  WebkitTextStroke: '2.8px #738666',
-                }}
-              >
-                BILAL
-              </span>
+              {lastName ? (
+                <>
+                  {/* Outlined Stroke Text for First Name (e.g. BILAL) */}
+                  <span className="hero-outline-text">
+                    {firstName}
+                  </span>
 
-              {/* Solid Fill Text for AHAMED - Olive Green */}
-              <span className="text-[#738666] dark:text-[#8eb383]">
-                AHAMED
-              </span>
+                  {/* Solid Fill Text for Last Name (e.g. AHAMED) */}
+                  <span className="text-[#738666] dark:text-white">
+                    {lastName}
+                  </span>
+                </>
+              ) : (
+                <span className="text-[#738666] dark:text-white">
+                  {firstName}
+                </span>
+              )}
             </h1>
           </motion.div>
 
@@ -149,29 +176,29 @@ export const HeroSection: React.FC = () => {
           {avatarImage && (
             <div className="relative -mt-[12.5vw] sm:-mt-[11.5vw] md:-mt-[125px] lg:-mt-[150px] w-full max-w-lg sm:max-w-xl md:max-w-2xl mx-auto flex items-center justify-center z-10">
               
-              {/* Flowing Role Stream Passing 3cm Below Center Behind Photo */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[60px] sm:translate-y-[85px] lg:translate-y-[110px] w-screen z-0 overflow-hidden select-none pointer-events-none">
-                <div className="animate-marquee-flow flex items-center whitespace-nowrap gap-10 text-[#738666]/30 dark:text-[#738666]/20 font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-[105px] xl:text-[124px] tracking-[0.16em] uppercase">
+              {/* Flowing Role Stream Passing Continuously from Right to Left - Positioned firmly ABOVE cursor animation */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[60px] sm:translate-y-[85px] lg:translate-y-[110px] w-screen z-20 overflow-hidden select-none pointer-events-none">
+                <div className="animate-marquee-flow flex items-center whitespace-nowrap gap-10 text-[#738666]/40 dark:text-white/[0.14] font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-[105px] xl:text-[124px] tracking-[0.16em] uppercase">
 
 
                   <span>CLOUD ENGINEER</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>FULL STACK DEVELOPER</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>AI & ML ENGINEER</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>PROMPT ENGINEER</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>GENERATIVE AI ARCHITECT</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>CLOUD ENGINEER</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>FULL STACK DEVELOPER</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>AI & ML ENGINEER</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>PROMPT ENGINEER</span>
-                  <span className="text-[#c8a869]">•</span>
+                  <span className="text-[#c8a869] dark:text-white/40">•</span>
                   <span>GENERATIVE AI ARCHITECT</span>
                 </div>
               </div>
@@ -181,7 +208,7 @@ export const HeroSection: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.15 }}
-                className="relative z-10 w-80 sm:w-96 md:w-[450px] lg:w-[490px] aspect-[4/5] group flex items-end justify-center"
+                className="relative z-30 w-80 sm:w-96 md:w-[450px] lg:w-[490px] aspect-[4/5] group flex items-end justify-center"
               >
                 <img
                   src={avatarImage}
@@ -200,7 +227,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl font-extrabold text-[#1b281c] dark:text-[#f1f5ee] mb-3"
+            className="text-lg sm:text-xl font-extrabold text-[#1b281c] dark:text-white mb-3"
           >
             {headline}
           </motion.p>
@@ -209,7 +236,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-sm sm:text-base text-[#2e422b] dark:text-[#a8bfa5] leading-relaxed mb-7 font-normal"
+            className="text-sm sm:text-base text-[#2e422b] dark:text-zinc-400 leading-relaxed mb-7 font-normal"
           >
             {bio}
           </motion.p>
@@ -226,7 +253,7 @@ export const HeroSection: React.FC = () => {
               size="lg"
               onClick={() => scrollToSection('projects')}
               rightIcon={<ArrowRight className="w-4 h-4" />}
-              className="w-full sm:w-auto bg-[#738666] hover:bg-[#627456] dark:hover:bg-[#8eb383] text-white border border-[#738666] shadow-md shadow-[#738666]/25 font-semibold"
+              className="w-full sm:w-auto bg-[#738666] dark:bg-white hover:bg-[#627456] dark:hover:bg-zinc-200 text-white dark:text-black border border-[#738666] dark:border-white shadow-md shadow-[#738666]/25 dark:shadow-[0_4px_25px_rgba(255,255,255,0.15)] font-bold"
             >
               View Projects
             </Button>
@@ -242,8 +269,8 @@ export const HeroSection: React.FC = () => {
                 <Button
                   variant="secondary"
                   size="lg"
-                  leftIcon={<FileDown className="w-4 h-4 text-[#738666] dark:text-[#8eb383]" />}
-                  className="w-full sm:w-auto bg-white dark:bg-[#121814] hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 text-[#1b281c] dark:text-[#f1f5ee] border border-[#738666]/30 dark:border-[#738666]/40 shadow-xs"
+                  leftIcon={<FileDown className="w-4 h-4 text-[#738666] dark:text-zinc-300" />}
+                  className="w-full sm:w-auto bg-white dark:bg-white/[0.08] hover:bg-[#738666]/10 dark:hover:bg-white/[0.15] text-[#1b281c] dark:text-white border border-[#738666]/30 dark:border-white/[0.15] shadow-xs"
                 >
                   Download Resume
                 </Button>

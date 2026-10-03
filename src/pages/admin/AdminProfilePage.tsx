@@ -80,7 +80,7 @@ export const AdminProfilePage: React.FC = () => {
   useEffect(() => {
     if (profile) {
       setFormData({
-        full_name: profile.full_name || 'Bilal Ahamed PT',
+        full_name: (profile.full_name || 'Bilal Ahamed').replace(/\b(PT|P\.T\.|P\s*T)\b/gi, '').trim(),
         headline: profile.headline || '',
         bio: profile.bio || '',
         about: profile.about || '',

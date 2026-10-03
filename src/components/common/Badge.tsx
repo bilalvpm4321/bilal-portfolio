@@ -21,19 +21,19 @@ export const Badge: React.FC<BadgeProps> = ({
 
   const variants = {
     primary:
-      'bg-[#738666]/12 dark:bg-[#738666]/22 text-[#3d5337] dark:text-[#b8ceb4] border border-[#738666]/30 dark:border-[#738666]/40 font-semibold hover:bg-[#738666]/20 dark:hover:bg-[#738666]/30 [.theme-admin_&]:bg-sky-500/10 [.theme-admin_&]:text-sky-400 [.theme-admin_&]:border-sky-500/20',
+      'bg-[#738666]/12 dark:bg-white/10 text-[#3d5337] dark:text-zinc-200 border border-[#738666]/30 dark:border-white/15 font-semibold hover:bg-[#738666]/20 dark:hover:bg-white/15 [.theme-admin_&]:bg-sky-500/10 [.theme-admin_&]:text-sky-400 [.theme-admin_&]:border-sky-500/20',
     secondary:
-      'bg-[#f8faf6] dark:bg-[#16201a] text-[#4a5d46] dark:text-[#a8bfa5] border border-[#738666]/20 dark:border-[#738666]/30 [.theme-admin_&]:bg-slate-800/80 [.theme-admin_&]:text-slate-300 [.theme-admin_&]:border-slate-700/60',
+      'bg-[#f8faf6] dark:bg-[#16161a] text-[#4a5d46] dark:text-zinc-400 border border-[#738666]/20 dark:border-white/10 [.theme-admin_&]:bg-slate-800/80 [.theme-admin_&]:text-slate-300 [.theme-admin_&]:border-slate-700/60',
     accent:
-      'bg-[#738666] dark:bg-[#8eb383] text-white dark:text-[#080c09] font-bold border border-[#738666] dark:border-[#8eb383] [.theme-admin_&]:bg-indigo-500/10 [.theme-admin_&]:text-indigo-400 [.theme-admin_&]:border-indigo-500/20',
+      'bg-[#738666] dark:bg-white text-white dark:text-black font-bold border border-[#738666] dark:border-white [.theme-admin_&]:bg-indigo-500/10 [.theme-admin_&]:text-indigo-400 [.theme-admin_&]:border-indigo-500/20',
     success:
       'bg-emerald-600/10 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-600/20 dark:border-emerald-500/30',
     warning:
       'bg-[#c8a869]/15 dark:bg-[#d8b874]/15 text-[#8d6d2b] dark:text-[#d8b874] border border-[#c8a869]/30 dark:border-[#d8b874]/30 [.theme-admin_&]:bg-amber-500/10 [.theme-admin_&]:text-amber-400 [.theme-admin_&]:border-amber-500/20',
     purple:
-      'bg-[#738666]/15 dark:bg-[#738666]/25 text-[#3d5337] dark:text-[#b8ceb4] border border-[#738666]/25 dark:border-[#738666]/35 [.theme-admin_&]:bg-purple-500/10 [.theme-admin_&]:text-purple-400',
+      'bg-[#738666]/15 dark:bg-white/10 text-[#3d5337] dark:text-zinc-200 border border-[#738666]/25 dark:border-white/10 [.theme-admin_&]:bg-purple-500/10 [.theme-admin_&]:text-purple-400',
     outline:
-      'bg-transparent text-[#3d5337] dark:text-[#b8ceb4] border border-[#738666]/30 dark:border-[#738666]/40 [.theme-admin_&]:border-slate-700/80',
+      'bg-transparent text-[#3d5337] dark:text-zinc-300 border border-[#738666]/30 dark:border-white/15 [.theme-admin_&]:border-slate-700/80',
   };
 
   const sizes = {

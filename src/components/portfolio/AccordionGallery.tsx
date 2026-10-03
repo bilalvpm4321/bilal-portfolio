@@ -45,18 +45,18 @@ interface AccordionGalleryProps {
 const getRoleIcon = (org: string, role: string) => {
   const combined = `${org} ${role}`.toLowerCase();
   if (combined.includes('ieee') || combined.includes('robotics')) {
-    return <Cpu className="w-4 h-4 text-[#738666]" />;
+    return <Cpu className="w-4 h-4 text-[#738666] dark:text-white" />;
   }
   if (combined.includes('gdsc') || combined.includes('google') || combined.includes('media')) {
-    return <Globe className="w-4 h-4 text-[#556950]" />;
+    return <Globe className="w-4 h-4 text-[#556950] dark:text-white" />;
   }
   if (combined.includes('palliative') || combined.includes('healthcare') || combined.includes('nss')) {
-    return <HeartHandshake className="w-4 h-4 text-[#8a7258]" />;
+    return <HeartHandshake className="w-4 h-4 text-[#8a7258] dark:text-white" />;
   }
   if (combined.includes('chairperson') || combined.includes('lead') || combined.includes('council')) {
-    return <ShieldCheck className="w-4 h-4 text-[#738666]" />;
+    return <ShieldCheck className="w-4 h-4 text-[#738666] dark:text-white" />;
   }
-  return <Users className="w-4 h-4 text-[#738666]" />;
+  return <Users className="w-4 h-4 text-[#738666] dark:text-white" />;
 };
 
 export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
@@ -67,9 +67,9 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
   radius = 24,
   expandRatio = 0.54,
   orientation = 'horizontal',
-  duration = 0.72,
-  ease = 'power2.out',
-  tilt = 3.5,
+  duration = 0.38,
+  ease = 'power3.out',
+  tilt = 1.2,
   trigger = 'hover',
   className = '',
 }) => {
@@ -127,12 +127,17 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
           return;
         }
 
+        // Cancel previous competing tweens
+        gsap.killTweensOf(panel);
+        if (collapsedEl) gsap.killTweensOf(collapsedEl);
+        if (expandedEl) gsap.killTweensOf(expandedEl);
+
         // Apply flexGrow and subtle 3D perspective with liquid momentum blending
         gsap.to(panel, {
           flexGrow: isActive ? grow : 1,
           rotateY: rot,
           duration: dur,
-          ease: 'power2.out',
+          ease: 'power3.out',
           overwrite: 'auto',
         });
 
@@ -142,7 +147,7 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
             // Instantly hide collapsed strip on the expanding card so it NEVER overlaps
             gsap.to(collapsedEl, {
               opacity: 0,
-              duration: 0.06,
+              duration: 0.08,
               ease: 'power2.out',
               overwrite: 'auto',
               onComplete: () => {
@@ -153,15 +158,15 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
               },
             });
           } else {
-            // On the closing card: Wait until panel has narrowed, then smoothly reveal the vertical strip
+            // On the closing card: Wait briefly, then smoothly reveal the vertical strip
             collapsedEl.style.display = 'flex';
             collapsedEl.style.visibility = 'visible';
             gsap.to(collapsedEl, {
               opacity: 1,
               scale: 1,
-              duration: 0.38,
+              duration: 0.22,
               ease: 'power2.out',
-              delay: 0.22,
+              delay: 0.08,
               overwrite: 'auto',
             });
           }
@@ -170,18 +175,18 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
         // Animate Expanded Rich Card Content
         if (expandedEl) {
           if (isActive) {
-            // Expand first, then glide in rich content onto the clean canvas
+            // Expand cleanly, then glide in rich content onto the clean canvas
             expandedEl.style.display = 'flex';
             expandedEl.style.visibility = 'visible';
             gsap.fromTo(
               expandedEl,
-              { opacity: 0, y: 10 },
+              { opacity: 0, y: 8 },
               {
                 opacity: 1,
                 y: 0,
-                duration: 0.48,
+                duration: 0.26,
                 ease: 'power2.out',
-                delay: 0.16,
+                delay: 0.08,
                 overwrite: 'auto',
               }
             );
@@ -189,8 +194,8 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
             // Instantly vanish rich content on closing card so text never squishes
             gsap.to(expandedEl, {
               opacity: 0,
-              y: 6,
-              duration: 0.12,
+              y: 4,
+              duration: 0.08,
               ease: 'power1.out',
               overwrite: 'auto',
               onComplete: () => {
@@ -275,16 +280,16 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
               <div
                 className={`absolute inset-0 transition-opacity duration-500 ${
                   isActive
-                    ? 'bg-gradient-to-br from-white via-[#fbfcf9] to-[#f4f7f1] dark:from-[#111913] dark:via-[#0e1610] dark:to-[#080d09]'
-                    : 'bg-[#fafbfa] dark:bg-[#0c130d] hover:bg-[#f5f8f2] dark:hover:bg-[#121c13]'
+                    ? 'bg-gradient-to-br from-white via-[#fbfcf9] to-[#f4f7f1] dark:from-[#16161a] dark:via-[#131316] dark:to-[#0f0f12]'
+                    : 'bg-[#fafbfa] dark:bg-[#111114] hover:bg-[#f5f8f2] dark:hover:bg-[#16161a]'
                 }`}
               />
 
               {/* Decorative Subtle Geometric Emblem in Background of Active Card */}
               <div
                 className={`absolute -right-12 -bottom-12 w-64 h-64 rounded-full pointer-events-none transition-opacity duration-700 ${
-                  isActive ? 'opacity-[0.06] dark:opacity-[0.1]' : 'opacity-0'
-                } bg-radial from-[#738666] to-transparent`}
+                  isActive ? 'opacity-[0.06] dark:opacity-[0.05]' : 'opacity-0'
+                } bg-radial from-[#738666] dark:from-white to-transparent`}
               />
 
               {/* ============================================================ */}
@@ -302,7 +307,7 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                 }}
               >
                 {/* Top: Icon in soft badge */}
-                <div className="w-10 h-10 rounded-2xl bg-white dark:bg-[#141e15] border border-[#738666]/20 dark:border-[#738666]/30 shadow-xs flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-2xl bg-white dark:bg-[#18181c] border border-[#738666]/20 dark:border-white/10 shadow-xs flex items-center justify-center shrink-0">
                   {icon}
                 </div>
 
@@ -312,7 +317,7 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                 </div>
 
                 {/* Bottom: Period Tag */}
-                <div className="text-xs font-mono font-bold text-[#2d4429] dark:text-[#c4d7c0] bg-[#738666]/15 dark:bg-[#738666]/25 px-2.5 py-1 rounded-full border border-[#738666]/25 dark:border-[#738666]/35 shrink-0">
+                <div className="text-xs font-mono font-bold text-[#2d4429] dark:text-zinc-300 bg-[#738666]/15 dark:bg-white/10 px-2.5 py-1 rounded-full border border-[#738666]/25 dark:border-white/10 shrink-0">
                   {item.period}
                 </div>
               </div>
@@ -333,51 +338,51 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
               >
                 <div className="ag-panel__inner-wrap">
                   {/* Header: Meta Bar with Period & Badge */}
-                  <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-[#738666]/15 dark:border-[#738666]/25">
+                  <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-[#738666]/15 dark:border-white/[0.08]">
                     <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold px-3.5 py-1.5 rounded-full bg-[#738666]/12 dark:bg-[#738666]/20 text-[#23422e] dark:text-[#c8dec6] border border-[#738666]/30 dark:border-[#738666]/40 shadow-xs">
-                        <Calendar className="w-4 h-4 text-[#738666]" />
+                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold px-3.5 py-1.5 rounded-full bg-[#738666]/12 dark:bg-white/10 text-[#23422e] dark:text-zinc-200 border border-[#738666]/30 dark:border-white/15 shadow-xs">
+                        <Calendar className="w-4 h-4 text-[#738666] dark:text-white" />
                         {item.period}
                       </span>
 
                       {item.badge && (
-                        <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#1b281c] dark:bg-[#738666] text-white dark:text-[#080c09] tracking-wide shadow-xs">
+                        <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-[#1b281c] dark:bg-white text-white dark:text-black tracking-wide shadow-xs">
                           {item.badge}
                         </span>
                       )}
                     </div>
 
-                    <div className="w-10 h-10 rounded-xl bg-[#738666]/15 dark:bg-[#738666]/25 border border-[#738666]/25 dark:border-[#738666]/35 flex items-center justify-center text-[#23422e] dark:text-[#c8dec6] shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-[#738666]/15 dark:bg-white/10 border border-[#738666]/25 dark:border-white/15 flex items-center justify-center text-[#23422e] dark:text-white shrink-0">
                       {icon}
                     </div>
                   </div>
 
                   {/* Main Body: Role, Organization, and Narrative */}
                   <div className="my-auto py-3.5">
-                    <h3 className="text-xl sm:text-2xl lg:text-[28px] font-extrabold text-[#1b281c] dark:text-[#f0f7ef] font-display tracking-tight leading-snug mb-2">
+                    <h3 className="text-xl sm:text-2xl lg:text-[28px] font-extrabold text-[#1b281c] dark:text-white font-display tracking-tight leading-snug mb-2">
                       {item.role}
                     </h3>
 
-                    <div className="flex items-center gap-2 text-[15px] sm:text-base font-semibold text-[#3a5237] dark:text-[#9bb393] mb-4">
-                      <Building className="w-4 h-4 text-[#738666] shrink-0" />
+                    <div className="flex items-center gap-2 text-[15px] sm:text-base font-semibold text-[#3a5237] dark:text-zinc-400 mb-4">
+                      <Building className="w-4 h-4 text-[#738666] dark:text-zinc-400 shrink-0" />
                       <span>{item.organization}</span>
                     </div>
 
                     {item.description && (
-                      <p className="text-base sm:text-[17px] text-[#223620] dark:text-[#c5d8c3] leading-relaxed font-normal line-clamp-4">
+                      <p className="text-base sm:text-[17px] text-[#223620] dark:text-zinc-300 leading-relaxed font-normal line-clamp-4">
                         {item.description}
                       </p>
                     )}
                   </div>
 
                   {/* Footer: Tags & Competencies */}
-                  <div className="pt-3.5 border-t border-[#738666]/15 dark:border-[#738666]/25 flex items-center justify-between gap-3">
+                  <div className="pt-3.5 border-t border-[#738666]/15 dark:border-white/[0.08] flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2 flex-wrap">
                       {(item.tags || ['Leadership', 'Event Management', 'Community']).map(
                         (tag, tIdx) => (
                           <span
                             key={tIdx}
-                            className="text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg bg-white dark:bg-[#141e15] text-[#2b4129] dark:text-[#b8ceb5] border border-[#738666]/25 dark:border-[#738666]/35 shadow-xs"
+                            className="text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg bg-white dark:bg-[#18181c] text-[#2b4129] dark:text-zinc-300 border border-[#738666]/25 dark:border-white/10 shadow-xs"
                           >
                             #{tag}
                           </span>
@@ -385,7 +390,7 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
                       )}
                     </div>
 
-                    <span className="text-xs sm:text-sm font-bold text-[#556c50] dark:text-[#8ea788] inline-flex items-center gap-1 shrink-0">
+                    <span className="text-xs sm:text-sm font-bold text-[#556c50] dark:text-white inline-flex items-center gap-1 shrink-0">
                       <span>Key Role</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </span>

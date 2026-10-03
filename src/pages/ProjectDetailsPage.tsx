@@ -40,10 +40,10 @@ export const ProjectDetailsPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white dark:bg-[#080c09] text-[#1b281c] dark:text-[#e5ede4] flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-[#08080a] text-[#1b281c] dark:text-zinc-100 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-[#738666] border-t-transparent rounded-full animate-spin" />
-          <p className="text-xs text-[#556950] dark:text-[#8ea788]">Loading project details...</p>
+          <div className="w-8 h-8 border-2 border-[#738666] dark:border-white border-t-transparent dark:border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs text-[#556950] dark:text-zinc-400">Loading project details...</p>
         </div>
       </div>
     );
@@ -51,10 +51,10 @@ export const ProjectDetailsPage: React.FC = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-white dark:bg-[#080c09] text-[#1b281c] dark:text-[#e5ede4] flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen bg-white dark:bg-[#08080a] text-[#1b281c] dark:text-zinc-100 flex flex-col items-center justify-center p-4">
         <div className="text-center max-w-md">
-          <h1 className="text-4xl font-bold font-display text-[#1b281c] dark:text-[#f0f7ef] mb-2">Project Not Found</h1>
-          <p className="text-sm text-[#556950] dark:text-[#8ea788] mb-6">
+          <h1 className="text-4xl font-bold font-display text-[#1b281c] dark:text-white mb-2">Project Not Found</h1>
+          <p className="text-sm text-[#556950] dark:text-zinc-400 mb-6">
             The project you are looking for does not exist or may have been unlisted.
           </p>
           <Link to="/#projects">
@@ -102,7 +102,7 @@ export const ProjectDetailsPage: React.FC = () => {
   const hasVideo = Boolean(project.video_url);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#080c09] text-[#1b281c] dark:text-[#e5ede4] selection:bg-[#738666]/25 selection:text-[#1b281c] transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-[#08080a] text-[#1b281c] dark:text-zinc-100 selection:bg-[#738666]/25 dark:selection:bg-white/20 selection:text-[#1b281c] dark:selection:text-white transition-colors duration-300">
       <Navbar />
 
       <main className="pt-28 pb-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -110,7 +110,7 @@ export const ProjectDetailsPage: React.FC = () => {
         <div className="mb-8">
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#556950] dark:text-[#9bb393] hover:text-[#1b281c] dark:hover:text-[#ffffff] px-3 py-1.5 rounded-lg bg-[#f8faf6] dark:bg-[#0e1610] border border-[#738666]/20 dark:border-[#738666]/30 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#556950] dark:text-zinc-300 hover:text-[#1b281c] dark:hover:text-white px-3 py-1.5 rounded-lg bg-[#f8faf6] dark:bg-[#111114] border border-[#738666]/20 dark:border-white/10 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back</span>
@@ -125,7 +125,7 @@ export const ProjectDetailsPage: React.FC = () => {
           className="mb-8"
         >
           <div className="flex flex-wrap items-center gap-2.5 mb-3">
-            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#738666]/12 dark:bg-[#738666]/20 text-[#3d5337] dark:text-[#c4d7c0] border border-[#738666]/30 dark:border-[#738666]/40">
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#738666]/12 dark:bg-white/10 text-[#3d5337] dark:text-zinc-200 border border-[#738666]/30 dark:border-white/15">
               {project.category}
             </span>
             {project.is_featured && (
@@ -134,18 +134,18 @@ export const ProjectDetailsPage: React.FC = () => {
               </Badge>
             )}
             {project.project_date && (
-              <span className="text-xs font-mono text-[#556950] dark:text-[#8ea788] flex items-center gap-1 ml-auto">
-                <Calendar className="w-3.5 h-3.5 text-[#738666]" />
+              <span className="text-xs font-mono text-[#556950] dark:text-zinc-400 flex items-center gap-1 ml-auto">
+                <Calendar className="w-3.5 h-3.5 text-[#738666] dark:text-white" />
                 {project.project_date}
               </span>
             )}
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#1b281c] dark:text-[#f0f7ef] font-display tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#1b281c] dark:text-white font-display tracking-tight mb-4">
             {project.title}
           </h1>
 
-          <p className="text-base sm:text-lg text-[#4a5d46] dark:text-[#b8ceb5] leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-[#4a5d46] dark:text-zinc-300 leading-relaxed max-w-3xl">
             {project.short_description}
           </p>
         </motion.div>
@@ -159,12 +159,12 @@ export const ProjectDetailsPage: React.FC = () => {
         >
           {hasVideo && (
             <div className="flex items-center justify-between pb-1">
-              <div className="flex items-center gap-1.5 bg-[#f1f4ed] dark:bg-[#101812] p-1 rounded-lg border border-[#738666]/20 dark:border-[#738666]/30">
+              <div className="flex items-center gap-1.5 bg-[#f1f4ed] dark:bg-[#111114] p-1 rounded-lg border border-[#738666]/20 dark:border-white/10">
                 <button
                   type="button"
                   onClick={() => setShowVideo(true)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition-all ${
-                    showVideo ? 'bg-[#738666] text-white' : 'text-[#556950] dark:text-[#8ea788] hover:text-[#1b281c] dark:hover:text-[#ffffff]'
+                    showVideo ? 'bg-[#738666] dark:bg-white text-white dark:text-black font-bold' : 'text-[#556950] dark:text-zinc-400 hover:text-[#1b281c] dark:hover:text-white'
                   }`}
                 >
                   <VideoIcon className="w-4 h-4" />
@@ -174,7 +174,7 @@ export const ProjectDetailsPage: React.FC = () => {
                   type="button"
                   onClick={() => setShowVideo(false)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition-all ${
-                    !showVideo ? 'bg-[#738666] text-white' : 'text-[#556950] dark:text-[#8ea788] hover:text-[#1b281c] dark:hover:text-[#ffffff]'
+                    !showVideo ? 'bg-[#738666] dark:bg-white text-white dark:text-black font-bold' : 'text-[#556950] dark:text-zinc-400 hover:text-[#1b281c] dark:hover:text-white'
                   }`}
                 >
                   <ImageIcon className="w-4 h-4" />
@@ -184,7 +184,7 @@ export const ProjectDetailsPage: React.FC = () => {
             </div>
           )}
 
-          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-[#f1f4ed] dark:bg-[#101812] border border-[#738666]/20 dark:border-[#738666]/30 shadow-md">
+          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-[#f1f4ed] dark:bg-[#111114] border border-[#738666]/20 dark:border-white/10 shadow-md">
             {hasVideo && showVideo ? (
               isYouTubeOrVimeo(project.video_url!) ? (
                 <iframe
@@ -219,7 +219,7 @@ export const ProjectDetailsPage: React.FC = () => {
         </motion.div>
 
         {/* Quick Actions Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl bg-[#f8faf6] dark:bg-[#0d140e] border border-[#738666]/20 dark:border-[#738666]/30 mb-12 shadow-xs">
+        <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl bg-[#f8faf6] dark:bg-[#111114] border border-[#738666]/20 dark:border-white/10 mb-12 shadow-xs">
           <div className="flex items-center gap-3">
             {project.github_url && (
               <a
@@ -231,7 +231,7 @@ export const ProjectDetailsPage: React.FC = () => {
                   variant="outline"
                   size="md"
                   leftIcon={<Github className="w-4 h-4" />}
-                  className="border-[#738666]/30 text-[#1b281c] dark:text-[#e5ede4]"
+                  className="border-[#738666]/30 dark:border-white/15 text-[#1b281c] dark:text-white"
                 >
                   View Source Code
                 </Button>
@@ -248,7 +248,7 @@ export const ProjectDetailsPage: React.FC = () => {
                   variant="primary"
                   size="md"
                   rightIcon={<ExternalLink className="w-4 h-4" />}
-                  className="bg-[#738666] hover:bg-[#627456] text-white border-[#738666]"
+                  className="bg-[#738666] hover:bg-[#627456] text-white dark:bg-white dark:text-black dark:border-white font-bold border-[#738666]"
                 >
                   Live Deployment
                 </Button>
@@ -256,9 +256,9 @@ export const ProjectDetailsPage: React.FC = () => {
             )}
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-[#556950] dark:text-[#8ea788]">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#556950] dark:text-zinc-400">
             <span>Slug:</span>
-            <span className="text-[#738666] dark:text-[#9bc490]">/{project.slug}</span>
+            <span className="text-[#738666] dark:text-white font-bold">/{project.slug}</span>
           </div>
         </div>
 
@@ -266,19 +266,19 @@ export const ProjectDetailsPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           {/* Main Description Column */}
           <div className="lg:col-span-8 space-y-8">
-            <Card className="p-6 sm:p-8 bg-white dark:bg-[#0e1610] border-[#738666]/20 dark:border-[#738666]/30 shadow-xs">
-              <h2 className="text-xl font-bold text-[#1b281c] dark:text-[#f0f7ef] font-display mb-4">
+            <Card className="p-6 sm:p-8 bg-white dark:bg-[#111114] border-[#738666]/20 dark:border-white/[0.08] shadow-xs">
+              <h2 className="text-xl font-bold text-[#1b281c] dark:text-white font-display mb-4">
                 Architecture & Implementation Overview
               </h2>
-              <div className="text-[#2a3e27] dark:text-[#c5d8c3] leading-relaxed text-base sm:text-lg space-y-4 whitespace-pre-line font-normal">
+              <div className="text-[#2a3e27] dark:text-zinc-300 leading-relaxed text-base sm:text-lg space-y-4 whitespace-pre-line font-normal">
                 {project.detailed_description || project.short_description}
               </div>
             </Card>
 
             {/* Key Highlights / Capabilities */}
             {project.highlights && project.highlights.length > 0 && (
-              <Card className="p-6 sm:p-8 bg-white dark:bg-[#0e1610] border-[#738666]/20 dark:border-[#738666]/30 shadow-xs">
-                <h2 className="text-xl font-bold text-[#1b281c] dark:text-[#f0f7ef] font-display mb-4 flex items-center gap-2">
+              <Card className="p-6 sm:p-8 bg-white dark:bg-[#111114] border-[#738666]/20 dark:border-white/[0.08] shadow-xs">
+                <h2 className="text-xl font-bold text-[#1b281c] dark:text-white font-display mb-4 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-[#c8a869]" />
                   <span>Key Innovations & Features</span>
                 </h2>
@@ -286,10 +286,10 @@ export const ProjectDetailsPage: React.FC = () => {
                   {project.highlights.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-3.5 p-4 rounded-xl bg-[#f8faf6] dark:bg-[#121c14] border border-[#738666]/20 dark:border-[#738666]/30"
+                      className="flex items-start gap-3.5 p-4 rounded-xl bg-[#f8faf6] dark:bg-[#16161a] border border-[#738666]/20 dark:border-white/10"
                     >
-                      <CheckCircle2 className="w-5 h-5 text-[#738666] dark:text-[#9bc490] shrink-0 mt-0.5" />
-                      <span className="text-[15px] sm:text-base text-[#1b281c] dark:text-[#eef5ed] font-normal leading-relaxed">{item}</span>
+                      <CheckCircle2 className="w-5 h-5 text-[#738666] dark:text-white shrink-0 mt-0.5" />
+                      <span className="text-[15px] sm:text-base text-[#1b281c] dark:text-zinc-200 font-normal leading-relaxed">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -298,16 +298,16 @@ export const ProjectDetailsPage: React.FC = () => {
 
             {/* Gallery Images if provided */}
             {project.gallery_images && project.gallery_images.length > 0 && (
-              <Card className="p-6 sm:p-8 bg-white dark:bg-[#0e1610] border-[#738666]/20 dark:border-[#738666]/30 shadow-xs">
-                <h2 className="text-xl font-bold text-[#1b281c] dark:text-[#f0f7ef] font-display mb-4 flex items-center gap-2">
-                  <ImageIcon className="w-5 h-5 text-[#738666]" />
+              <Card className="p-6 sm:p-8 bg-white dark:bg-[#111114] border-[#738666]/20 dark:border-white/[0.08] shadow-xs">
+                <h2 className="text-xl font-bold text-[#1b281c] dark:text-white font-display mb-4 flex items-center gap-2">
+                  <ImageIcon className="w-5 h-5 text-[#738666] dark:text-white" />
                   <span>Screenshots & System Architecture</span>
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {project.gallery_images.map((img, idx) => (
                     <div
                       key={idx}
-                      className="aspect-video rounded-xl overflow-hidden border border-[#738666]/20 dark:border-[#738666]/30 bg-[#f1f4ed] dark:bg-[#121c14] group"
+                      className="aspect-video rounded-xl overflow-hidden border border-[#738666]/20 dark:border-white/10 bg-[#f1f4ed] dark:bg-[#16161a] group"
                     >
                       <img
                         src={img}
@@ -325,16 +325,16 @@ export const ProjectDetailsPage: React.FC = () => {
           <div className="lg:col-span-4 space-y-6">
             {/* Technologies */}
             {project.technologies && project.technologies.length > 0 && (
-              <Card className="p-6 bg-white dark:bg-[#0e1610] border-[#738666]/20 dark:border-[#738666]/30 shadow-xs">
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3d5337] dark:text-[#c4d7c0] mb-4 flex items-center gap-2">
-                  <Layers className="w-4 h-4 text-[#738666]" />
+              <Card className="p-6 bg-white dark:bg-[#111114] border-[#738666]/20 dark:border-white/[0.08] shadow-xs">
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3d5337] dark:text-zinc-300 mb-4 flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-[#738666] dark:text-white" />
                   <span>Technology Stack</span>
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech.id || tech.name}
-                      className="px-3.5 py-1.5 rounded-xl bg-[#f1f4ed] dark:bg-[#131d14] text-[#22381f] dark:text-[#c8dec6] border border-[#738666]/25 dark:border-[#738666]/35 text-xs sm:text-sm font-semibold shadow-xs"
+                      className="px-3.5 py-1.5 rounded-xl bg-[#f1f4ed] dark:bg-[#16161a] text-[#22381f] dark:text-zinc-200 border border-[#738666]/25 dark:border-white/10 text-xs sm:text-sm font-semibold shadow-xs"
                     >
                       {tech.name}
                     </span>
@@ -345,21 +345,21 @@ export const ProjectDetailsPage: React.FC = () => {
 
             {/* Performance Metrics */}
             {project.metrics && Object.keys(project.metrics).length > 0 && (
-              <Card className="p-6 bg-white dark:bg-[#0e1610] border-[#738666]/20 dark:border-[#738666]/30 shadow-xs">
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3d5337] dark:text-[#c4d7c0] mb-4 flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-[#738666]" />
+              <Card className="p-6 bg-white dark:bg-[#111114] border-[#738666]/20 dark:border-white/[0.08] shadow-xs">
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3d5337] dark:text-zinc-300 mb-4 flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-[#738666] dark:text-white" />
                   <span>Performance Benchmarks</span>
                 </h3>
                 <div className="space-y-3">
                   {Object.entries(project.metrics).map(([key, value]) => (
                     <div
                       key={key}
-                      className="p-3.5 rounded-xl bg-[#f8faf6] dark:bg-[#121c14] border border-[#738666]/20 dark:border-[#738666]/30 flex items-center justify-between"
+                      className="p-3.5 rounded-xl bg-[#f8faf6] dark:bg-[#16161a] border border-[#738666]/20 dark:border-white/10 flex items-center justify-between"
                     >
-                      <span className="text-xs sm:text-sm text-[#445b3f] dark:text-[#9bb393] capitalize font-semibold">
+                      <span className="text-xs sm:text-sm text-[#445b3f] dark:text-zinc-400 capitalize font-semibold">
                         {key.replace(/([A-Z])/g, ' $1')}
                       </span>
-                      <span className="text-base font-mono font-bold text-[#738666] dark:text-[#9bc490]">
+                      <span className="text-base font-mono font-bold text-[#738666] dark:text-white">
                         {String(value)}
                       </span>
                     </div>
@@ -371,9 +371,9 @@ export const ProjectDetailsPage: React.FC = () => {
         </div>
 
         {/* Footer Navigation CTA */}
-        <div className="text-center pt-8 border-t border-[#738666]/20 dark:border-[#738666]/30">
+        <div className="text-center pt-8 border-t border-[#738666]/20 dark:border-white/10">
           <Link to="/#projects">
-            <Button variant="outline" size="md" leftIcon={<ArrowLeft className="w-4 h-4" />} className="border-[#738666]/30 text-[#1b281c] dark:text-[#e5ede4]">
+            <Button variant="outline" size="md" leftIcon={<ArrowLeft className="w-4 h-4" />} className="border-[#738666]/30 dark:border-white/20 text-[#1b281c] dark:text-white">
               Explore More Projects
             </Button>
           </Link>

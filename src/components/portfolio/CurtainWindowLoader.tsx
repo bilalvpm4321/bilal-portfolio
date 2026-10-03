@@ -10,30 +10,36 @@ export const CurtainWindowLoader: React.FC<CurtainWindowLoaderProps> = ({ onComp
   const [phase, setPhase] = useState<'loading' | 'opening' | 'revealed' | 'done'>('loading');
   const animFrameRef = useRef<number | null>(null);
 
-  // Prevent background scrolling while loading
+  // Check if loader was already shown during this session for instant page entry
   useEffect(() => {
+    const hasSeen = sessionStorage.getItem('bilal_portfolio_loader_seen');
+    if (hasSeen) {
+      setPhase('done');
+      if (onComplete) onComplete();
+      return;
+    }
+
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = originalOverflow;
     };
-  }, []);
+  }, [onComplete]);
 
-  // Smooth loading animation loop (2.8 seconds)
+  // Fast, responsive loading animation loop (650ms)
   useEffect(() => {
-    const duration = 2800; // 2.8 seconds for smooth anticipation
+    const hasSeen = sessionStorage.getItem('bilal_portfolio_loader_seen');
+    if (hasSeen) return;
+
+    const duration = 650; // Fast and snappy initial load
     const startTime = performance.now();
 
     const update = (now: number) => {
       const elapsed = now - startTime;
       const rawProgress = Math.min(elapsed / duration, 1);
       
-      // Gentle easeInOut progression
-      const eased =
-        rawProgress < 0.5
-          ? 2 * rawProgress * rawProgress
-          : 1 - Math.pow(-2 * rawProgress + 2, 2) / 2;
-
+      // Snappy cubic ease-out progression
+      const eased = 1 - Math.pow(1 - rawProgress, 3);
       const currentPercent = eased * 100;
       setProgress(currentPercent);
 
@@ -41,10 +47,9 @@ export const CurtainWindowLoader: React.FC<CurtainWindowLoaderProps> = ({ onComp
         animFrameRef.current = requestAnimationFrame(update);
       } else {
         setProgress(100);
-        // Momentary settle at 100% before opening the curtains
         setTimeout(() => {
           handleOpen();
-        }, 220);
+        }, 60);
       }
     };
 
@@ -56,18 +61,22 @@ export const CurtainWindowLoader: React.FC<CurtainWindowLoaderProps> = ({ onComp
   }, []);
 
   const handleOpen = () => {
+    try {
+      sessionStorage.setItem('bilal_portfolio_loader_seen', 'true');
+    } catch {}
+
     setPhase('opening');
 
     // Trigger scenery reveal
     setTimeout(() => {
       setPhase('revealed');
-    }, 1200);
+    }, 380);
 
     // Complete transition and unmount loader
     setTimeout(() => {
       setPhase('done');
       if (onComplete) onComplete();
-    }, 1900);
+    }, 620);
   };
 
   const handleSkip = () => {
@@ -79,7 +88,8 @@ export const CurtainWindowLoader: React.FC<CurtainWindowLoaderProps> = ({ onComp
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] select-none overflow-hidden transition-opacity duration-700 ${
+      onClick={handleSkip}
+      className={`fixed inset-0 z-[99999] select-none overflow-hidden transition-opacity duration-300 ${
         phase === 'revealed' ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
       }`}
       style={{
@@ -174,8 +184,8 @@ export const CurtainWindowLoader: React.FC<CurtainWindowLoaderProps> = ({ onComp
                 x: '-84%',
                 scaleX: 0.2,
                 transition: {
-                  duration: 1.55,
-                  ease: [0.25, 1, 0.35, 1], // Natural curtain gathering deceleration
+                  duration: 0.58,
+                  ease: [0.16, 1, 0.3, 1], // Natural swift curtain gathering deceleration
                 },
               }
         }
@@ -238,7 +248,7 @@ export const CurtainWindowLoader: React.FC<CurtainWindowLoaderProps> = ({ onComp
               : {
                   opacity: 1,
                   scale: 1,
-                  transition: { delay: 0.45, duration: 0.7 },
+                  transition: { delay: 0.15, duration: 0.35 },
                 }
           }
         >
@@ -261,8 +271,8 @@ export const CurtainWindowLoader: React.FC<CurtainWindowLoaderProps> = ({ onComp
                 x: '84%',
                 scaleX: 0.2,
                 transition: {
-                  duration: 1.55,
-                  ease: [0.25, 1, 0.35, 1],
+                  duration: 0.58,
+                  ease: [0.16, 1, 0.3, 1],
                 },
               }
         }
@@ -325,7 +335,7 @@ export const CurtainWindowLoader: React.FC<CurtainWindowLoaderProps> = ({ onComp
               : {
                   opacity: 1,
                   scale: 1,
-                  transition: { delay: 0.45, duration: 0.7 },
+                  transition: { delay: 0.15, duration: 0.35 },
                 }
           }
         >

@@ -54,17 +54,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} maxWidth="2xl">
-      <div className="flex flex-col gap-6 text-[#1b281c] dark:text-[#f1f5ee]">
+      <div className="flex flex-col gap-6 text-[#1b281c] dark:text-white">
         {/* Media Header (Video Demo or Cover Image) */}
         <div className="space-y-2">
           {hasVideo && (
             <div className="flex items-center justify-between pb-1">
-              <div className="flex items-center gap-1.5 bg-[#f1f4ed] dark:bg-[#16201a] p-1.5 rounded-xl border border-[#738666]/20 dark:border-[#738666]/30">
+              <div className="flex items-center gap-1.5 bg-[#f1f4ed] dark:bg-[#141418] p-1.5 rounded-xl border border-[#738666]/20 dark:border-white/[0.1]">
                 <button
                   type="button"
                   onClick={() => setShowVideo(true)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold cursor-pointer transition-all ${
-                    showVideo ? 'bg-[#738666] text-white shadow-xs' : 'text-[#556950] dark:text-[#a8bfa5] hover:text-[#1b281c] dark:hover:text-white'
+                    showVideo ? 'bg-[#738666] dark:bg-white text-white dark:text-black font-bold shadow-xs' : 'text-[#556950] dark:text-zinc-400 hover:text-[#1b281c] dark:hover:text-white'
                   }`}
                 >
                   <VideoIcon className="w-4 h-4" />
@@ -74,7 +74,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   type="button"
                   onClick={() => setShowVideo(false)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold cursor-pointer transition-all ${
-                    !showVideo ? 'bg-[#738666] text-white shadow-xs' : 'text-[#556950] dark:text-[#a8bfa5] hover:text-[#1b281c] dark:hover:text-white'
+                    !showVideo ? 'bg-[#738666] dark:bg-white text-white dark:text-black font-bold shadow-xs' : 'text-[#556950] dark:text-zinc-400 hover:text-[#1b281c] dark:hover:text-white'
                   }`}
                 >
                   <ImageIcon className="w-4 h-4" />
@@ -84,7 +84,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             </div>
           )}
 
-          <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-[#f1f4ed] dark:bg-[#16201a] border border-[#738666]/20 dark:border-[#738666]/30">
+          <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-[#f1f4ed] dark:bg-[#141418] border border-[#738666]/20 dark:border-white/[0.1]">
             {hasVideo && showVideo ? (
               isYouTubeOrVimeo(project.video_url!) ? (
                 <iframe
@@ -118,14 +118,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute bottom-3.5 left-4 right-4 flex items-end justify-between text-white">
                   <div>
-                    <span className="text-xs sm:text-sm font-bold text-[#cce3bf] uppercase tracking-wider">
+                    <span className="text-xs sm:text-sm font-bold text-zinc-300 uppercase tracking-wider">
                       {project.category}
                     </span>
                     <h2 className="text-xl sm:text-2xl font-bold font-display mt-0.5">{project.title}</h2>
                   </div>
                   {project.project_date && (
                     <span className="text-xs sm:text-sm font-semibold flex items-center gap-1.5 bg-black/60 px-3 py-1 rounded-md border border-white/20">
-                      <Calendar className="w-4 h-4 text-[#cce3bf]" />
+                      <Calendar className="w-4 h-4 text-zinc-300" />
                       {project.project_date}
                     </span>
                   )}
@@ -137,10 +137,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         {/* Detailed Description */}
         <div>
-          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] dark:text-[#8eb383] mb-2.5">
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] dark:text-zinc-300 mb-2.5">
             Overview
           </h3>
-          <p className="text-[#1b281c] dark:text-[#c7d8c4] text-[15px] sm:text-base leading-relaxed whitespace-pre-line font-normal">
+          <p className="text-[#1b281c] dark:text-zinc-300 text-[15px] sm:text-base leading-relaxed whitespace-pre-line font-normal">
             {project.detailed_description || project.short_description}
           </p>
         </div>
@@ -148,16 +148,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Highlights / Key Capabilities */}
         {project.highlights && project.highlights.length > 0 && (
           <div>
-            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] dark:text-[#8eb383] mb-3">
+            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] dark:text-zinc-300 mb-3">
               Key Capabilities & Innovations
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {project.highlights.map((highlight, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-2.5 p-3 rounded-xl bg-[#f8faf6] dark:bg-[#16201a] border border-[#738666]/20 dark:border-[#738666]/30 text-sm sm:text-[15px] text-[#1b281c] dark:text-[#f1f5ee]"
+                  className="flex items-start gap-2.5 p-3 rounded-xl bg-[#f8faf6] dark:bg-[#141418] border border-[#738666]/20 dark:border-white/[0.08] text-sm sm:text-[15px] text-[#1b281c] dark:text-white"
                 >
-                  <CheckCircle className="w-4 h-4 text-[#738666] dark:text-[#8eb383] shrink-0 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-[#738666] dark:text-white shrink-0 mt-0.5" />
                   <span className="font-normal leading-relaxed">{highlight}</span>
                 </div>
               ))}
@@ -168,17 +168,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Metrics if present */}
         {project.metrics && Object.keys(project.metrics).length > 0 && (
           <div>
-            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] dark:text-[#8eb383] mb-3">
+            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] dark:text-zinc-300 mb-3">
               Performance & Impact Metrics
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {Object.entries(project.metrics).map(([key, value]) => (
                 <div
                   key={key}
-                  className="p-3.5 rounded-xl bg-[#f8faf6] dark:bg-[#16201a] border border-[#738666]/20 dark:border-[#738666]/30 flex flex-col"
+                  className="p-3.5 rounded-xl bg-[#f8faf6] dark:bg-[#141418] border border-[#738666]/20 dark:border-white/[0.08] flex flex-col"
                 >
-                  <span className="text-xl font-bold text-[#738666] dark:text-[#8eb383]">{String(value)}</span>
-                  <span className="text-xs sm:text-sm text-[#465d41] dark:text-[#a8bfa5] capitalize mt-1 font-semibold">
+                  <span className="text-xl font-bold text-[#738666] dark:text-white">{String(value)}</span>
+                  <span className="text-xs sm:text-sm text-[#465d41] dark:text-zinc-400 capitalize mt-1 font-semibold">
                     {key.replace(/([A-Z])/g, ' $1')}
                   </span>
                 </div>
@@ -190,8 +190,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Technologies List */}
         {project.technologies && project.technologies.length > 0 && (
           <div>
-            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] dark:text-[#8eb383] mb-3 flex items-center gap-2">
-              <Layers className="w-4 h-4 text-[#738666] dark:text-[#8eb383]" />
+            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3b5137] dark:text-zinc-300 mb-3 flex items-center gap-2">
+              <Layers className="w-4 h-4 text-[#738666] dark:text-zinc-300" />
               <span>Technologies Used</span>
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -205,7 +205,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         )}
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#738666]/15 dark:border-[#738666]/25">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#738666]/15 dark:border-white/[0.08]">
           <div className="flex items-center gap-2.5">
             {project.github_url && (
               <a
@@ -217,7 +217,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   variant="outline"
                   size="md"
                   leftIcon={<Github className="w-4 h-4" />}
-                  className="border-[#738666]/30 text-[#1b281c] dark:text-[#f1f5ee] text-xs sm:text-sm font-semibold"
+                  className="border-[#738666]/30 dark:border-white/[0.15] text-[#1b281c] dark:text-white text-xs sm:text-sm font-semibold hover:dark:bg-white/10"
                 >
                   Source Code
                 </Button>
@@ -234,7 +234,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   variant="primary"
                   size="md"
                   leftIcon={<ExternalLink className="w-4 h-4" />}
-                  className="bg-[#738666] hover:bg-[#627456] dark:hover:bg-[#8eb383] text-white border-[#738666] text-xs sm:text-sm font-semibold"
+                  className="bg-[#738666] dark:bg-white hover:bg-[#627456] dark:hover:bg-zinc-200 text-white dark:text-black border-[#738666] dark:border-white text-xs sm:text-sm font-bold"
                 >
                   Live Demo
                 </Button>
@@ -243,7 +243,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
 
           <Link to={`/projects/${project.slug}`} onClick={onClose}>
-            <Button variant="ghost" size="md" className="text-[#738666] dark:text-[#8eb383] hover:text-[#1b281c] dark:hover:text-white text-xs sm:text-sm font-semibold">
+            <Button variant="ghost" size="md" className="text-[#738666] dark:text-zinc-300 hover:text-[#1b281c] dark:hover:text-white text-xs sm:text-sm font-semibold">
               Full Project Page →
             </Button>
           </Link>

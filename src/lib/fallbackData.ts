@@ -3,7 +3,7 @@ import { PortfolioData } from '../types/database';
 export const initialPortfolioData: PortfolioData = {
   profile: {
     id: '00000000-0000-0000-0000-000000000001',
-    full_name: 'Bilal Ahamed PT',
+    full_name: 'Bilal Ahamed',
     headline: 'Generative AI | Full Stack Developer',
     bio: 'M.Tech Computer Science and Engineering (AI & Data Science) student at CUSAT with hands-on experience in full-stack development, Generative AI, Machine Learning, cloud technologies, and real-time systems.',
     about: 'M.Tech Computer Science and Engineering (AI & Data Science) student at Cochin University of Science and Technology with hands-on experience in full-stack development, Artificial Intelligence, Machine Learning, cloud technologies, and real-time applications. Skilled in Python, React, Firebase, AWS, and Google Cloud Platform, with experience developing AI-powered applications using OpenAI technologies. Proficient in AI coding tools, prompt engineering, database integration, debugging, testing, deployment, and collaborative software development.',
@@ -679,8 +679,8 @@ export const initialPortfolioData: PortfolioData = {
   ],
   siteSettings: {
     general: {
-      siteTitle: 'Bilal Ahamed PT | AI & Full Stack Developer',
-      metaDescription: 'Official portfolio of Bilal Ahamed PT. M.Tech AI & Data Science student at CUSAT, Full Stack Developer, Generative AI & ML specialist.',
+      siteTitle: 'Bilal Ahamed | AI & Full Stack Developer',
+      metaDescription: 'Official portfolio of Bilal Ahamed. M.Tech AI & Data Science student at CUSAT, Full Stack Developer, Generative AI & ML specialist.',
       accentColor: '#38bdf8',
       enableContactForm: true,
       enableRealtime: true,

@@ -25,10 +25,10 @@ export const HomePage: React.FC = () => {
       )}
 
       <motion.div
-        className="min-h-screen bg-[#f7f8f4] dark:bg-[#070a08] text-[#1b281c] dark:text-[#f1f5ee] selection:bg-[#738666]/30 selection:text-[#1b281c] dark:selection:text-white transition-colors duration-300"
-        initial={{ opacity: 0.9, scale: 0.975 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="min-h-screen bg-[#f7f8f4] dark:bg-[#08080a] text-[#1b281c] dark:text-zinc-100 selection:bg-[#738666]/30 dark:selection:bg-white/20 selection:text-[#1b281c] dark:selection:text-white transition-colors duration-300"
+        initial={{ opacity: 0.98 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
       >
         <Navbar />
         

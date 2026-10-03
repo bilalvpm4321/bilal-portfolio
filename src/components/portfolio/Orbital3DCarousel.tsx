@@ -74,12 +74,12 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
     const thetaRad = (thetaDeg * Math.PI) / 180;
 
     // 3D Orbital Radius
-    const radiusX = isMobile ? 185 : 285;
-    const radiusZ = isMobile ? 135 : 195;
+    const radiusX = isMobile ? 195 : 340;
+    const radiusZ = isMobile ? 140 : 220;
 
     // Trigonometric 3D ring positioning: X = R*sin(theta), Z = R*(cos(theta)-1)
     let translateX = Math.sin(thetaRad) * radiusX;
-    let translateZ = diff === 0 ? 35 : (Math.cos(thetaRad) - 1) * radiusZ - absDiff * 15;
+    let translateZ = diff === 0 ? 40 : (Math.cos(thetaRad) - 1) * radiusZ - absDiff * 15;
     let rotateY = -thetaDeg * 0.72; // Card faces front viewer while sitting on ring arc
     let scale = diff === 0 ? 1.05 : Math.max(0.68, 1 - absDiff * 0.16);
     let opacity = 1;
@@ -113,9 +113,9 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
     <div className="w-full relative flex flex-col items-center py-6 select-none">
       {/* 3D Orbit Stage Container */}
       <div
-        className="w-full relative h-[400px] sm:h-[470px] flex items-center justify-center overflow-hidden group"
+        className="w-full relative h-[440px] sm:h-[510px] flex items-center justify-center overflow-hidden group"
         style={{
-          perspective: '1000px',
+          perspective: '1200px',
           perspectiveOrigin: '50% 50%',
         }}
       >
@@ -149,10 +149,10 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
                 onClick={() => setActiveIndex(index)}
                 onMouseEnter={() => handleCardHover(index)}
                 style={cardStyle}
-                className={`absolute w-[245px] sm:w-[300px] h-[340px] sm:h-[410px] rounded-3xl p-5 sm:p-7 flex flex-col justify-between cursor-pointer text-left transition-all duration-500 ${
+                className={`absolute w-[265px] sm:w-[340px] h-[360px] sm:h-[440px] rounded-[28px] sm:rounded-[36px] p-6 sm:p-8 flex flex-col justify-between cursor-pointer text-left transition-all duration-500 ${
                   isActive
-                    ? 'bg-white dark:bg-[#121914] border-2 border-[#c8a869] dark:border-[#d8b874] shadow-[0_25px_60px_rgba(200,168,105,0.3)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)]'
-                    : 'bg-[#f9faf7] dark:bg-[#0e1410] border border-[#738666]/20 dark:border-[#738666]/35 hover:border-[#738666]/50 dark:hover:border-[#8eb383]/50 shadow-xl dark:shadow-black/50'
+                    ? 'bg-white dark:bg-[#16161a] border-2 border-[#c8a869] dark:border-white/40 shadow-[0_25px_60px_rgba(200,168,105,0.3)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.8)]'
+                    : 'bg-[#f9faf7] dark:bg-[#111114] border border-[#738666]/20 dark:border-white/[0.08] hover:border-[#738666]/50 dark:hover:border-white/[0.2] shadow-xl dark:shadow-black/50'
                 }`}
               >
                 {/* Top Row: Trophy Icon Badge + Honor Badge */}
@@ -160,34 +160,34 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
                   <div className="flex items-start justify-between gap-2 mb-4">
                     <div className={`p-3 rounded-2xl border transition-all ${
                       isActive
-                        ? 'bg-[#738666] text-white border-[#738666] scale-105'
-                        : 'bg-[#c8a869]/15 text-[#8d6d2b] dark:text-[#d8b874] border-[#c8a869]/30'
+                        ? 'bg-[#738666] dark:bg-white text-white dark:text-black border-[#738666] dark:border-white scale-105'
+                        : 'bg-[#c8a869]/15 dark:bg-white/[0.06] text-[#8d6d2b] dark:text-zinc-200 border-[#c8a869]/30 dark:border-white/[0.08]'
                     }`}>
                       <Trophy className="w-6 h-6" />
                     </div>
 
                     {item.badge && (
-                      <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#c8a869]/15 text-[#8d6d2b] dark:text-[#d8b874] border border-[#c8a869]/30 font-mono shadow-xs">
+                      <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#c8a869]/15 dark:bg-white/[0.06] text-[#8d6d2b] dark:text-zinc-300 border border-[#c8a869]/30 dark:border-white/[0.08] font-mono shadow-xs">
                         {item.badge}
                       </span>
                     )}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg sm:text-2xl font-extrabold text-[#1b281c] dark:text-[#f1f5ee] mb-1.5 font-display leading-snug">
+                  <h3 className="text-lg sm:text-2xl font-extrabold text-[#1b281c] dark:text-white mb-1.5 font-display leading-snug">
                     {item.title}
                   </h3>
 
                   {/* Subtitle / Issuer */}
                   {item.subtitle && (
-                    <p className="text-sm font-bold text-[#556c50] dark:text-[#a8bfa5] mb-3">
+                    <p className="text-sm font-bold text-[#556c50] dark:text-zinc-400 mb-3">
                       {item.subtitle}
                     </p>
                   )}
 
-                  {/* Description Narrative - Full text on active, line-clamp on side cards */}
+                  {/* Description Narrative */}
                   {item.description && (
-                    <p className={`text-sm sm:text-base text-[#243820] dark:text-[#c7d8c4] leading-relaxed font-normal ${
+                    <p className={`text-sm sm:text-base text-[#243820] dark:text-zinc-300 leading-relaxed font-normal ${
                       isActive ? 'line-clamp-none' : 'line-clamp-3'
                     }`}>
                       {item.description}
@@ -197,8 +197,8 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
 
                 {/* Bottom Row: Date / Year Tag */}
                 {item.date_or_year && (
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-mono font-bold text-[#32452e] dark:text-[#a8bfa5] pt-3.5 border-t border-[#738666]/15 dark:border-[#738666]/25 shrink-0">
-                    <Calendar className="w-4 h-4 text-[#c8a869] dark:text-[#d8b874]" />
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-mono font-bold text-[#32452e] dark:text-zinc-400 pt-3.5 border-t border-[#738666]/15 dark:border-white/[0.08] shrink-0">
+                    <Calendar className="w-4 h-4 text-[#c8a869] dark:text-zinc-400" />
                     <span>{item.date_or_year}</span>
                   </div>
                 )}
@@ -215,7 +215,7 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
             href={activeItem.credential_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#556c50] dark:text-[#8eb383] hover:text-[#1b281c] dark:hover:text-white transition-colors py-1 px-3 rounded-lg hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#556c50] dark:text-zinc-300 hover:text-[#1b281c] dark:hover:text-white transition-colors py-1 px-3 rounded-lg hover:bg-[#738666]/10 dark:hover:bg-white/[0.08]"
           >
             <span>View Verified Credential</span>
             <ExternalLink className="w-4 h-4" />
@@ -223,7 +223,7 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
         </div>
       )}
 
-      {/* Dash Pagination Indicators - Strictly CLICK ONLY (hover removed per request) */}
+      {/* Dash Pagination Indicators */}
       <div className="mt-8 flex items-center justify-center gap-2 px-2 py-2 z-20">
         {items.map((_, index) => {
           const isActive = index === activeIndex;
@@ -234,8 +234,8 @@ export const Orbital3DCarousel: React.FC<Orbital3DCarouselProps> = ({ items }) =
               aria-label={`Go to slide ${index + 1}`}
               className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
                 isActive
-                  ? 'w-7 bg-[#1b281c] dark:bg-[#f1f5ee]'
-                  : 'w-2.5 bg-[#738666]/30 dark:bg-[#738666]/40 hover:bg-[#738666]/70'
+                  ? 'w-7 bg-[#1b281c] dark:bg-white'
+                  : 'w-2.5 bg-[#738666]/30 dark:bg-white/20 hover:bg-[#738666]/70 dark:hover:bg-white/50'
               }`}
             />
           );

@@ -34,10 +34,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     >
       <Card
         hoverEffect
-        className="group flex flex-col justify-between h-full bg-white border-[#738666]/20 hover:border-[#738666]/50 p-0 overflow-hidden shadow-xs hover:shadow-lg"
+        className="group flex flex-col justify-between h-full bg-white dark:bg-[#111114] border-[#738666]/20 dark:border-white/[0.08] hover:border-[#738666]/50 dark:hover:border-white/[0.2] p-0 overflow-hidden shadow-xs hover:shadow-lg dark:hover:shadow-black/70"
       >
         {/* Project Thumbnail Image Container */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#f1f4ed]">
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#f1f4ed] dark:bg-[#141418]">
           <img
             src={imageUrl}
             alt={project.title}
@@ -47,7 +47,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
           {/* Top badges */}
           <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-            <span className="font-mono text-xs sm:text-sm font-bold px-3 py-1 rounded-lg bg-white/95 text-[#4b6345] border border-[#738666]/30 backdrop-blur-md shadow-xs">
+            <span className="font-mono text-xs sm:text-sm font-bold px-3 py-1 rounded-lg bg-white/95 dark:bg-[#111114]/90 text-[#4b6345] dark:text-zinc-300 border border-[#738666]/30 dark:border-white/[0.1] backdrop-blur-md shadow-xs">
               #{projectNumber}
             </span>
 
@@ -63,16 +63,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs sm:text-sm font-bold text-[#536b4e] uppercase tracking-wider">
+              <span className="text-xs sm:text-sm font-bold text-[#536b4e] dark:text-zinc-400 uppercase tracking-wider">
                 {project.category}
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] mb-2.5 group-hover:text-[#556950] transition-colors font-display">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#1b281c] dark:text-white mb-2.5 group-hover:text-[#556950] dark:group-hover:text-zinc-300 transition-colors font-display">
               {project.title}
             </h3>
 
-            <p className="text-[#2e422b] text-[15px] sm:text-base line-clamp-3 mb-6 leading-relaxed font-normal">
+            <p className="text-[#2e422b] dark:text-zinc-400 text-[15px] sm:text-base line-clamp-3 mb-6 leading-relaxed font-normal">
               {project.short_description}
             </p>
           </div>
@@ -84,21 +84,21 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 ? project.technologies.slice(0, 5).map((tech) => (
                     <span
                       key={tech.id}
-                      className="text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg bg-[#f0f4ec] text-[#22381f] border border-[#738666]/25 shadow-xs"
+                      className="text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg bg-[#f0f4ec] dark:bg-white/[0.06] text-[#22381f] dark:text-zinc-300 border border-[#738666]/25 dark:border-white/[0.08] shadow-xs"
                     >
                       {tech.name}
                     </span>
                   ))
                 : null}
               {project.technologies && project.technologies.length > 5 && (
-                <span className="text-xs sm:text-sm font-bold px-2.5 py-1 rounded-lg bg-[#f0f4ec] text-[#556c50] border border-[#738666]/20">
+                <span className="text-xs sm:text-sm font-bold px-2.5 py-1 rounded-lg bg-[#f0f4ec] dark:bg-white/[0.06] text-[#556c50] dark:text-zinc-400 border border-[#738666]/20 dark:border-white/[0.08]">
                   +{project.technologies.length - 5}
                 </span>
               )}
             </div>
 
             {/* Actions Bar */}
-            <div className="flex items-center justify-between pt-4 border-t border-[#738666]/15">
+            <div className="flex items-center justify-between pt-4 border-t border-[#738666]/15 dark:border-white/[0.08]">
               <div className="flex items-center gap-2">
                 {project.github_url && (
                   <a
@@ -106,7 +106,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${project.title} GitHub repository`}
-                    className="p-2.5 rounded-xl bg-[#f8faf6] hover:bg-[#f1f4ed] text-[#3d5337] hover:text-[#1b281c] border border-[#738666]/25 transition-colors"
+                    className="p-2.5 rounded-xl bg-[#f8faf6] dark:bg-[#141418] hover:bg-[#f1f4ed] dark:hover:bg-[#1c1c22] text-[#3d5337] dark:text-zinc-300 hover:text-[#1b281c] dark:hover:text-white border border-[#738666]/25 dark:border-white/[0.1] transition-colors"
                   >
                     <Github className="w-4 h-4" />
                   </a>
@@ -118,7 +118,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${project.title} live demo`}
-                    className="p-2.5 rounded-xl bg-[#f8faf6] hover:bg-[#f1f4ed] text-[#3d5337] hover:text-[#1b281c] border border-[#738666]/25 transition-colors"
+                    className="p-2.5 rounded-xl bg-[#f8faf6] dark:bg-[#141418] hover:bg-[#f1f4ed] dark:hover:bg-[#1c1c22] text-[#3d5337] dark:text-zinc-300 hover:text-[#1b281c] dark:hover:text-white border border-[#738666]/25 dark:border-white/[0.1] transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </a>
@@ -130,7 +130,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   variant="outline"
                   size="sm"
                   onClick={() => onOpenModal(project)}
-                  className="text-xs sm:text-sm font-semibold border-[#738666]/30 text-[#1b281c] px-3.5 py-1.5"
+                  className="text-xs sm:text-sm font-semibold border-[#738666]/30 dark:border-white/[0.15] text-[#1b281c] dark:text-white px-3.5 py-1.5 hover:dark:bg-white/10"
                 >
                   Quick View
                 </Button>
@@ -140,7 +140,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     variant="primary"
                     size="sm"
                     rightIcon={<ArrowUpRight className="w-4 h-4" />}
-                    className="text-xs sm:text-sm font-semibold bg-[#738666] hover:bg-[#627456] text-white border-[#738666] px-3.5 py-1.5"
+                    className="text-xs sm:text-sm font-bold bg-[#738666] dark:bg-white hover:bg-[#627456] dark:hover:bg-zinc-200 text-white dark:text-black border-[#738666] dark:border-white px-3.5 py-1.5"
                   >
                     Details
                   </Button>

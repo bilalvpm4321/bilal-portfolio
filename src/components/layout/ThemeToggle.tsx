@@ -21,7 +21,7 @@ export const ThemeToggle: React.FC<{ className?: string; size?: 'sm' | 'md' }> =
         size === 'sm' ? 'w-8 h-8 p-1' : 'w-9 h-9 sm:w-10 sm:h-10 p-2'
       } ${
         isDark
-          ? 'bg-[#121914]/90 border-[#8eb383]/30 text-[#8eb383] hover:bg-[#18231d] hover:border-[#8eb383]/60 shadow-[0_0_15px_rgba(142,179,131,0.18)]'
+          ? 'bg-[#141418]/90 border-white/15 text-white hover:bg-[#1c1c22] hover:border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.08)]'
           : 'bg-white/90 border-[#738666]/30 text-[#556950] hover:text-[#1b281c] hover:bg-[#f1f4ed] hover:border-[#738666]/60 shadow-xs'
       } ${className}`}
     >

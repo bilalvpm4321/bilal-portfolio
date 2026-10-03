@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/85 dark:bg-[#080c09]/85 backdrop-blur-md border-b border-[#738666]/15 dark:border-[#738666]/25 py-3 shadow-sm shadow-[#738666]/5'
+          ? 'bg-white/85 dark:bg-[#08080a]/85 backdrop-blur-md border-b border-[#738666]/15 dark:border-white/[0.08] py-3 shadow-sm shadow-[#738666]/5 dark:shadow-black/50'
           : 'bg-transparent py-5'
       }`}
     >
@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
         <div className="hidden lg:block w-10" />
 
         {/* Desktop Navigation Links (Centered Pill) */}
-        <nav className="hidden lg:flex items-center gap-1.5 bg-white/90 dark:bg-[#121914]/90 border border-[#738666]/25 dark:border-[#738666]/35 px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-xs transition-colors duration-300">
+        <nav className="hidden lg:flex items-center gap-1.5 bg-white/90 dark:bg-[#121215]/90 border border-[#738666]/25 dark:border-white/[0.1] px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-xs transition-colors duration-300">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.substring(1) && location.pathname === '/';
             return (
@@ -70,8 +70,8 @@ export const Navbar: React.FC = () => {
                 href={location.pathname === '/' ? link.href : `/${link.href}`}
                 className={`px-3.5 py-1.5 text-sm rounded-full transition-all duration-200 ${
                   isActive
-                    ? 'bg-[#738666] text-white font-bold shadow-xs'
-                    : 'text-[#2a3e28] dark:text-[#b8cbb4] font-semibold hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/12 dark:hover:bg-[#738666]/25'
+                    ? 'bg-[#738666] dark:bg-white text-white dark:text-black font-bold shadow-xs'
+                    : 'text-[#2a3e28] dark:text-zinc-400 font-semibold hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/12 dark:hover:bg-white/[0.08]'
                 }`}
               >
                 {link.name}
@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between w-full lg:hidden">
           <a
             href="/"
-            className="font-editorial text-xl font-bold tracking-tight text-[#1b281c] dark:text-[#f1f5ee]"
+            className="font-editorial text-xl font-bold tracking-tight text-[#1b281c] dark:text-white"
           >
             Bilal Ahamed
           </a>
@@ -98,7 +98,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-[#1b281c] dark:text-[#f1f5ee] bg-[#738666]/10 dark:bg-[#738666]/20 border border-[#738666]/20 dark:border-[#738666]/30 cursor-pointer"
+              className="p-2 rounded-xl text-[#1b281c] dark:text-white bg-[#738666]/10 dark:bg-white/[0.08] border border-[#738666]/20 dark:border-white/[0.12] cursor-pointer"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -114,7 +114,7 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-b border-[#738666]/20 dark:border-[#738666]/30 bg-white/98 dark:bg-[#0a0f0c]/98 backdrop-blur-xl px-4 pt-3 pb-6 shadow-xl"
+            className="lg:hidden border-b border-[#738666]/20 dark:border-white/[0.1] bg-white/98 dark:bg-[#0c0c0f]/98 backdrop-blur-xl px-4 pt-3 pb-6 shadow-xl"
           >
             <div className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
                   key={link.name}
                   href={location.pathname === '/' ? link.href : `/${link.href}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3.5 py-2.5 text-sm text-[#3b4e39] dark:text-[#b8cbb4] hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 rounded-xl font-medium transition-colors"
+                  className="px-3.5 py-2.5 text-sm text-[#3b4e39] dark:text-zinc-300 hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/10 dark:hover:bg-white/[0.08] rounded-xl font-medium transition-colors"
                 >
                   {link.name}
                 </a>

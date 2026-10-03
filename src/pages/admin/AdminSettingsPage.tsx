@@ -10,8 +10,8 @@ export const AdminSettingsPage: React.FC = () => {
   const { success, error } = useToast();
 
   const [settings, setSettings] = useState({
-    siteTitle: 'Bilal Ahamed PT | AI & Full Stack Developer',
-    metaDescription: 'Official portfolio of Bilal Ahamed PT. M.Tech AI & Data Science student at CUSAT, Full Stack Developer, Generative AI & ML specialist.',
+    siteTitle: 'Bilal Ahamed | AI & Full Stack Developer',
+    metaDescription: 'Official portfolio of Bilal Ahamed. M.Tech AI & Data Science student at CUSAT, Full Stack Developer, Generative AI & ML specialist.',
     accentColor: '#38bdf8',
     enableContactForm: true,
     enableRealtime: true,

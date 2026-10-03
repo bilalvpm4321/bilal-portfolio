@@ -43,11 +43,11 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
     <div
       ref={containerRef}
       id={id}
-      className="relative mb-5 sm:mb-6 last:mb-0 w-full"
+      className="relative mb-6 sm:mb-8 last:mb-0 w-full"
       style={{ zIndex }}
     >
       <motion.div
-        className={`sticky rounded-[28px] sm:rounded-[36px] border border-[#738666]/20 dark:border-[#738666]/30 bg-white dark:bg-[#0d120f] shadow-xl shadow-[#1b281c]/[0.06] dark:shadow-black/70 overflow-hidden will-change-transform transition-colors duration-300 ${className}`}
+        className={`sticky min-h-[82vh] lg:min-h-[86vh] flex flex-col justify-center rounded-[32px] sm:rounded-[44px] lg:rounded-[52px] border border-[#738666]/20 dark:border-white/[0.08] bg-white dark:bg-[#08080a] shadow-2xl shadow-[#1b281c]/[0.08] dark:shadow-black/95 overflow-hidden will-change-transform transition-colors duration-300 ${className}`}
         style={{
           top: `${topOffset}px`,
           scale,
@@ -56,7 +56,7 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
         }}
       >
         {/* Card Ambient Top Highlight Edge */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#738666]/30 dark:via-[#8eb383]/40 to-transparent pointer-events-none z-30" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#738666]/30 dark:via-white/20 to-transparent pointer-events-none z-30" />
         
         {children}
       </motion.div>
@@ -65,5 +65,5 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
 };
 
 export const ScrollStackContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <div className="relative w-full max-w-[1360px] mx-auto px-2 sm:px-4 lg:px-6 pt-2 pb-10">{children}</div>;
+  return <div className="relative w-full max-w-[1840px] mx-auto px-1.5 sm:px-3 lg:px-4 pt-2 pb-16">{children}</div>;
 };

@@ -48,7 +48,7 @@ export const AdminDashboardPage: React.FC = () => {
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-bold text-white font-display">
-              Welcome back, Bilal Ahamed PT
+              Welcome back, Bilal Ahamed
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
               Manage your portfolio content in realtime. Any modifications published here immediately sync across your website.

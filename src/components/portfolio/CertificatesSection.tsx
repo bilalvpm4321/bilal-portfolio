@@ -37,25 +37,25 @@ export const CertificatesSection: React.FC = () => {
     return (
       <div
         key={cert.id}
-        className="w-full h-full bg-[#fafbfa] dark:bg-[#111713] border border-[#738666]/30 dark:border-[#738666]/35 rounded-3xl p-5 sm:p-6 shadow-xl shadow-[#1b281c]/[0.08] dark:shadow-black/60 flex flex-col justify-between select-none relative overflow-hidden text-[#1b281c] dark:text-[#f1f5ee] transition-colors duration-300"
+        className="w-full h-full bg-[#fafbfa] dark:bg-[#111114] border border-[#738666]/30 dark:border-white/[0.08] rounded-3xl p-5 sm:p-6 shadow-xl shadow-[#1b281c]/[0.08] dark:shadow-black/70 flex flex-col justify-between select-none relative overflow-hidden text-[#1b281c] dark:text-white transition-colors duration-300"
       >
         {/* Ambient decorative glow */}
-        <div className="absolute top-0 right-0 w-36 h-36 bg-[#738666]/10 dark:bg-[#8eb383]/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-36 h-36 bg-[#738666]/10 dark:bg-white/[0.02] rounded-full blur-2xl pointer-events-none" />
 
         <div>
           {/* Top bar */}
           <div className="flex items-center justify-between gap-2 mb-3.5">
-            <span className="px-3.5 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#738666]/15 dark:bg-[#738666]/25 text-[#273a24] dark:text-[#c4d7c0] border border-[#738666]/25 dark:border-[#738666]/35 shadow-xs">
+            <span className="px-3.5 py-1 rounded-full text-xs sm:text-sm font-bold bg-[#738666]/15 dark:bg-white/[0.06] text-[#273a24] dark:text-zinc-300 border border-[#738666]/25 dark:border-white/[0.08] shadow-xs">
               {cert.category || 'Certification'}
             </span>
-            <div className="flex items-center gap-1.5 font-mono text-xs sm:text-sm font-bold text-[#32452e] dark:text-[#a8bfa5]">
-              <Calendar className="w-4 h-4 text-[#738666] dark:text-[#8eb383]" />
+            <div className="flex items-center gap-1.5 font-mono text-xs sm:text-sm font-bold text-[#32452e] dark:text-zinc-400">
+              <Calendar className="w-4 h-4 text-[#738666] dark:text-zinc-400" />
               <span>{cert.issue_date || 'Verified'}</span>
             </div>
           </div>
 
           {/* Certificate Image Area */}
-          <div className="relative w-full h-[220px] sm:h-[260px] rounded-2xl overflow-hidden bg-[#f0f3eb] dark:bg-[#16201a] border border-[#738666]/20 dark:border-[#738666]/30 mb-3.5 flex items-center justify-center p-2.5">
+          <div className="relative w-full h-[220px] sm:h-[260px] rounded-2xl overflow-hidden bg-[#f0f3eb] dark:bg-[#16161a] border border-[#738666]/20 dark:border-white/[0.08] mb-3.5 flex items-center justify-center p-2.5">
             {certImage ? (
               <img
                 src={certImage}
@@ -65,9 +65,9 @@ export const CertificatesSection: React.FC = () => {
                 loading="lazy"
               />
             ) : (
-              <div className="flex flex-col items-center gap-2 text-[#738666] dark:text-[#8eb383] p-6 text-center">
+              <div className="flex flex-col items-center gap-2 text-[#738666] dark:text-zinc-400 p-6 text-center">
                 <Award className="w-10 h-10 stroke-1" />
-                <span className="text-sm font-semibold text-[#32452e] dark:text-[#c4d7c0]">Verified Credential</span>
+                <span className="text-sm font-semibold text-[#32452e] dark:text-zinc-300">Verified Credential</span>
               </div>
             )}
 
@@ -79,26 +79,26 @@ export const CertificatesSection: React.FC = () => {
           </div>
 
           {/* Title & Issuer */}
-          <h3 className="text-lg sm:text-xl font-bold text-[#1b281c] dark:text-[#f1f5ee] font-display line-clamp-1 mb-1">
+          <h3 className="text-lg sm:text-xl font-bold text-[#1b281c] dark:text-white font-display line-clamp-1 mb-1">
             {cert.name}
           </h3>
-          <p className="text-sm sm:text-base font-semibold text-[#32452e] dark:text-[#a8bfa5] flex items-center gap-1.5">
-            <Award className="w-4 h-4 text-[#738666] dark:text-[#8eb383] shrink-0" />
+          <p className="text-sm sm:text-base font-semibold text-[#32452e] dark:text-zinc-400 flex items-center gap-1.5">
+            <Award className="w-4 h-4 text-[#738666] dark:text-zinc-400 shrink-0" />
             <span>{cert.issuer}</span>
           </p>
         </div>
 
         {/* Action Row */}
-        <div className="pt-3.5 border-t border-[#738666]/15 dark:border-[#738666]/25 flex items-center justify-between gap-2 mt-2">
+        <div className="pt-3.5 border-t border-[#738666]/15 dark:border-white/[0.08] flex items-center justify-between gap-2 mt-2">
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               setSelectedCert(cert);
             }}
-            className="text-xs sm:text-sm font-bold text-[#2d402a] dark:text-[#c4d7c0] hover:text-[#1b281c] dark:hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="text-xs sm:text-sm font-bold text-[#2d402a] dark:text-zinc-300 hover:text-[#1b281c] dark:hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
           >
-            <Eye className="w-4 h-4 text-[#738666] dark:text-[#8eb383]" />
+            <Eye className="w-4 h-4 text-[#738666] dark:text-zinc-400" />
             <span>Inspect Certificate</span>
           </button>
 
@@ -108,15 +108,15 @@ export const CertificatesSection: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#738666] hover:bg-[#5b6e50] text-white text-xs sm:text-sm font-bold shadow-xs transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#738666] dark:bg-white hover:bg-[#5b6e50] dark:hover:bg-zinc-200 text-white dark:text-black text-xs sm:text-sm font-bold shadow-xs transition-all cursor-pointer"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Verify</span>
               <ExternalLink className="w-3.5 h-3.5 ml-0.5" />
             </a>
           ) : (
-            <span className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-700">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            <span className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-white/[0.06] px-3 py-1 rounded-full border border-zinc-300 dark:border-white/[0.1]">
+              <CheckCircle2 className="w-3.5 h-3.5 text-zinc-600 dark:text-zinc-300" />
               Issued
             </span>
           )}
@@ -130,34 +130,34 @@ export const CertificatesSection: React.FC = () => {
   }, [visibleCertifications, renderCertificateCard]);
 
   return (
-    <section className="py-6 sm:py-8 relative overflow-hidden bg-white dark:bg-[#070a08] text-[#1b281c] dark:text-[#f1f5ee] transition-colors duration-300">
-      {/* Ambient Olive Green Circles */}
+    <section className="py-8 sm:py-12 lg:py-16 relative overflow-hidden bg-white dark:bg-[#08080a] text-[#1b281c] dark:text-white transition-colors duration-300 w-full">
+      {/* Ambient Atmospheric Glows */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-20 right-10 w-[460px] h-[460px] bg-[#738666]/15 dark:bg-[#738666]/20 rounded-full blur-[110px]" />
-        <div className="absolute -bottom-24 -left-16 w-[420px] h-[420px] bg-[#738666]/15 dark:bg-[#738666]/20 border border-[#738666]/20 dark:border-[#738666]/30 rounded-full blur-2xl" />
+        <div className="absolute -top-20 right-10 w-[540px] h-[540px] bg-[#738666]/15 dark:bg-white/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute -bottom-24 -left-16 w-[480px] h-[480px] bg-[#738666]/15 dark:bg-white/[0.02] border border-[#738666]/20 dark:border-white/[0.04] rounded-full blur-2xl" />
       </div>
 
       {/* Animated Infinite Cross-Line Background Marquee */}
-      <CertificateBackgroundMarquee opacity="opacity-[0.035] dark:opacity-[0.05]" />
+      <CertificateBackgroundMarquee opacity="opacity-[0.035] dark:opacity-[0.03]" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10 w-full">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] dark:text-[#f1f5ee] font-display tracking-tight leading-none">
+        <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] dark:text-white font-display tracking-tight leading-none">
             Certifications
           </h2>
-          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] dark:bg-[#8eb383] rounded-full mt-4" />
+          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] dark:bg-white/40 rounded-full mt-4" />
 
           {/* View Mode Switch (Stack vs Grid) */}
           {visibleCertifications.length > 1 && (
-            <div className="inline-flex items-center gap-1 bg-[#f0f3eb] dark:bg-[#16201a] p-1 rounded-full border border-[#738666]/20 dark:border-[#738666]/30 mt-6 shadow-xs">
+            <div className="inline-flex items-center gap-1 bg-[#f0f3eb] dark:bg-[#16161a] p-1 rounded-full border border-[#738666]/20 dark:border-white/[0.08] mt-6 shadow-xs">
               <button
                 type="button"
                 onClick={() => setViewMode('stack')}
                 className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   viewMode === 'stack'
-                    ? 'bg-[#738666] text-white shadow-xs'
-                    : 'text-[#3b4e39] dark:text-[#a8bfa5] hover:text-[#1b281c] dark:hover:text-white'
+                    ? 'bg-[#738666] dark:bg-white text-white dark:text-black font-bold shadow-xs'
+                    : 'text-[#3b4e39] dark:text-zinc-400 hover:text-[#1b281c] dark:hover:text-white'
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
@@ -168,8 +168,8 @@ export const CertificatesSection: React.FC = () => {
                 onClick={() => setViewMode('grid')}
                 className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   viewMode === 'grid'
-                    ? 'bg-[#738666] text-white shadow-xs'
-                    : 'text-[#3b4e39] dark:text-[#a8bfa5] hover:text-[#1b281c] dark:hover:text-white'
+                    ? 'bg-[#738666] dark:bg-white text-white dark:text-black font-bold shadow-xs'
+                    : 'text-[#3b4e39] dark:text-zinc-400 hover:text-[#1b281c] dark:hover:text-white'
                 }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
@@ -183,7 +183,7 @@ export const CertificatesSection: React.FC = () => {
         {viewMode === 'stack' ? (
           <div className="flex flex-col items-center">
             {/* Stack Container Frame */}
-            <div className="w-full max-w-[520px] sm:max-w-[560px] h-[460px] sm:h-[490px] relative mb-4">
+            <div className="w-full max-w-[580px] sm:max-w-[640px] h-[490px] sm:h-[530px] relative mb-4">
               <Stack
                 cards={stackCards}
                 randomRotation={true}
@@ -192,13 +192,13 @@ export const CertificatesSection: React.FC = () => {
                 animationConfig={{ stiffness: 320, damping: 24 }}
               />
             </div>
-            <p className="text-xs font-medium text-[#556950] dark:text-[#8ea788] mb-4">
+            <p className="text-xs font-medium text-[#556950] dark:text-zinc-400 mb-4">
               Tip: Click or swipe the card to shuffle to the next certificate
             </p>
           </div>
         ) : (
           /* Grid View */
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
             {visibleCertifications.map((cert) => renderCertificateCard(cert))}
           </div>
         )}
@@ -207,7 +207,7 @@ export const CertificatesSection: React.FC = () => {
         <div className="mt-4 text-center">
           <Link
             to="/certificates"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1b281c] dark:bg-[#16201a] text-white hover:bg-[#738666] dark:hover:bg-[#738666] border border-transparent dark:border-[#738666]/35 text-xs sm:text-sm font-semibold shadow-md transition-all group"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1b281c] dark:bg-[#16161a] text-white hover:bg-[#738666] dark:hover:bg-white dark:hover:text-black border border-transparent dark:border-white/[0.1] text-xs sm:text-sm font-bold shadow-md transition-all group"
           >
             <span>Explore All {visibleCertifications.length} Certificates in Full Gallery</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -223,9 +223,9 @@ export const CertificatesSection: React.FC = () => {
           title={selectedCert.name}
           maxWidth="4xl"
         >
-          <div className="space-y-4 text-[#1b281c] dark:text-[#f1f5ee]">
+          <div className="space-y-4 text-[#1b281c] dark:text-zinc-100">
             {/* Image Preview */}
-            <div className="w-full rounded-2xl overflow-hidden bg-slate-950/90 border border-[#738666]/20 dark:border-[#738666]/30 max-h-[78vh] flex items-center justify-center p-3">
+            <div className="w-full rounded-2xl overflow-hidden bg-slate-950/90 border border-[#738666]/20 dark:border-white/10 max-h-[78vh] flex items-center justify-center p-3">
               {selectedCert.certificate_url || selectedCert.image_url ? (
                 <img
                   src={selectedCert.certificate_url || selectedCert.image_url || ''}
@@ -242,31 +242,31 @@ export const CertificatesSection: React.FC = () => {
 
             {/* Details */}
             <div className="space-y-3 pt-2">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#738666]/15 dark:border-[#738666]/25 pb-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#738666]/15 dark:border-white/10 pb-3">
                 <div>
-                  <h4 className="text-sm font-bold text-[#1b281c] dark:text-[#f1f5ee]">
-                    Issued by <span className="text-[#738666] dark:text-[#8eb383]">{selectedCert.issuer}</span>
+                  <h4 className="text-sm font-bold text-[#1b281c] dark:text-white">
+                    Issued by <span className="text-[#738666] dark:text-white">{selectedCert.issuer}</span>
                   </h4>
-                  <p className="text-xs text-[#556950] dark:text-[#a8bfa5] mt-0.5">
+                  <p className="text-xs text-[#556950] dark:text-zinc-400 mt-0.5">
                     Issue Date: {selectedCert.issue_date || 'N/A'} {selectedCert.expires_at ? `· Valid until ${selectedCert.expires_at}` : ''}
                   </p>
                 </div>
 
                 {selectedCert.credential_id && (
-                  <div className="px-3 py-1 rounded-lg bg-[#738666]/10 dark:bg-[#738666]/20 border border-[#738666]/20 dark:border-[#738666]/30 font-mono text-xs text-[#3b4e39] dark:text-[#c4d7c0]">
+                  <div className="px-3 py-1 rounded-lg bg-[#738666]/10 dark:bg-white/10 border border-[#738666]/20 dark:border-white/10 font-mono text-xs text-[#3b4e39] dark:text-zinc-300">
                     Credential ID: {selectedCert.credential_id}
                   </div>
                 )}
               </div>
 
               {selectedCert.description && (
-                <p className="text-xs sm:text-sm text-[#3b4e39] dark:text-[#c7d8c4] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#3b4e39] dark:text-zinc-300 leading-relaxed">
                   {selectedCert.description}
                 </p>
               )}
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#738666]/15 dark:border-[#738666]/25">
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#738666]/15 dark:border-white/10">
                 {(selectedCert.certificate_url || selectedCert.image_url) && (
                   <a
                     href={selectedCert.certificate_url || selectedCert.image_url || ''}

@@ -10,8 +10,9 @@
   gap: var(--ag-gap);
   width: 100%;
   max-width: 100%;
-  perspective: 1400px;
+  perspective: 1000px;
   perspective-origin: 50% 50%;
+  contain: layout style;
 }
 
 .accordion-gallery--vertical {
@@ -31,12 +32,14 @@
   outline: none;
   transform-style: preserve-3d;
   transform-origin: center center;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   background: #ffffff;
   border: 1.5px solid rgba(115, 134, 102, 0.16);
   box-shadow: 0 6px 24px -10px rgba(27, 40, 28, 0.08);
   will-change: flex-grow, transform;
   -webkit-tap-highlight-color: transparent;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .ag-panel:hover {
@@ -49,18 +52,18 @@
 }
 
 html.dark .ag-panel {
-  background: #0c130d;
-  border-color: rgba(115, 134, 102, 0.22);
-  box-shadow: 0 6px 24px -10px rgba(0, 0, 0, 0.6);
+  background: #111114;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px -10px rgba(0, 0, 0, 0.7);
 }
 
 html.dark .ag-panel:hover {
-  border-color: rgba(115, 134, 102, 0.45);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 html.dark .ag-panel--active {
-  border-color: rgba(115, 134, 102, 0.7);
-  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.75);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.85);
 }
 
 .ag-panel:focus-visible {

@@ -17,7 +17,7 @@ const defaultAdminUser: any = {
   id: 'admin-bilal-uuid',
   email: 'bilalvpm2@gmail.com',
   role: 'authenticated',
-  user_metadata: { full_name: 'Bilal Ahamed PT' },
+  user_metadata: { full_name: 'Bilal Ahamed' },
   created_at: new Date().toISOString(),
 };
 

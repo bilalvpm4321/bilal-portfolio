@@ -64,7 +64,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onCloseMobil
             </div>
             <div>
               <h2 className="text-sm font-bold text-white tracking-tight">Portfolio Admin</h2>
-              <p className="text-[10px] font-mono text-sky-400">Bilal Ahamed PT</p>
+              <p className="text-[10px] font-mono text-sky-400">Bilal Ahamed</p>
             </div>
           </Link>
         </div>

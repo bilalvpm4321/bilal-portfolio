@@ -26,21 +26,21 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#738666] [.theme-admin_&]:focus-visible:ring-sky-400 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-xl active:scale-[0.98] select-none cursor-pointer';
+      'inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#738666] dark:focus-visible:ring-white [.theme-admin_&]:focus-visible:ring-sky-400 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-xl active:scale-[0.98] select-none cursor-pointer';
 
     const variants = {
       primary:
-        'bg-[#738666] hover:bg-[#627456] dark:bg-[#738666] dark:hover:bg-[#8eb383] text-white font-semibold shadow-md shadow-[#738666]/20 dark:shadow-black/40 hover:-translate-y-0.5 border border-[#738666] dark:border-[#8eb383]/40 [.theme-admin_&]:bg-sky-500 [.theme-admin_&]:hover:bg-sky-400 [.theme-admin_&]:text-slate-950 [.theme-admin_&]:border-transparent [.theme-admin_&]:shadow-sky-500/25',
+        'bg-[#738666] hover:bg-[#627456] dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-bold shadow-md shadow-[#738666]/20 dark:shadow-black/60 hover:-translate-y-0.5 border border-[#738666] dark:border-white [.theme-admin_&]:bg-sky-500 [.theme-admin_&]:hover:bg-sky-400 [.theme-admin_&]:text-slate-950 [.theme-admin_&]:border-transparent [.theme-admin_&]:shadow-sky-500/25',
       secondary:
-        'bg-[#f8faf6] dark:bg-[#16201a] hover:bg-[#f1f4ed] dark:hover:bg-[#1f2c23] text-[#1b281c] dark:text-[#f1f5ee] border border-[#738666]/30 dark:border-[#738666]/40 hover:border-[#738666] dark:hover:border-[#8eb383] [.theme-admin_&]:bg-slate-800/80 [.theme-admin_&]:hover:bg-slate-700/80 [.theme-admin_&]:text-gray-100 [.theme-admin_&]:border-slate-700/80',
+        'bg-[#f8faf6] dark:bg-[#16161a] hover:bg-[#f1f4ed] dark:hover:bg-[#202025] text-[#1b281c] dark:text-white border border-[#738666]/30 dark:border-white/10 hover:border-[#738666] dark:hover:border-white/20 [.theme-admin_&]:bg-slate-800/80 [.theme-admin_&]:hover:bg-slate-700/80 [.theme-admin_&]:text-gray-100 [.theme-admin_&]:border-slate-700/80',
       outline:
-        'border border-[#738666]/35 dark:border-[#738666]/40 hover:border-[#738666] dark:hover:border-[#8eb383] bg-white dark:bg-[#121814] text-[#1b281c] dark:text-[#f1f5ee] hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 [.theme-admin_&]:border-slate-700 [.theme-admin_&]:hover:border-sky-400/60 [.theme-admin_&]:text-gray-200 [.theme-admin_&]:hover:bg-sky-500/10',
+        'border border-[#738666]/35 dark:border-white/15 hover:border-[#738666] dark:hover:border-white/30 bg-white dark:bg-[#111114] text-[#1b281c] dark:text-white hover:bg-[#738666]/10 dark:hover:bg-white/10 [.theme-admin_&]:border-slate-700 [.theme-admin_&]:hover:border-sky-400/60 [.theme-admin_&]:text-gray-200 [.theme-admin_&]:hover:bg-sky-500/10',
       ghost:
-        'text-[#3b4e39] dark:text-[#a8bfa5] hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/10 dark:hover:bg-[#738666]/20 [.theme-admin_&]:text-slate-300 [.theme-admin_&]:hover:text-white [.theme-admin_&]:hover:bg-white/5',
+        'text-[#3b4e39] dark:text-zinc-400 hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/10 dark:hover:bg-white/10 [.theme-admin_&]:text-slate-300 [.theme-admin_&]:hover:text-white [.theme-admin_&]:hover:bg-white/5',
       danger:
         'bg-rose-600/90 hover:bg-rose-500 text-white shadow-lg shadow-rose-600/20',
       gradient:
-        'bg-gradient-to-r from-[#738666] to-[#556950] dark:from-[#738666] dark:to-[#40543c] text-white font-semibold shadow-md shadow-[#738666]/20 hover:-translate-y-0.5 border border-[#738666]/30 [.theme-admin_&]:from-sky-500 [.theme-admin_&]:via-blue-600 [.theme-admin_&]:to-indigo-600',
+        'bg-gradient-to-r from-[#738666] to-[#556950] dark:from-white dark:to-zinc-200 text-white dark:text-black font-bold shadow-md shadow-[#738666]/20 hover:-translate-y-0.5 border border-[#738666]/30 dark:border-white [.theme-admin_&]:from-sky-500 [.theme-admin_&]:via-blue-600 [.theme-admin_&]:to-indigo-600',
     };
 
     const sizes = {
