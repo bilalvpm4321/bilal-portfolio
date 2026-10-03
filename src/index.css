@@ -172,6 +172,99 @@ html.dark .hero-outline-text {
   -webkit-text-stroke: 2.8px #ffffff;
 }
 
+/* =========================================================================
+   PREMIUM CHROME GLASSMORPHISM FLOATING CAPSULE (MATCHING SCREENSHOT)
+   ========================================================================= */
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.chrome-glass-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #16171d 0%, #0b0c10 100%);
+  box-shadow:
+    0 16px 36px -10px rgba(0, 0, 0, 0.75),
+    0 4px 14px -2px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  animation: float-gentle 5s ease-in-out infinite;
+  will-change: transform;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Chrome Specular Metallic Bevel Rim */
+.chrome-glass-pill::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 9999px;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(148, 163, 184, 0.7) 18%,
+    rgba(51, 65, 85, 0.3) 38%,
+    rgba(226, 232, 240, 0.85) 55%,
+    rgba(254, 240, 138, 0.65) 72%,
+    rgba(100, 116, 139, 0.4) 85%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle Glass Reflection Sheen on Top Half */
+.chrome-glass-pill::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 14px;
+  right: 14px;
+  height: 42%;
+  border-radius: 9999px 9999px 60% 60%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.01) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Light mode adjustments for crisp executive contrast */
+html:not(.dark) .chrome-glass-pill {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(244, 246, 242, 0.96) 100%);
+  box-shadow:
+    0 14px 30px -8px rgba(115, 134, 102, 0.24),
+    0 4px 10px -2px rgba(27, 40, 28, 0.1),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 2px 0 rgba(115, 134, 102, 0.22);
+}
+
+html:not(.dark) .chrome-glass-pill::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(186, 199, 178, 0.85) 20%,
+    rgba(115, 134, 102, 0.4) 40%,
+    rgba(255, 255, 255, 0.95) 60%,
+    rgba(200, 168, 105, 0.7) 78%,
+    rgba(186, 199, 178, 0.6) 90%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *,

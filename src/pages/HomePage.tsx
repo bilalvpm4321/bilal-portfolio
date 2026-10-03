@@ -38,7 +38,7 @@ export const HomePage: React.FC = () => {
 
           {/* Pinned Card Scroll Deck */}
           <ScrollStackContainer>
-            <ScrollStackItem id="about" index={0} totalCards={9}>
+            <ScrollStackItem id="about" index={0} totalCards={9} borderless={true}>
               <AboutSection />
             </ScrollStackItem>
 

@@ -60,29 +60,53 @@ export const Navbar: React.FC = () => {
         {/* Left spacer for balance on desktop */}
         <div className="hidden lg:block w-10" />
 
-        {/* Desktop Navigation Links (Centered Pill) */}
-        <nav className="hidden lg:flex items-center gap-1.5 bg-white/90 dark:bg-[#121215]/90 border border-[#738666]/25 dark:border-white/[0.1] px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-xs transition-colors duration-300">
+        {/* Desktop Navigation Links (Floating Chrome Glassmorphism Capsule with Spring Bounce Transition) */}
+        <nav className="hidden lg:flex items-center gap-1 chrome-glass-pill px-2.5 py-1.5 z-20 relative">
           {NAV_LINKS.map((link) => {
-            const isActive = activeSection === link.href.substring(1) && location.pathname === '/';
+            const sectionId = link.href.substring(1);
+            const isCurrentlyActive =
+              (activeSection === sectionId || (!activeSection && sectionId === 'about')) &&
+              location.pathname === '/';
+
             return (
               <a
                 key={link.name}
                 href={location.pathname === '/' ? link.href : `/${link.href}`}
-                className={`px-3.5 py-1.5 text-sm rounded-full transition-all duration-200 ${
-                  isActive
-                    ? 'bg-[#738666] dark:bg-white text-white dark:text-black font-bold shadow-xs'
-                    : 'text-[#2a3e28] dark:text-zinc-400 font-semibold hover:text-[#1b281c] dark:hover:text-white hover:bg-[#738666]/12 dark:hover:bg-white/[0.08]'
-                }`}
+                className="relative px-3.5 py-1.5 text-xs sm:text-sm rounded-full transition-colors duration-200 font-medium select-none group flex items-center justify-center"
               >
-                {link.name}
+                {/* Elastic Spring Bouncing Active Capsule */}
+                {isCurrentlyActive && (
+                  <motion.div
+                    layoutId="active-navbar-pill"
+                    className="absolute inset-0 rounded-full bg-[#1b281c] dark:bg-white shadow-[0_4px_14px_rgba(0,0,0,0.28)] dark:shadow-[0_4px_20px_rgba(255,255,255,0.4)]"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 420,
+                      damping: 24,
+                      mass: 0.7,
+                    }}
+                  />
+                )}
+
+                <span
+                  className={`relative z-10 transition-colors duration-200 ${
+                    isCurrentlyActive
+                      ? 'text-white dark:text-black font-extrabold'
+                      : 'text-[#3b4e39] dark:text-zinc-400 group-hover:text-[#1b281c] dark:group-hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                </span>
               </a>
             );
           })}
         </nav>
 
         {/* Right Action Area (Theme Switcher on Desktop) */}
-        <div className="hidden lg:flex items-center justify-end">
-          <ThemeToggle />
+        <div className="hidden lg:flex items-center justify-end z-20">
+          <div className="chrome-glass-pill p-1">
+            <ThemeToggle size="sm" />
+          </div>
         </div>
 
         {/* Mobile Header Bar: Theme Toggle + Menu Hamburger */}

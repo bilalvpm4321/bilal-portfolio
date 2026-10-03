@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { usePortfolio } from '../../context/PortfolioContext';
-import { Mail, Phone, ArrowUpRight, Sparkles, ShieldCheck, MapPin } from 'lucide-react';
+import { Mail, Phone, Sparkles, MapPin } from 'lucide-react';
 import { Github, Linkedin } from '../common/BrandIcons';
-import { ThemeToggle } from './ThemeToggle';
 
 export const Footer: React.FC = () => {
   const { data } = usePortfolio();
@@ -179,35 +178,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Sub-Footer / Copyright & Meta Info */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#556950] dark:text-zinc-500">
-          <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
-            <span>© {currentYear} Bilal Ahamed. All rights reserved.</span>
-            <span className="hidden sm:inline text-[#738666]/40 dark:text-zinc-700">•</span>
-            <span className="text-[#64795f] dark:text-zinc-500">Built with React, TypeScript & Tailwind CSS</span>
-          </div>
-
-          <div className="flex items-center gap-5">
-            <ThemeToggle size="sm" />
-
-            <a
-              href="https://github.com/bilalvpm4321/bilal-portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-[#1b281c] dark:hover:text-white transition-colors font-medium"
-            >
-              <span>Source Code</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#738666] dark:text-zinc-400" />
-            </a>
-
-            <Link
-              to="/admin"
-              className="inline-flex items-center gap-1.5 hover:text-[#1b281c] dark:hover:text-white transition-colors text-[#64795f] dark:text-zinc-500"
-              title="Admin Management Portal"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#738666] dark:text-zinc-400" />
-              <span>Admin</span>
-            </Link>
-          </div>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-2 text-center text-xs text-[#556950] dark:text-zinc-500">
+          <span>© {currentYear} Bilal Ahamed. All rights reserved.</span>
+          <span className="hidden sm:inline text-[#738666]/40 dark:text-zinc-700">•</span>
+          <span className="text-[#64795f] dark:text-zinc-500">Built with React, TypeScript & Tailwind CSS</span>
         </div>
       </div>
     </footer>

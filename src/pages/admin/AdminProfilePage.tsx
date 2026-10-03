@@ -200,23 +200,23 @@ export const AdminProfilePage: React.FC = () => {
             />
           </Card>
 
-          {/* About Section Photo (Free Dimensions / No limitation) */}
+          {/* About Section 3D Paper Document Image */}
           <Card className="p-6 bg-[#0d0f17]/95 border-white/[0.08]">
             <div className="flex items-center justify-between mb-1">
               <h2 className="text-sm font-bold uppercase tracking-wider text-slate-200 flex items-center gap-2">
                 <ImageIcon className="w-4 h-4 text-emerald-400" />
-                <span>About Section Photo (Free Dimensions)</span>
+                <span>About Me 3D Paper Image</span>
               </h2>
             </div>
             <p className="text-[11px] text-slate-400 mb-4">
-              Upload any long, tall, or wide photo. No crop or dimension limit! It displays freely on the About section without any enclosing box.
+              Upload your custom profile card, dossier, or portrait image here. It will automatically be mapped onto the interactive 3D crumple paper sheet in the About Me section with exact angles and physics!
             </p>
 
             <ImageUploader
               value={formData.about_image_url}
               onChange={(url) => setFormData({ ...formData, about_image_url: url })}
               folder="profile"
-              label="About Photo (Any Length/Width)"
+              label="Upload About Me Paper Image"
               aspectRatio="free"
             />
           </Card>
