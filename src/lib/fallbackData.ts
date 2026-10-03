@@ -12,6 +12,7 @@ export const initialPortfolioData: PortfolioData = {
     location: 'Kerala, India',
     avatar_url: '',
     about_image_url: '',
+    about_mobile_image_url: '',
     resume_url: '/resume.pdf',
     availability_status: 'Open to Opportunities & Collaborations',
     years_experience: '2+ Years',
@@ -684,6 +685,10 @@ export const initialPortfolioData: PortfolioData = {
       accentColor: '#38bdf8',
       enableContactForm: true,
       enableRealtime: true,
+    },
+    about: {
+      image_url: '/assets/aged-green-profile.png',
+      mobile_image_url: '/assets/aged-green-profile.png',
     },
     hero: {
       badgeText: 'Available for AI & Full-Stack Roles',

@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { PaperCrumple } from '../ui/PaperCrumple';
 
 export const AboutSection: React.FC = () => {
   const { data } = usePortfolio();
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
 
-  // Dynamically uses uploaded image from Admin panel if provided, with seamless fallback
-  const aboutImageSrc =
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Desktop image (from Admin profile or fallback)
+  const desktopImageSrc =
     data.profile?.about_image_url ||
     data.siteSettings?.about?.image_url ||
     '/assets/aged-green-profile.png';
+
+  // Mobile image (from Admin profile or fallback to desktop image)
+  const mobileImageSrc =
+    data.profile?.about_mobile_image_url ||
+    data.siteSettings?.about?.mobile_image_url ||
+    desktopImageSrc;
+
+  // Active image based on screen size
+  const activeImageSrc = isMobile ? mobileImageSrc : desktopImageSrc;
 
   return (
     <section
@@ -33,7 +57,7 @@ export const AboutSection: React.FC = () => {
           <div className="w-20 sm:w-24 h-1.5 bg-[#738666] dark:bg-white/40 rounded-full mt-3.5" />
         </div>
 
-        {/* Master Pure & Box-Free Interactive Paper Showcase (Increased Scale) */}
+        {/* Master Pure & Box-Free Interactive Paper Showcase (Increased Scale & Mobile Responsive) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,11 +66,12 @@ export const AboutSection: React.FC = () => {
           className="w-full max-w-[1500px] mx-auto flex items-center justify-center"
         >
           <PaperCrumple
-            src={aboutImageSrc}
+            key={`${isMobile ? 'mobile' : 'desktop'}-${activeImageSrc}`}
+            src={activeImageSrc}
             alt="Bilal Ahamed About Me"
-            width={1360}
-            height={765}
-            sceneHeight={860}
+            width={isMobile ? 380 : 1360}
+            height={isMobile ? 540 : 765}
+            sceneHeight={isMobile ? 580 : 860}
             imageFit="cover"
             releaseBehavior="restore"
             crumpleAmount={0.88}
@@ -60,7 +85,7 @@ export const AboutSection: React.FC = () => {
             paperTexture={0.07}
             draggable={true}
             returnToOrigin={true}
-            rotation={-0.6}
+            rotation={isMobile ? 0 : -0.6}
           />
         </motion.div>
       </div>

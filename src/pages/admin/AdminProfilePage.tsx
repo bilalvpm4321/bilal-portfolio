@@ -5,7 +5,7 @@ import { Card } from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
 import { ImageUploader } from '../../components/admin/ImageUploader';
 import { FileUploader } from '../../components/admin/FileUploader';
-import { Save, User, FileText, Sparkles, Plus, Trash2, Image as ImageIcon } from 'lucide-react';
+import { Save, User, FileText, Sparkles, Plus, Trash2, Image as ImageIcon, Smartphone } from 'lucide-react';
 
 interface HighlightItem {
   id: string;
@@ -68,6 +68,7 @@ export const AdminProfilePage: React.FC = () => {
     location: '',
     avatar_url: '',
     about_image_url: '',
+    about_mobile_image_url: '',
     resume_url: '',
     availability_status: '',
     years_experience: '',
@@ -89,6 +90,7 @@ export const AdminProfilePage: React.FC = () => {
         location: profile.location || '',
         avatar_url: profile.avatar_url || '',
         about_image_url: profile.about_image_url || data.siteSettings?.about?.image_url || '',
+        about_mobile_image_url: profile.about_mobile_image_url || data.siteSettings?.about?.mobile_image_url || '',
         resume_url: profile.resume_url || '',
         availability_status: profile.availability_status || '',
         years_experience: profile.years_experience || '',
@@ -130,7 +132,7 @@ export const AdminProfilePage: React.FC = () => {
     e.preventDefault();
     setIsSaving(true);
     try {
-      const { about_image_url, ...profileFields } = formData;
+      const { about_image_url, about_mobile_image_url, ...profileFields } = formData;
       const [profileRes, settingRes, aboutSettingRes] = await Promise.all([
         updateProfile(profileFields),
         updateSiteSetting('hero', {
@@ -140,6 +142,7 @@ export const AdminProfilePage: React.FC = () => {
         updateSiteSetting('about', {
           ...(data.siteSettings?.about || {}),
           image_url: formData.about_image_url,
+          mobile_image_url: formData.about_mobile_image_url,
         }),
       ]);
 
@@ -205,18 +208,39 @@ export const AdminProfilePage: React.FC = () => {
             <div className="flex items-center justify-between mb-1">
               <h2 className="text-sm font-bold uppercase tracking-wider text-slate-200 flex items-center gap-2">
                 <ImageIcon className="w-4 h-4 text-emerald-400" />
-                <span>About Me 3D Paper Image</span>
+                <span>About Me 3D Paper Image (Desktop)</span>
               </h2>
             </div>
             <p className="text-[11px] text-slate-400 mb-4">
-              Upload your custom profile card, dossier, or portrait image here. It will automatically be mapped onto the interactive 3D crumple paper sheet in the About Me section with exact angles and physics!
+              Upload your custom desktop profile card, dossier, or portrait image here. It will automatically be mapped onto the interactive 3D crumple paper sheet in the About Me section with exact angles and physics!
             </p>
 
             <ImageUploader
               value={formData.about_image_url}
               onChange={(url) => setFormData({ ...formData, about_image_url: url })}
               folder="profile"
-              label="Upload About Me Paper Image"
+              label="Upload Desktop About Paper Image"
+              aspectRatio="free"
+            />
+          </Card>
+
+          {/* Mobile View About Section 3D Paper Image */}
+          <Card className="p-6 bg-[#0d0f17]/95 border-white/[0.08]">
+            <div className="flex items-center justify-between mb-1">
+              <h2 className="text-sm font-bold uppercase tracking-wider text-slate-200 flex items-center gap-2">
+                <Smartphone className="w-4 h-4 text-emerald-400" />
+                <span>Mobile View About Image (Mobile Screens)</span>
+              </h2>
+            </div>
+            <p className="text-[11px] text-slate-400 mb-4">
+              Upload a mobile-specific image (portrait or vertical card format) for the About page. On mobile phone screens, this image will automatically be rendered with full 3D interactive physics & double-tap crumple.
+            </p>
+
+            <ImageUploader
+              value={formData.about_mobile_image_url}
+              onChange={(url) => setFormData({ ...formData, about_mobile_image_url: url })}
+              folder="profile"
+              label="Upload Mobile View About Image"
               aspectRatio="free"
             />
           </Card>
