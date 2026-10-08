@@ -120,7 +120,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden bg-white dark:bg-[#08080a] text-[#1b281c] dark:text-white transition-colors duration-300">
+    <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden bg-transparent text-[#1b281c] dark:text-white transition-colors duration-300">
       {/* Interactive Cursor Ring Particle Field Background from Originkit */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
         <CursorRingField

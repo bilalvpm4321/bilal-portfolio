@@ -10,7 +10,7 @@ export const EducationSection: React.FC = () => {
   const educations = data.education;
 
   return (
-    <section id="education" className="py-8 sm:py-12 lg:py-16 relative overflow-hidden bg-[#f9faf7] dark:bg-[#08080a] text-[#1b281c] dark:text-white transition-colors duration-300 w-full">
+    <section id="education" className="py-4 sm:py-6 lg:py-8 relative overflow-hidden bg-transparent text-[#1b281c] dark:text-white transition-colors duration-300 w-full">
       {/* Ambient Atmospheric Glows */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute -top-20 -left-44 w-[680px] h-[680px] bg-[#738666]/18 dark:bg-white/[0.03] rounded-full blur-[140px]" />
@@ -19,11 +19,11 @@ export const EducationSection: React.FC = () => {
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10 w-full">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-6 sm:mb-10">
+        <div className="flex flex-col items-center text-center mb-4 sm:mb-6">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] dark:text-white font-display tracking-tight leading-none">
             Education & Qualifications
           </h2>
-          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] dark:bg-white/40 rounded-full mt-4" />
+          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] dark:bg-white/40 rounded-full mt-3 sm:mt-4" />
         </div>
 
 

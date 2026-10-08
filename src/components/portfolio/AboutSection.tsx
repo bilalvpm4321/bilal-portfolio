@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { PaperCrumple } from '../ui/PaperCrumple';
+import { LetterSwap3D } from '../ui/LetterSwap3D';
+import { RubberbandLine } from '../ui/RubberbandLine';
 
 export const AboutSection: React.FC = () => {
   const { data } = usePortfolio();
@@ -39,7 +41,7 @@ export const AboutSection: React.FC = () => {
   return (
     <section
       id="about"
-      className="py-12 sm:py-16 lg:py-20 relative overflow-hidden bg-transparent text-[#1b281c] dark:text-white transition-colors duration-300 w-full"
+      className="py-4 sm:py-6 lg:py-8 relative overflow-hidden bg-transparent text-[#1b281c] dark:text-white transition-colors duration-300 w-full"
     >
       {/* Ambient Atmospheric Lighting */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -50,11 +52,19 @@ export const AboutSection: React.FC = () => {
 
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#1b281c] dark:text-white font-display tracking-tight leading-tight">
-            About Me
+        <div className="flex flex-col items-center text-center mb-0 sm:mb-1">
+          <h2 className="text-6xl sm:text-8xl md:text-9xl lg:text-[120px] xl:text-[140px] font-black text-[#1b281c] dark:text-white font-display tracking-tight leading-none">
+            <LetterSwap3D
+              label="About Me"
+              secondaryLabel="About Me"
+              frontClassName="text-[#1b281c] dark:text-white"
+              backClassName="text-[#738666] dark:text-zinc-200"
+              staggerDuration={0.028}
+              duration={0.42}
+              inViewDelay={1000}
+            />
           </h2>
-          <div className="w-20 sm:w-24 h-1.5 bg-[#738666] dark:bg-white/40 rounded-full mt-3.5" />
+          <RubberbandLine className="mt-[-6px] sm:mt-[-10px] mb-[-12px] sm:mb-[-16px]" color="#738666" />
         </div>
 
         {/* Master Pure & Box-Free Interactive Paper Showcase (Increased Scale & Mobile Responsive) */}
@@ -63,7 +73,7 @@ export const AboutSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[1500px] mx-auto flex items-center justify-center"
+          className="w-full max-w-[1500px] mx-auto flex items-center justify-center -mt-2 sm:-mt-5 md:-mt-8"
         >
           <PaperCrumple
             key={`${isMobile ? 'mobile' : 'desktop'}-${activeImageSrc}`}
