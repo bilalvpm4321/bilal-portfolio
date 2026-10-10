@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { usePortfolio } from '../../context/PortfolioContext';
-import { Mail, Phone, Sparkles, MapPin } from 'lucide-react';
+import { Mail, Phone, Sparkles, MapPin, ArrowUpRight } from 'lucide-react';
 import { Github, Linkedin } from '../common/BrandIcons';
+import { SpacetimeWarpGrid } from '../ui/SpacetimeWarpGrid';
 
 export const Footer: React.FC = () => {
   const { data } = usePortfolio();
@@ -32,21 +33,45 @@ export const Footer: React.FC = () => {
   );
 
   return (
-    <footer className="border-t border-[#738666]/20 dark:border-white/[0.08] bg-[#f8faf6] dark:bg-[#08080a] relative overflow-hidden text-[#1b281c] dark:text-white transition-colors duration-300">
+    <footer className="border-t border-[#738666]/20 dark:border-white/[0.08] bg-[#f8faf6] dark:bg-[#050505] relative overflow-hidden text-[#1b281c] dark:text-white transition-colors duration-300">
+      {/* Interactive Spacetime Warp Gravitational Canvas Grid */}
+      <SpacetimeWarpGrid className="opacity-70 dark:opacity-75" />
+
       {/* Ambient background glow for visual depth */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[#738666]/8 dark:from-white/[0.03] to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[#738666]/8 dark:from-white/[0.03] to-transparent z-1"
         aria-hidden="true"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10 pb-12 border-b border-[#738666]/15 dark:border-white/[0.08]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 pb-8 sm:pb-10 relative z-10 pointer-events-none">
+        {/* Large Call-To-Action Heading (2-Line Wide Span) */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 mb-8 border-b border-[#738666]/15 dark:border-white/[0.08]">
+          <div className="max-w-4xl">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#738666] dark:text-zinc-400 font-semibold mb-2 block">
+              Have a visionary project in mind?
+            </span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[66px] xl:text-[74px] font-black font-editorial tracking-tight text-[#1b281c] dark:text-white leading-[1.06]">
+              <span className="block">Let's build something</span>
+              <span className="block text-[#738666] dark:text-zinc-200">extraordinary together.</span>
+            </h2>
+          </div>
+
+          <a
+            href={emailLink}
+            className="pointer-events-auto inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#738666] dark:bg-white text-white dark:text-black font-semibold text-sm hover:scale-105 active:scale-95 shadow-lg shadow-[#738666]/20 dark:shadow-white/10 transition-all duration-200 w-fit shrink-0 group mb-1"
+          >
+            <span>Start a Conversation</span>
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-[#738666]/15 dark:border-white/[0.08]">
           {/* Left: Brand & Profile Info */}
           <div className="flex flex-col max-w-lg">
             {/* Brand Logo & Name */}
             <Link
               to="/"
-              className="group inline-flex items-center gap-3 mb-4 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#738666] rounded-xl w-fit"
+              className="pointer-events-auto group inline-flex items-center gap-3 mb-4 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[#738666] rounded-xl w-fit"
             >
               <div className="w-10 h-10 rounded-xl bg-[#738666] dark:bg-white text-white dark:text-black flex items-center justify-center font-bold text-base shadow-sm group-hover:scale-105 transition-all duration-200">
                 B
@@ -69,7 +94,7 @@ export const Footer: React.FC = () => {
 
             {/* Status Pill Badge & Location */}
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-[#121215] border border-[#738666]/25 dark:border-white/[0.1] shadow-2xs">
+              <div className="pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-[#121215]/80 backdrop-blur-xs border border-[#738666]/25 dark:border-white/[0.1] shadow-2xs">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -96,7 +121,7 @@ export const Footer: React.FC = () => {
             </p>
 
             {/* Primary Action Icons on the Right: LinkedIn, GitHub, Email, Phone */}
-            <div className="flex items-center gap-3 justify-start md:justify-end flex-wrap mb-4">
+            <div className="pointer-events-auto flex items-center gap-3 justify-start md:justify-end flex-wrap mb-4">
               {/* LinkedIn */}
               <a
                 href={linkedinLink}
@@ -158,7 +183,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Direct email & phone pills on the right */}
-            <div className="flex flex-col items-start md:items-end gap-1.5 mt-1">
+            <div className="pointer-events-auto flex flex-col items-start md:items-end gap-1.5 mt-1">
               <a
                 href={emailLink}
                 className="inline-flex items-center gap-2 text-xs font-semibold text-[#32452f] dark:text-zinc-300 hover:text-[#738666] dark:hover:text-white transition-colors py-1 px-2.5 rounded-lg bg-[#738666]/8 dark:bg-white/[0.06] hover:bg-[#738666]/15 dark:hover:bg-white/[0.12] border border-[#738666]/15 dark:border-white/[0.1]"
@@ -178,7 +203,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Sub-Footer / Copyright & Meta Info */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-2 text-center text-xs text-[#556950] dark:text-zinc-500">
+        <div className="pt-5 sm:pt-6 flex flex-col sm:flex-row items-center justify-center gap-2 text-center text-xs text-[#556950] dark:text-zinc-500">
           <span>© {currentYear} Bilal Ahamed. All rights reserved.</span>
           <span className="hidden sm:inline text-[#738666]/40 dark:text-zinc-700">•</span>
           <span className="text-[#64795f] dark:text-zinc-500">Built with React, TypeScript & Tailwind CSS</span>
