@@ -8,6 +8,8 @@ import { Footer } from '../components/layout/Footer';
 import { Button } from '../components/common/Button';
 import { Modal } from '../components/common/Modal';
 import { CertificateBackgroundMarquee } from '../components/portfolio/CertificateBackgroundMarquee';
+import { CertificateImage } from '../components/portfolio/CertificateImage';
+import { getOptimizedImageUrl, preloadImages } from '../lib/imageOptimization';
 import {
   ArrowLeft,
   Award,
@@ -43,6 +45,16 @@ export const CertificatesPage: React.FC = () => {
       .filter((c) => c.is_visible)
       .sort((a, b) => a.display_order - b.display_order);
   }, [data.certifications]);
+
+  // Preload top 6 certificates for instantaneous display
+  useEffect(() => {
+    if (visibleCertificates.length > 0) {
+      const topUrls = visibleCertificates.slice(0, 6).map((c) =>
+        getOptimizedImageUrl(c.certificate_url || c.image_url, { width: 640, quality: 75 })
+      );
+      preloadImages(topUrls);
+    }
+  }, [visibleCertificates]);
 
   // Derive unique categories with counts
   const categoriesWithCounts = useMemo(() => {
@@ -270,12 +282,14 @@ export const CertificatesPage: React.FC = () => {
                     className="relative w-full min-h-[200px] max-h-[360px] bg-[#eef1ea]/70 dark:bg-[#16161a] overflow-hidden border-b border-[#738666]/15 dark:border-white/10 cursor-pointer flex items-center justify-center p-2.5 group/preview"
                   >
                     {certImage ? (
-                      <img
+                      <CertificateImage
                         src={certImage}
                         alt={cert.name}
-                        decoding="async"
+                        priority={index < 4}
+                        targetWidth={640}
+                        quality={75}
                         className="w-full h-auto max-h-[340px] object-contain rounded-xl transition-transform duration-300 group-hover/preview:scale-[1.02]"
-                        loading="lazy"
+                        containerClassName="w-full h-full flex items-center justify-center"
                       />
                     ) : (
                       <div className="flex flex-col items-center gap-2 text-[#738666] dark:text-white p-6 text-center">
@@ -386,10 +400,14 @@ export const CertificatesPage: React.FC = () => {
             {/* Image Preview */}
             <div className="w-full rounded-2xl overflow-hidden bg-slate-950/90 border border-[#738666]/20 dark:border-white/10 max-h-[78vh] flex items-center justify-center p-3">
               {selectedCert.certificate_url || selectedCert.image_url ? (
-                <img
-                  src={selectedCert.certificate_url || selectedCert.image_url || ''}
+                <CertificateImage
+                  src={selectedCert.certificate_url || selectedCert.image_url}
                   alt={selectedCert.name}
+                  priority={true}
+                  targetWidth={1400}
+                  quality={85}
                   className="max-h-[72vh] w-auto max-w-full object-contain rounded-xl shadow-2xl"
+                  containerClassName="w-full max-h-[72vh] flex items-center justify-center"
                 />
               ) : (
                 <div className="p-12 text-center text-slate-400">

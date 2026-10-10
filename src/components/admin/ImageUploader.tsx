@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { uploadFile } from '../../lib/supabase';
 import { useToast } from '../common/Toast';
 import { Button } from '../common/Button';
+import { compressImageFile } from '../../lib/imageOptimization';
 import { Upload, X, Image as ImageIcon, Loader2, Link as LinkIcon, Check } from 'lucide-react';
 
 interface ImageUploaderProps {
@@ -35,14 +36,21 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
       return;
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-      error('File too large', 'Image size must be less than 10MB.');
+    if (file.size > 15 * 1024 * 1024) {
+      error('File too large', 'Image size must be less than 15MB.');
       return;
     }
 
     try {
       setIsUploading(true);
-      const { url, error: uploadErr } = await uploadFile('portfolio', folder, file);
+      // Auto-compress high-resolution camera scans for instant web loading
+      const optimizedFile = await compressImageFile(file, {
+        maxWidth: 1600,
+        maxHeight: 1600,
+        quality: 0.85,
+      });
+
+      const { url, error: uploadErr } = await uploadFile('portfolio', folder, optimizedFile);
       if (uploadErr || !url) {
         throw uploadErr || new Error('Upload failed');
       }

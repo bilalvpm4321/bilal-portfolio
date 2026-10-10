@@ -18,6 +18,8 @@ import {
   LayoutGrid,
 } from 'lucide-react';
 import { CertificateBackgroundMarquee } from './CertificateBackgroundMarquee';
+import { CertificateImage } from './CertificateImage';
+import { getOptimizedImageUrl, preloadImages } from '../../lib/imageOptimization';
 
 export const CertificatesSection: React.FC = () => {
   const { data } = usePortfolio();
@@ -28,11 +30,21 @@ export const CertificatesSection: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
   const [viewMode, setViewMode] = useState<'stack' | 'grid'>('stack');
 
+  // Preload top visible certificates into browser memory cache for instant rendering
+  React.useEffect(() => {
+    if (visibleCertifications.length > 0) {
+      const topUrls = visibleCertifications.slice(0, 4).map((c) =>
+        getOptimizedImageUrl(c.certificate_url || c.image_url, { width: 640, quality: 75 })
+      );
+      preloadImages(topUrls);
+    }
+  }, [visibleCertifications]);
+
   if (visibleCertifications.length === 0) {
     return null;
   }
 
-  const renderCertificateCard = React.useCallback((cert: Certification) => {
+  const renderCertificateCard = React.useCallback((cert: Certification, index: number = 0) => {
     const certImage = cert.certificate_url || cert.image_url;
     return (
       <div
@@ -57,12 +69,14 @@ export const CertificatesSection: React.FC = () => {
           {/* Certificate Image Area */}
           <div className="relative w-full h-[220px] sm:h-[260px] rounded-2xl overflow-hidden bg-[#f0f3eb] dark:bg-[#16161a] border border-[#738666]/20 dark:border-white/[0.08] mb-3.5 flex items-center justify-center p-2.5">
             {certImage ? (
-              <img
+              <CertificateImage
                 src={certImage}
                 alt={cert.name}
-                decoding="async"
+                priority={index < 3}
+                targetWidth={640}
+                quality={75}
                 className="w-full h-full max-h-[250px] object-contain rounded-xl pointer-events-none"
-                loading="lazy"
+                containerClassName="w-full h-full flex items-center justify-center"
               />
             ) : (
               <div className="flex flex-col items-center gap-2 text-[#738666] dark:text-zinc-400 p-6 text-center">
@@ -126,7 +140,7 @@ export const CertificatesSection: React.FC = () => {
   }, []);
 
   const stackCards = useMemo(() => {
-    return visibleCertifications.map((cert) => renderCertificateCard(cert));
+    return visibleCertifications.map((cert, index) => renderCertificateCard(cert, index));
   }, [visibleCertifications, renderCertificateCard]);
 
   return (
@@ -199,7 +213,7 @@ export const CertificatesSection: React.FC = () => {
         ) : (
           /* Grid View */
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
-            {visibleCertifications.map((cert) => renderCertificateCard(cert))}
+            {visibleCertifications.map((cert, index) => renderCertificateCard(cert, index))}
           </div>
         )}
 
@@ -227,10 +241,14 @@ export const CertificatesSection: React.FC = () => {
             {/* Image Preview */}
             <div className="w-full rounded-2xl overflow-hidden bg-slate-950/90 border border-[#738666]/20 dark:border-white/10 max-h-[78vh] flex items-center justify-center p-3">
               {selectedCert.certificate_url || selectedCert.image_url ? (
-                <img
-                  src={selectedCert.certificate_url || selectedCert.image_url || ''}
+                <CertificateImage
+                  src={selectedCert.certificate_url || selectedCert.image_url}
                   alt={selectedCert.name}
+                  priority={true}
+                  targetWidth={1400}
+                  quality={85}
                   className="max-h-[72vh] w-auto max-w-full object-contain rounded-xl shadow-2xl"
+                  containerClassName="w-full max-h-[72vh] flex items-center justify-center"
                 />
               ) : (
                 <div className="p-12 text-center text-slate-400">
